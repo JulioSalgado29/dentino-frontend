@@ -16,9 +16,10 @@ render (){
     
     return(
         <div>
-            {  currentUser===null && <LoginComponent/>
-            || currentUser.estado===0 && <AduanaComponent/>
-            || currentUser.estado===1 && <IndexComponent/>}
+            
+            {  (currentUser===null && <LoginComponent/>)
+            || (currentUser.estado===0 && <AduanaComponent/>)
+            || (currentUser.estado===1 && <IndexComponent/>)}
         </div>
     )}
 }
