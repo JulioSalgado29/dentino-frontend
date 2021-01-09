@@ -102,7 +102,6 @@ class LoginComponent extends React.Component{
     }
 
     render (){
-      const { currentUser } = this.state;
       return(
         <div className="limiter">
             <div className="container-login100">
