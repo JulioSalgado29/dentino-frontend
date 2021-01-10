@@ -1,8 +1,8 @@
 import React from 'react';
-import UsuarioService from '../../../Servicios/UsuarioService';
-import IndexComponent from '../Index/IndexComponent';
-import LoginComponent from '../ControlDeAcceso/LoginComponent';
-import AduanaComponent from '../Index/AduanaComponent';
+import UsuarioService from '../../Servicios/UsuarioService';
+import IndexComponent from './Index/IndexComponent';
+import LoginComponent from './ControlDeAcceso/LoginComponent';
+import AduanaComponent from './Index/AduanaComponent';
 
 class InicioComponent extends React.Component{
     constructor(props){
