@@ -14,9 +14,9 @@ class AduanaComponent extends React.Component{
         UsuarioService.logout();
         window.location.reload(false);
     }
+    
 render (){
     const { currentUser } = this.state;
-    console.log(currentUser.estado)
     return(
         <div>
             {currentUser.estado===1 &&<IndexComponent></IndexComponent>}

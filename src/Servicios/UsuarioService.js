@@ -42,13 +42,21 @@ class UsuarioService {
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }
-    verificacion(username,token) {
-        return axios.get(login + "/actualizar-estado", { username,token }).then(response => {
+    actualizar_estado(username,token) {
+        return axios.post(login + "/actualizar-estado", { username,token }).then(response => {
             localStorage.setItem("usuario", JSON.stringify(response.data));
+        });
+    }
+    verificar_usuario(username){
+        return axios.put(user + "/verificar-estado", {username}).then(response => {
+            localStorage.setItem("usuario2", JSON.stringify(response.data));
         });
     }
     getCurrentUser() {
         return JSON.parse(localStorage.getItem("usuario"));;
+    }
+    getCurrentState() {
+        return JSON.parse(localStorage.getItem("usuario2"));;
     }
     logout() {
         localStorage.removeItem("usuario");

@@ -160,7 +160,6 @@ class RegistrarComponent extends React.Component{
     }
     render (){
         return(
-            
             <div class="limiter">
                 <div class="container-login100">
                     <div class="wrap-register100">
