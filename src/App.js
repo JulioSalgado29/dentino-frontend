@@ -8,7 +8,7 @@ function App(){
         <HashRouter>
           <ScrollTop/>
                 <Switch>
-                    <Route path ="/" component = {InicioComponent}></Route>
+                    <Route exact path ="/" component = {InicioComponent}></Route>
                     <Redirect path="/*" to="/"></Redirect>
                 </Switch>
         </HashRouter>
