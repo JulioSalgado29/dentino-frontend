@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Redirect, Route, Switch}from 'react-router-dom';
+import {BrowserRouter as Router, Redirect, Route, Switch, HashRouter}from 'react-router-dom';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import ScrollTop from './ScrollTop';
 
