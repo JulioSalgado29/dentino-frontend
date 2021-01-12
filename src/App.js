@@ -10,7 +10,7 @@ function App(){
             <ScrollTop/>
                   <Switch>
                       <Route exact path ="/dentino-frontend/" component = {InicioComponent}></Route>
-                      <Redirect path="/*" to="/"></Redirect>
+                      <Redirect path="/*" to="/dentino-frontend/"></Redirect>
                   </Switch>
           </Router>
           </HashRouter>
