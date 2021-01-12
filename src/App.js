@@ -5,10 +5,10 @@ import ScrollTop from './ScrollTop';
 function App(){
   return (
       <div>
-        <HashRouter basename="https://juliosalgado29.github.io/dentino-frontend/">
+        <HashRouter basename="https://juliosalgado29.github.io">
           <Router>
             <ScrollTop/>
-                  <Switch> https://contafast.herokuapp.com
+                  <Switch>
                       <Route exact path ="/" component = {InicioComponent}></Route>
                       <Redirect path="/*" to="/"></Redirect>
                   </Switch>
