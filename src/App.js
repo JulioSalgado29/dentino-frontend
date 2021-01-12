@@ -7,9 +7,9 @@ function App(){
       <div>
           <Router>
             <ScrollTop/>
-                  <Switch> https://contafast.herokuapp.com
+                  <Switch> https://juliosalgado29.github.io
                       <Route exact path ="/" component = {InicioComponent}></Route>
-                      <Redirect path="/*" to="/registrar-usuario"></Redirect>
+                      <Redirect path="/*" to="/"></Redirect>
                   </Switch>
           </Router>
       </div>
