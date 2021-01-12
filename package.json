@@ -2,7 +2,6 @@
   "name": "dentino-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://JulioSalgado29.github.io/dentino-frontend",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",

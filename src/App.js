@@ -5,13 +5,13 @@ import ScrollTop from './ScrollTop';
 function App(){
   return (
     <div>
-        <HashRouter>
+        <Router>
           <ScrollTop/>
                 <Switch>
                     <Route exact path ="/" component = {InicioComponent}></Route>
                     <Redirect path="/*" to="/"></Redirect>
                 </Switch>
-        </HashRouter>
+        </Router>
     </div>
 )
 }
