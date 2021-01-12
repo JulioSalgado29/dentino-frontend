@@ -5,7 +5,7 @@ import ScrollTop from './ScrollTop';
 function App(){
   return (
       <div>
-        <HashRouter basename="https://juliosalgado29.github.io">
+        <HashRouter basename="http://JulioSalgado29.github.io/dentino-frontend">
           <Router>
             <ScrollTop/>
                   <Switch>
