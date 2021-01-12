@@ -4,17 +4,15 @@ import ScrollTop from './ScrollTop';
 
 function App(){
   return (
-      <div>
-        <HashRouter basename="http://JulioSalgado29.github.io/dentino-frontend">
-          <Router>
-            <ScrollTop/>
-                  <Switch>
-                      <Route exact path ="/dentino-frontend/" component = {InicioComponent}></Route>
-                      <Redirect path="/*" to="/dentino-frontend/"></Redirect>
-                  </Switch>
-          </Router>
-          </HashRouter>
-      </div>
-  )
+    <div>
+        <HashRouter>
+          <ScrollTop/>
+                <Switch>
+                    <Route path ="/" component = {InicioComponent}></Route>
+                    <Redirect path="/*" to="/"></Redirect>
+                </Switch>
+        </HashRouter>
+    </div>
+)
 }
 export default App;
