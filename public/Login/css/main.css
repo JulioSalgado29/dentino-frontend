@@ -70,7 +70,7 @@ p {
 	font-family: Poppins-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: white;
 	margin: 0px;
 }
 
@@ -552,4 +552,31 @@ iframe {
     visibility: collapse;
     opacity: 1;
   }
+}
+.nav-sidebar .nav-item>.nav-link-2{
+  position: relative;
+}
+@media (min-width: 992px){
+.sidebar-mini .nav-sidebar, .sidebar-mini .nav-sidebar .nav-link-2, .sidebar-mini .nav-sidebar>.nav-header {
+    white-space: nowrap;
+    overflow: hidden;
+}}
+.nav-sidebar .nav-item>.nav-link-2 {
+  margin-bottom: .2rem;
+}
+.nav-pills .nav-link-2 {
+  color: white;
+}
+.nav-pills .nav-link-2 {
+  border-radius: .25rem;
+}
+.nav-link-2 {
+  display: block;
+  padding: .5rem 1rem;
+}
+.nav-link-2 {
+  display: block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }

@@ -1,10 +1,10 @@
 import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
-import {Link}from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-class HeaderComponent extends React.Component{
+class HeaderComponent extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
@@ -17,19 +17,65 @@ class HeaderComponent extends React.Component{
         window.location.reload(false);
     }
 
-    render (){
+    render() {
         const { currentUser } = this.state;
-            return(
-            <div>
-                <header>
-                    <nav className="navbar navbar navbar-light " style={{backgroundColor:"black", marginBottom:"4rem"}}>
-                        <Link to="/" className="btn btn-primary active" role="button" aria-pressed="true" 
-                        style={{background: "none", padding: "inherit", fontSize:"2rem",
-                        lineHeight:"1.5",borderRadius:".3rem"}}><b>Contafast</b></Link>
-                        {currentUser!=null && <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>}
-                    </nav>
-                </header>
-            </div>)
+        return (
+            <nav className="main-header navbar navbar-expand navbar-white navbar-light">
+                {/* Left navbar links */}
+                <ul className="navbar-nav">
+                    <li className="nav-item">
+                        <a className="nav-link" data-widget="pushmenu" role="button"><i className="fas fa-bars" /></a>
+                    </li>
+                </ul>
+                {/* SEARCH FORM */}
+                <form className="form-inline ml-3">
+                    <div className="input-group input-group-sm">
+                        <input className="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" />
+                        <div className="input-group-append">
+                            <button className="btn btn-navbar" type="submit">
+                                <i className="fas fa-search" />
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {/* Right navbar links */}
+                <ul className="navbar-nav ml-auto">
+                    {/* Notifications Dropdown Menu */}
+                    <li className="nav-item dropdown">
+                        <a className="nav-link" data-toggle="dropdown">
+                            <i className="far fa-bell" />
+                            <span className="badge badge-warning navbar-badge">15</span>
+                        </a>
+                        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <span className="dropdown-item dropdown-header">15 Notifications</span>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item">
+                                <i className="fas fa-envelope mr-2" /> 4 new messages
+                            <span className="float-right text-muted text-sm">3 mins</span>
+                            </a>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item">
+                                <i className="fas fa-users mr-2" /> 8 friend requests
+                            <span className="float-right text-muted text-sm">12 hours</span>
+                            </a>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item">
+                                <i className="fas fa-file mr-2" /> 3 new reports
+                            <span className="float-right text-muted text-sm">2 days</span>
+                            </a>
+                            <div className="dropdown-divider" />
+                            <a className="dropdown-item dropdown-footer">See All Notifications</a>
+                        </div>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" data-widget="fullscreen" role="button">
+                            <i className="fas fa-expand-arrows-alt" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+        )
     }
 }
 

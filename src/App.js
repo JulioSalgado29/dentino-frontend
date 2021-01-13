@@ -1,18 +1,18 @@
 import {BrowserRouter as Router, Redirect, Route, Switch, HashRouter}from 'react-router-dom';
+import RegistrarComponent from './Componentes/Administrador/RegistrarComponent';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import ScrollTop from './ScrollTop';
+//<Redirect path="/*" to="/"></Redirect>
 
 function App(){
   return (
-    <div>
-        <Router>
+        <HashRouter>
           <ScrollTop/>
                 <Switch>
-                    <Route exact path ="/" component = {InicioComponent}></Route>
-                    <Redirect path="/*" to="/"></Redirect>
+                    <Route path ="/" component = {InicioComponent}></Route>
+                    <Route exact path ="/julio" component = {RegistrarComponent}></Route>
                 </Switch>
-        </Router>
-    </div>
+        </HashRouter>
 )
 }
 export default App;
