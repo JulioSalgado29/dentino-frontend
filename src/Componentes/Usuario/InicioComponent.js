@@ -45,9 +45,9 @@ render (){
     const { currentUser } = this.state;
     return(
         <div>
-            {  (currentUser===null     && <LoginComponent/>)
+            {  (currentUser===null     && <IndexComponent/>)
             || (currentUser.estado===0 && <AduanaComponent/>)
-            || (currentUser.estado===1 && <IndexComponent/>)}
+            || (currentUser.estado===1 && <LoginComponent/>)}
         </div>
     )}
 }
