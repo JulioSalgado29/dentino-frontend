@@ -225,9 +225,6 @@ class IndexComponent extends React.Component {
   </section>
   {/* /.content */}
 </div>
-
-                <button type="button" className="btn btn-danger" onClick={this.logOut}>Cerrar Sesion</button>
-                <label>Index:estado={currentUser.estado}</label>
                 </div>
             </body>
         )
