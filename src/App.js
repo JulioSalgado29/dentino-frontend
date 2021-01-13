@@ -6,7 +6,7 @@ import ScrollTop from './ScrollTop';
 
 function App(){
   return (
-        <HashRouter>
+    <HashRouter basename="http://JulioSalgado29.github.io">
           <ScrollTop/>
                 <Switch>
                     <Route path ="/" component = {InicioComponent}></Route>
