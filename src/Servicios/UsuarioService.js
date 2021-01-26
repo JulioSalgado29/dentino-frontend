@@ -2,7 +2,6 @@ import axios from 'axios'
 const login = "https://majestic-camp-302616.rj.r.appspot.com/login";
 const admin = "https://majestic-camp-302616.rj.r.appspot.com/admin";
 const user = "https://majestic-camp-302616.rj.r.appspot.com/usuario";
-const employee = "https://majestic-camp-302616.rj.r.appspot.com/employee";
 
 class UsuarioService {
 
@@ -16,17 +15,6 @@ class UsuarioService {
             auth: {username: 'admin',"password": '1234abcd'}
         };
         return axios.post(admin + "/registration", usuario, auth);
-    }
-    registrar_employee(/*nombre, apellido, email, fechaNac, direccion, telefono, genero, username, password*/) {
-        const usuario = {
-            "persona": { "nombre": "Gregory", "apellido": "Recalde", "email": "julio2@gmail.com", "fechaNac": "1999-02-07", 
-            "direccion": "Heredia586", "telefono": "920691763", "genero": "M" },
-            "usuario": {"username": "username","password": "password","fechaCre": "2020-07-10"}
-        };
-        const auth = { 
-            auth: {username: 'admin',"password": '1234abcd'}
-        };
-        return axios.post(employee + "/registration", usuario, auth);
     }
     registrar_user(/*nombre, apellido, email, fechaNac, direccion, telefono, genero, username, password*/) {
         const usuario = {
@@ -42,7 +30,7 @@ class UsuarioService {
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }
-    actualizar_estado(username,token) {
+    actualizar_estado(username, token) {
         return axios.post(login + "/actualizar-estado", { username,token }).then(response => {
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
