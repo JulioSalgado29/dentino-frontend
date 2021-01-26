@@ -1,8 +1,8 @@
 import axios from 'axios'
-const login = "http://dentino.sytes.net:8000/login";
-const admin = "http://dentino.sytes.net:8000/admin";
-const user = "http://dentino.sytes.net:8000/usuario";
-const employee = "http://dentino.sytes.net:8000/employee";
+const login = "https://majestic-camp-302616.rj.r.appspot.com/login";
+const admin = "https://majestic-camp-302616.rj.r.appspot.com/admin";
+const user = "https://majestic-camp-302616.rj.r.appspot.com/usuario";
+const employee = "https://majestic-camp-302616.rj.r.appspot.com/employee";
 
 class UsuarioService {
 
