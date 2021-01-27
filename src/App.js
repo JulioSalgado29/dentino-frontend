@@ -6,7 +6,7 @@ import ScrollTop from './ScrollTop';
 
 function App(){
   return (
-    <HashRouter basename="https://dentino.me">
+    <HashRouter>
           <ScrollTop/>
                 <Switch>
                     <Route path ="/" component = {InicioComponent}></Route>
