@@ -14,6 +14,32 @@ class InicioComponent extends React.Component{
             loading: false,
             message: "",
         }
+        this.componentDidMount = this.componentDidMount.bind(this);
+    }
+    componentDidMount(){
+          if(this.state.currentUser!==null){
+            UsuarioService.verificar_usuario(this.state.currentUser.username).then(() => {
+                if(this.state.currentState!==null){
+                    if(this.state.currentUser.estado!==this.state.currentState.estado){
+                        window.location.reload(true);
+                        localStorage.removeItem("usuario");
+                        localStorage.removeItem("usuario2");
+                    }
+                }
+              },
+              error => {
+                const resMessage =
+                (error.response && error.response.data) || error.message 
+                || error.toString();
+                this.setState({
+                  loading: false,
+                  message: resMessage
+                });
+                Swal.fire
+                ({title: resMessage,
+                  icon: 'error'})
+              });
+        }
     }
 render (){
     const { currentUser } = this.state;
