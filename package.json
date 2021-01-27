@@ -2,7 +2,7 @@
   "name": "dentino-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://JulioSalgado29.github.io/dentino-frontend",
+  "homepage": "https://dentino.me",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
@@ -22,7 +22,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "predeploy": "npm run build && echo 'dentino.me' > ./build/CNAME ",
+    "predeploy": "npm run build && echo dentino.me > ./build/CNAME ",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
