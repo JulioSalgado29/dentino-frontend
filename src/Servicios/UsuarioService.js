@@ -1,7 +1,7 @@
 import axios from 'axios'
-const login = "https://majestic-camp-302616.rj.r.appspot.com/login";
-const admin = "https://majestic-camp-302616.rj.r.appspot.com/admin";
-const user = "https://majestic-camp-302616.rj.r.appspot.com/usuario";
+const login = "https://dentino-303017.rj.r.appspot.com/login";
+const admin = "https://dentino-303017.rj.r.appspot.com/admin";
+const user = "https://dentino-303017.rj.r.appspot.com/usuario";
 
 class UsuarioService {
 
