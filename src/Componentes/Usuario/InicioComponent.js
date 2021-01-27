@@ -14,7 +14,6 @@ class InicioComponent extends React.Component{
             loading: false,
             message: "",
         }
-        this.componentDidMount = this.componentDidMount.bind(this);
     }
 render (){
     const { currentUser } = this.state;
