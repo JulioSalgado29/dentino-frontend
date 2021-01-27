@@ -7,7 +7,7 @@ import ScrollTop from './ScrollTop';
 
 function App(){
   return (
-    <HashRouter>
+    <Router forceRefresh>
           <ScrollTop/>
                 <Switch>
                     <Route exact path ="/" component = {InicioComponent}></Route>
@@ -15,7 +15,7 @@ function App(){
                     <Route exact path ="/julio" component = {RegistrarComponent}></Route>
                     <Redirect path="/*" to="/"></Redirect>
                 </Switch>
-        </HashRouter>
+        </Router>
 )
 }
 export default App;
