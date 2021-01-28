@@ -2,7 +2,7 @@ import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
 import logo from '../../Images/favicon.png';
 import llamita from '../../Images/llamita.jpg';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 
 class SidebarComponent extends React.Component {
     constructor(props) {
@@ -11,9 +11,13 @@ class SidebarComponent extends React.Component {
             currentUser: UsuarioService.getCurrentUser(),
         }
         this.isLandingPage = this.isLandingPage.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
     isLandingPage(){
         localStorage.setItem("isLandingPage", true)
+    }
+    logOut() {
+        UsuarioService.logout();
     }
     render() {
         const { currentUser } = this.state;
@@ -81,6 +85,14 @@ class SidebarComponent extends React.Component {
                                     <span className="right badge badge-danger">New</span>
                                     </p>
                                 </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer"}}>
+                                    <i className="nav-icon fas fa-power-off" />
+                                    <p>
+                                        Cerrar Sesión
+                                    </p>
+                                </Link>
                             </li>
                         </ul>
                     </nav>
