@@ -10,12 +10,22 @@ class PacienteComponent extends React.Component {
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
         }
+        
     }
     logOut() {
         UsuarioService.logout();
         window.location.reload(false);
     }
+
+    componentDidMount() {
+        if (localStorage.getItem("isLandingPage")) {
+            localStorage.removeItem("isLandingPage");
+            window.location.reload();
+        }
+    }
+
     render() {
+        localStorage.getItem("page")
         const { currentUser } = this.state;
         return (
             <body class="hold-transition sidebar-mini layout-fixed">

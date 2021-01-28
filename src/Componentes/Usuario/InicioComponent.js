@@ -15,6 +15,12 @@ class InicioComponent extends React.Component{
             message: "",
         }
     }
+    componentDidMount() {
+        if (localStorage.getItem("isLandingPage")) {
+            localStorage.removeItem("isLandingPage");
+            window.location.reload();
+        }
+    }
 render (){
     const { currentUser } = this.state;
     return(

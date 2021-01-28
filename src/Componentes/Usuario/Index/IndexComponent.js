@@ -19,7 +19,7 @@ class IndexComponent extends React.Component {
         const { currentUser } = this.state;
         return (
             <body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
+              <div class="wrapper">
                 <HeaderComponent />
                 <Sidebar />
                 <div className="content-wrapper">
@@ -225,7 +225,7 @@ class IndexComponent extends React.Component {
   </section>
   {/* /.content */}
 </div>
-                </div>
+              </div>
             </body>
         )
     }

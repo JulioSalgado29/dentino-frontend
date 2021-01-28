@@ -7,15 +7,15 @@ import ScrollTop from './ScrollTop';
 
 function App(){
   return (
-    <Router forceRefresh>
+    <HashRouter>
           <ScrollTop/>
-                <Switch>
-                    <Route exact path ="/" component = {InicioComponent}></Route>
-                    <Route exact path ="/pacientes" component = {PacienteComponent}></Route>
-                    <Route exact path ="/julio" component = {RegistrarComponent}></Route>
-                    <Redirect path="/*" to="/"></Redirect>
-                </Switch>
-        </Router>
+          <Switch>
+            <Route exact path ="/" component = {InicioComponent}></Route>
+            <Route exact path ="/pacientes" component = {PacienteComponent}></Route>
+            <Route exact path ="/julio" component = {RegistrarComponent}></Route>
+            <Redirect path="/*" to="/"></Redirect>
+          </Switch>
+      </HashRouter>
 )
 }
 export default App;

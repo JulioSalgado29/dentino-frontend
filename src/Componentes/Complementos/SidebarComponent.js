@@ -10,8 +10,11 @@ class SidebarComponent extends React.Component {
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
         }
+        this.isLandingPage = this.isLandingPage.bind(this);
     }
-
+    isLandingPage(){
+        localStorage.setItem("isLandingPage", true)
+    }
     render() {
         const { currentUser } = this.state;
         return (
@@ -62,7 +65,7 @@ class SidebarComponent extends React.Component {
                             </li>
                             */}
                             <li className="nav-item">
-                                <NavLink exact to="/" className="nav-link" activeClassName="nav-link active">
+                                <NavLink  exact to="/" className="nav-link" onClick={this.isLandingPage} activeClassName="nav-link active">
                                     <i className="nav-icon fas fa-th" />
                                     <p>
                                         Dashboard
@@ -71,7 +74,7 @@ class SidebarComponent extends React.Component {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to="/pacientes" className="nav-link" activeClassName="nav-link active">
+                                <NavLink exact to="/pacientes" className="nav-link" onClick={this.isLandingPage} activeClassName="nav-link active">
                                     <i className="nav-icon fas fa-head-side-mask" />
                                     <p>
                                         Pacientes
