@@ -56,11 +56,6 @@ class HeaderComponent extends React.Component {
                             <a className="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" data-widget="fullscreen" role="button">
-                            <i className="fas fa-expand-arrows-alt" />
-                        </a>
-                    </li>
                 </ul>
             </nav>
 
