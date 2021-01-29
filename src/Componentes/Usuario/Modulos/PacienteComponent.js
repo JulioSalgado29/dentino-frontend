@@ -7,14 +7,10 @@ import {Table, Button, Container, Modal, ModalBody, ModalHeader ,FormGroup, Moda
 class PacienteComponent extends React.Component {
     constructor(props) {
         super(props);
-        this.logOut = this.logOut.bind(this);
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
         }
         
-    }
-    logOut() {
-        UsuarioService.logout();
     }
 
     componentDidMount() {
@@ -26,7 +22,6 @@ class PacienteComponent extends React.Component {
 
     render() {
         localStorage.getItem("page")
-        const { currentUser } = this.state;
         return (
             <body class="hold-transition sidebar-mini layout-fixed">
                 <div class="wrapper">

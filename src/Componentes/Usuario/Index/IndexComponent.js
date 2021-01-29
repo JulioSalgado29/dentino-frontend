@@ -16,7 +16,6 @@ class IndexComponent extends React.Component {
         window.location.reload(false);
     }
     render() {
-        const { currentUser } = this.state;
         return (
             <body class="hold-transition sidebar-mini layout-fixed">
               <div class="wrapper">
