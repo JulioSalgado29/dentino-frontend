@@ -15,7 +15,6 @@ class PacienteComponent extends React.Component {
     }
     logOut() {
         UsuarioService.logout();
-        window.location.reload(false);
     }
 
     componentDidMount() {
