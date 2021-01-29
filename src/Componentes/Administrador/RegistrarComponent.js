@@ -4,6 +4,7 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail, isEmpty, isNumeric } from 'validator';
+import Swal from 'sweetalert2';
 
   const required = value => {
     if (value.length===0) {
@@ -76,6 +77,15 @@ class RegistrarComponent extends React.Component{
             message: "",
             loading: true,
           });
+          if(this.form === undefined){
+            this.setState({
+              loading: false
+            });
+            Swal.fire
+            ({title: "Esta opción aun no se encuentra habilitada",
+              icon: 'warning'})
+          }
+          else{
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
             UsuarioService.registrar_user(/*this.state.nombre, this.state.apellido, this.state.fechaNac, this.state.email, this.state.direccion, this.state.telefono, 
@@ -110,7 +120,7 @@ class RegistrarComponent extends React.Component{
             this.setState({
               loading: false
             });
-        }
+        }}
     }
     ChangeNombreHandler= (event) => {
       this.setState({nombre: event.target.value})
@@ -249,7 +259,7 @@ class RegistrarComponent extends React.Component{
                               </div>
                           </div>
                           <div class="container-login100-form-btn">
-                              <button className="registrar100-form-btn" onClick={this.register}><b>Registrar</b></button>
+                              <button className="registrar100-form-btn" onClick={this.saveUsuario}><b>Registrar</b></button>
                               <button className="volver100-form-btn" onClick={this.cancel}><b>Volver</b></button>
                           </div>
                         </form>

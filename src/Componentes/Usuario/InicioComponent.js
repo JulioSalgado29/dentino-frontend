@@ -3,7 +3,6 @@ import UsuarioService from '../../Servicios/UsuarioService';
 import IndexComponent from './Index/IndexComponent';
 import LoginComponent from './ControlDeAcceso/LoginComponent';
 import AduanaComponent from './Index/AduanaComponent';
-import Swal from 'sweetalert2';
 
 class InicioComponent extends React.Component{
     constructor(props){

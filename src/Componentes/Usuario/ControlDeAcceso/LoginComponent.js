@@ -6,6 +6,7 @@ import CheckButton from "react-validation/build/button";
 import image from '../../../Images/Dentino.png';
 import '../Theme/style.scss';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const required = value => {
   if (value.length===0) {
@@ -28,8 +29,7 @@ class LoginComponent extends React.Component{
         this.ChangeUsernameHandler = this.ChangeUsernameHandler.bind(this);
         this.ChangePasswordHandler = this.ChangePasswordHandler.bind(this);
         this.loginUsuario = this.loginUsuario.bind(this);
-        //this.verificarUsuario = this.verificarUsuario.bind(this);
-        //this.register = this.register.bind(this);
+        this.register = this.register.bind(this);
         this.logOut = this.logOut.bind(this);
     }
 
@@ -62,29 +62,6 @@ class LoginComponent extends React.Component{
             });
         }
     }
-    /*verificarUsuario(e){
-      e.preventDefault();
-      this.setState({
-          message: "",
-          loading: true
-        });
-      const { currentUser } = this.state;
-      console.log(currentUser);
-      UsuarioService.verificacion(currentUser.username,currentUser.token)
-      .then(() => {
-          window.location.reload(false);
-        },
-        error => {
-          const resMessage =
-          (error.response && error.response.data) || error.message 
-          || error.toString();
-          this.setState({
-            loading: false,
-            message: resMessage
-          });
-          console.log(resMessage)
-        });
-    }*/
     ChangeTokenHandler= (event) => {
       this.setState({token: event.target.value})
     }
@@ -94,9 +71,8 @@ class LoginComponent extends React.Component{
     ChangePasswordHandler= (event) => {
         this.setState({password: event.target.value})
     }
-    /*register(){
-        this.props.history.push('/registrar-usuario')
-    }*/
+    register(){
+    }
     logOut() {
       UsuarioService.logout();
     }
@@ -139,9 +115,8 @@ class LoginComponent extends React.Component{
                         )}<b>Ingresar</b></button>
                         
                         <CheckButton style={{ display: "none" }} ref={c => {this.checkBtn = c;}}/>
-
-                        <button style={{display:"none"}}className="registrar100-form-btn" onClick={this.register}><b>Regístrate</b></button>
                         </div>
+                        <Link className="registrar100-form-btn" exact to="/register" ><b>Regístrate</b></Link>
                     </Form>
                 </div>
             </div>

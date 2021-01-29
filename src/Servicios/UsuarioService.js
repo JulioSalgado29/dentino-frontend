@@ -18,9 +18,9 @@ class UsuarioService {
     }
     registrar_user(/*nombre, apellido, email, fechaNac, direccion, telefono, genero, username, password*/) {
         const usuario = {
-            "persona": { "nombre": "Gregory", "apellido": "Recalde", "email": "julio2@gmail.com", "fechaNac": "1999-02-07", 
+            "persona": { "nombre": "Gregory", "apellido": "Recalde", "email": "gregoryrecaldegutierrez@gmail.com", "fechaNac": "1999-02-07", 
             "direccion": "Heredia586", "telefono": "920691763", "genero": "M" },
-            "usuario": {"username": "username","password": "password","fechaCre": "2020-07-10"}
+            "usuario": {"username": "gregory","password": "password"}
         };
         return axios.post(user + "/registration", usuario);
     }
