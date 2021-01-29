@@ -82,7 +82,8 @@ class RegistrarComponent extends React.Component{
             });
             Swal.fire
             ({title: "Esta opción aun no se encuentra habilitada",
-              icon: 'warning'})
+              icon: 'warning',
+              backdrop: 'rgba(50, 50, 30, 0.5)'})
           }
           else{
           this.form.validateAll();

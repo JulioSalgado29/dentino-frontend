@@ -54,7 +54,8 @@ class LoginComponent extends React.Component{
               });
               Swal.fire
               ({title: resMessage,
-                icon: 'error'})
+                icon: 'error',
+                backdrop: 'rgba(61, 0, 0, 0.4)'})
             });
           }else {
             this.setState({
