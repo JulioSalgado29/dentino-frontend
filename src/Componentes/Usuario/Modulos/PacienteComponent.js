@@ -2,6 +2,7 @@ import React from 'react';
 import UsuarioService from '../../../Servicios/UsuarioService';
 import HeaderComponent from '../../Complementos/HeaderComponent';
 import Sidebar from '../../Complementos/SidebarComponent';
+import {Table, Button, Container, Modal, ModalBody, ModalHeader ,FormGroup, ModalFooter} from 'reactstrap';
 
 class PacienteComponent extends React.Component {
     constructor(props) {
@@ -33,7 +34,10 @@ class PacienteComponent extends React.Component {
                     <HeaderComponent />
                     <Sidebar />
                     <div className="content-wrapper">
-                        <h2 style={{textAlign:"center"}}>PACIENTES</h2>
+                        <div className="container-modulos">
+                            <br/>
+                            <Button color="primary"> Insertar Nuevo Paciente</Button>
+                        </div>
                     </div>
                 </div>
             </body>
