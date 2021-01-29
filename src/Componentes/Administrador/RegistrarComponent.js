@@ -51,7 +51,6 @@ class RegistrarComponent extends React.Component{
             loading: false,
             message: "",
             isFocus: false,
-            fecha: Date.now()
         }
         this.ChangeNombreHandler = this.ChangeNombreHandler.bind(this);
         this.ChangeApellidoHandler = this.ChangeApellidoHandler.bind(this);
