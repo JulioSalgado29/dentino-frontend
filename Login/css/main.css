@@ -392,6 +392,9 @@ iframe {
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+.registrar100-form-btn:hover{
+  color: #fff;
+}
 .volver100-form-btn {
   font-family: Montserrat-Bold;
   font-size: 15px;
