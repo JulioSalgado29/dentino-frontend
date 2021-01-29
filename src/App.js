@@ -3,17 +3,18 @@ import RegistrarComponent from './Componentes/Administrador/RegistrarComponent';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import PacienteComponent from './Componentes/Usuario/Modulos/PacienteComponent';
 import ScrollTop from './ScrollTop';
-//<Redirect path="/*" to="/"></Redirect>
+import {ProtectedRoute} from './Servicios/Protected.Route';
+import {NoProtected} from './Servicios/NoProtected.Route';
 
 function App(){
   return (
     <HashRouter>
           <ScrollTop/>
           <Switch>
-            <Route exact path ="/" component = {InicioComponent}></Route>
-            <Route exact path ="/pacientes" component = {PacienteComponent}></Route>
-            <Route exact path ="/julio" component = {RegistrarComponent}></Route>
-            <Redirect path="/*" to="/"></Redirect>
+            <ProtectedRoute exact path ="/pacientes" component = {PacienteComponent}/>
+            <Route exact path ="/" component = {InicioComponent}/>
+            <NoProtected exact path ="/register" component = {RegistrarComponent}/>
+            <Redirect path="/*" to="/"/>
           </Switch>
       </HashRouter>
 )

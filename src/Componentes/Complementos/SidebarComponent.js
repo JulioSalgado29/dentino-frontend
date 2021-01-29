@@ -21,7 +21,6 @@ class SidebarComponent extends React.Component {
     }
     render() {
         const { currentUser } = this.state;
-        console.log(currentUser.persona.nombre)
         return (
             <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{backgroundColor:"black"}}>
                 <a className="brand-link" style={{color:"white",cursor:"pointer"}}>
