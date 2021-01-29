@@ -23,7 +23,7 @@ class SidebarComponent extends React.Component {
         const { currentUser } = this.state;
         return (
             <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{backgroundColor:"black"}}>
-                <a className="brand-link" style={{color:"white",cursor:"pointer"}}>
+                <a className="brand-link" style={{color:"white",cursor: "context-menu"}}>
                     <img src={logo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" />
                     <span className="brand-text font-weight-light">Dentino</span>
                 </a>
@@ -33,7 +33,7 @@ class SidebarComponent extends React.Component {
                             <img src={perfil} class="img-circle elevation-2" alt="User Image"/>
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
+                            <a style={{cursor: "context-menu"}}class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
                         </div>
                     </div>
                     <nav className="mt-2">
@@ -73,7 +73,6 @@ class SidebarComponent extends React.Component {
                                     <i className="nav-icon fas fa-th" />
                                     <p>
                                         Dashboard
-                                    <span className="right badge badge-danger">New</span>
                                     </p>
                                 </NavLink>
                             </li>
