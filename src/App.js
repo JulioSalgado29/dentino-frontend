@@ -12,9 +12,7 @@ function App(){
           <ScrollTop/>
           <Switch>
             <ProtectedRoute path ="/pacientes" component = {PacienteComponent}/>
-            
             <Route exact path ="/" component = {InicioComponent}/>
-
             <NoProtected exact path ="/register" component = {RegistrarComponent}/>
             <Redirect path="/*" to="/"/>
           </Switch>
