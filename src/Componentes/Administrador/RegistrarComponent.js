@@ -179,14 +179,14 @@ class RegistrarComponent extends React.Component{
                         <form class="register100-form validate-form" style={{display:"contents"}}>
                           <div class="container container-register">
                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                  <input class="input100" type="text" name="email" placeholder="Nombres" autofocus/>
+                                  <input class="input100-julio" type="text" name="email" placeholder="Nombres" autofocus/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-user" aria-hidden="true"></i>
                                   </span>
                               </div>
                               <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                  <input class="input100" type="text" name="pass" placeholder="Apellidos"/>
+                                  <input class="input100-julio" type="text" name="pass" placeholder="Apellidos"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-user" aria-hidden="true"></i>
@@ -195,7 +195,7 @@ class RegistrarComponent extends React.Component{
                           </div>
                           <div class="container container-register">
                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                  <input class="input100 textbox-n" type="text" name="bday-month" placeholder="Fecha de Nacimiento"
+                                  <input class="input100-julio textbox-n" type="text" name="bday-month" placeholder="Fecha de Nacimiento"
                                   onFocus={this.onFocus} onBlur={this.onBlur} onMouseEnter={this.onMouseEnter} onMouseOut={this.onMouseOut}/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
@@ -203,7 +203,7 @@ class RegistrarComponent extends React.Component{
                                   </span>
                               </div>
                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                  <input class="input100" type="text" name="email" placeholder="Email"/>
+                                  <input class="input100-julio" type="text" name="email" placeholder="Email"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -212,14 +212,14 @@ class RegistrarComponent extends React.Component{
                           </div>
                           <div class="container container-register">
                           <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                  <input class="input100" type="text" name="pass" placeholder="Dirección"/>
+                                  <input class="input100-julio" type="text" name="pass" placeholder="Dirección"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-home" aria-hidden="true"></i>
                                   </span>
                               </div>
                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                  <input class="input100" type="text" name="email" placeholder="Teléfono"/>
+                                  <input class="input100-julio" type="text" name="email" placeholder="Teléfono"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-phone" aria-hidden="true"></i>
@@ -228,14 +228,14 @@ class RegistrarComponent extends React.Component{
                           </div>
                           <div class="container container-register">
                           <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                  <input class="input100" type="text" name="pass" placeholder="Género"/>
+                                  <input class="input100-julio" type="text" name="pass" placeholder="Género"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-transgender" aria-hidden="true"></i>
                                   </span>
                               </div>
                               <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                  <input class="input100" type="text" name="email" placeholder="Username"/>
+                                  <input class="input100-julio" type="text" name="email" placeholder="Username"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-user" aria-hidden="true"></i>
@@ -244,14 +244,14 @@ class RegistrarComponent extends React.Component{
                           </div>
                           <div class="container container-register">
                           <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                  <input class="input100" type="password" name="pass" placeholder="Password"/>
+                                  <input class="input100-julio" type="password" name="pass" placeholder="Password"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-lock" aria-hidden="true"></i>
                                   </span>
                               </div>
                               <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                  <input class="input100" type="password" name="pass" placeholder="Confirmar Password"/>
+                                  <input class="input100-julio" type="password" name="pass" placeholder="Confirmar Password"/>
                                   <span class="focus-input100"></span>
                                   <span class="symbol-input100">
                                       <i class="fa fa-lock" aria-hidden="true"></i>
