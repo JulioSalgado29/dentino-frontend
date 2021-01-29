@@ -1,7 +1,7 @@
 import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
 import logo from '../../Images/favicon.png';
-import llamita from '../../Images/llamita.jpg';
+import perfil from '../../Images/imagen-perfil.png';
 import { NavLink,Link } from 'react-router-dom';
 
 class SidebarComponent extends React.Component {
@@ -21,6 +21,7 @@ class SidebarComponent extends React.Component {
     }
     render() {
         const { currentUser } = this.state;
+        console.log(currentUser.persona.nombre)
         return (
             <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{backgroundColor:"black"}}>
                 <a className="brand-link" style={{color:"white",cursor:"pointer"}}>
@@ -30,10 +31,10 @@ class SidebarComponent extends React.Component {
                 <div className="sidebar">
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src={llamita} class="img-circle elevation-2" alt="User Image"/>
+                            <img src={perfil} class="img-circle elevation-2" alt="User Image"/>
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">Llamita UPN</a>
+                            <a href="#" class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
                         </div>
                     </div>
                     <nav className="mt-2">
