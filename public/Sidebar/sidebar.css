@@ -31,9 +31,14 @@
         margin-top: 163%;
     }
 }
+@media (max-height: 635px){
+    .marginOFF-li{
+        margin-top: 150%;
+    }
+}
 @media (max-height: 616px){
     .marginOFF-li{
-        margin-top: 131%;
+        margin-top: 147%;
     }
 }
 @media (max-height: 576px){
