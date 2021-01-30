@@ -22,7 +22,7 @@ class HeaderComponent extends React.Component {
         return (
             <nav className="main-header navbar navbar-expand navbar-white navbar-light">
                 {/* Left navbar links */}
-                <ul className="navbar-nav">
+                <ul className="navbar-nav" >
                     <li className="nav-item">
                         <a className="nav-link" data-widget="pushmenu" role="button"><i className="fas fa-bars" /></a>
                     </li>
@@ -31,7 +31,7 @@ class HeaderComponent extends React.Component {
                 <ul className="navbar-nav ml-auto">
                     {/* Notifications Dropdown Menu */}
                     <li className="nav-item dropdown">
-                        <a className="nav-link" data-toggle="dropdown">
+                        <a className="nav-link" data-toggle="dropdown" style={{cursor:"pointer"}}>
                             <i className="far fa-bell" />
                             <span className="badge badge-warning navbar-badge">15</span>
                         </a>
@@ -54,6 +54,18 @@ class HeaderComponent extends React.Component {
                             </a>
                             <div className="dropdown-divider" />
                             <a className="dropdown-item dropdown-footer">See All Notifications</a>
+                        </div>
+                    </li>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link" data-toggle="dropdown" href="#">
+                            <i className="fas fa-cog"/>
+                        </a>
+                        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                            <li className="nav-item">
+                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer"}}>
+                                    <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> <a style={{marginRight:"4%",display:"inline",color:"black"}}>Cerrar Sesión</a>
+                                </Link>
+                            </li>
                         </div>
                     </li>
                 </ul>

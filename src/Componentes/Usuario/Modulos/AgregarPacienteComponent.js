@@ -220,7 +220,7 @@ class AgregarPacienteComponent extends React.Component{
                                 <div class="container container-register">
                                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
                                         <select className="input100-julio" style={{border:"none"}}>
-                                          <option disabled selected value hidden selected>Eliga el Género</option>
+                                          <option disabled selected value hidden selected style={{color:"red"}}>Eliga el Género</option>
                                           <option value="M">Masculino</option>
                                           <option value="F">Femenino</option>
                                         </select>

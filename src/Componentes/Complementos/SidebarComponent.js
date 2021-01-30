@@ -11,13 +11,9 @@ class SidebarComponent extends React.Component {
             currentUser: UsuarioService.getCurrentUser(),
         }
         this.isLandingPage = this.isLandingPage.bind(this);
-        this.logOut = this.logOut.bind(this);
     }
     isLandingPage(){
         localStorage.setItem("isLandingPage", true)
-    }
-    logOut() {
-        UsuarioService.logout();
     }
     render() {
         const { currentUser } = this.state;
@@ -98,14 +94,6 @@ class SidebarComponent extends React.Component {
                                 </NavLink>
                                 )
                             }
-                            </li>
-                            <li className="nav-item marginOFF-li">
-                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer"}}>
-                                    <i className="nav-icon fas fa-power-off" />
-                                    <p>
-                                        Cerrar Sesión
-                                    </p>
-                                </Link>
                             </li>
                         </ul>
                     </nav>
