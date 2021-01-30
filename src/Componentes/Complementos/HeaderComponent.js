@@ -1,5 +1,6 @@
 import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
+import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 class HeaderComponent extends React.Component {
@@ -8,8 +9,10 @@ class HeaderComponent extends React.Component {
         super(props);
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
+            isActiveClass: false,
         }
         this.logOut = this.logOut.bind(this);
+        this.dropdown = this.dropdown.bind(this);
     }
 
     logOut() {
@@ -17,8 +20,18 @@ class HeaderComponent extends React.Component {
         window.location.reload(false);
     }
 
+    dropdown() {
+        if(this.state.isActiveClass===false){
+            this.setState({ isActiveClass: true });
+        }
+        else{
+            this.setState({ isActiveClass: false });
+        }
+        console.log(this.state.isActiveClass)
+    }
+
     render() {
-        const { currentUser } = this.state;
+        const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClass });
         return (
             <nav className="main-header navbar navbar-expand navbar-white navbar-light">
                 {/* Left navbar links */}
@@ -56,18 +69,20 @@ class HeaderComponent extends React.Component {
                             <a className="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
                     </li>
-                    <li className="nav-item dropdown">
-                        <a className="nav-link" data-toggle="dropdown" href="#">
-                            <i className="fas fa-cog"/>
+                    <div className="dropdown">
+                        <a className="button-prueba" onClick={this.dropdown}>
+                            <a className="nav-link">
+                                <i className="fas fa-cog"/>
+                            </a>
                         </a>
-                        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <li className="nav-item">
-                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer"}}>
-                                    <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> <a style={{marginRight:"4%",display:"inline",color:"black"}}>Cerrar Sesión</a>
+                        <ul className={classdropdown_config}>
+                            <li className="nav-item" style={{whiteSpace:"pre"}}>
+                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
+                                    <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> Cerrar Sesión
                                 </Link>
                             </li>
-                        </div>
-                    </li>
+                        </ul>
+                    </div>
                 </ul>
             </nav>
 

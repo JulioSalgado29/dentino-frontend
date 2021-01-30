@@ -2,3 +2,53 @@
     background-color: #f8f9fa;
     color: rgba(0,0,0,.7);
 }
+.dropdown-prueba{
+    position: absolute;
+    top:100%;
+    left: 0;
+    width: 0;
+    padding: 0;
+}
+
+.button-prueba{
+    position: relative;
+    height: 60px;
+    font-size: 24;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    cursor: pointer;
+    color: black;
+}
+.ul-prueba{
+    min-inline-size: min-content;
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: none;
+    transform-origin: top;
+    transform: perspective(1000px) rotateX(-90deg);
+    transition: 0.5s;
+}
+.ul-prueba-active{
+    transform: perspective(1000px) rotateX(0deg);
+}
+
+.ul-prueba li{
+    list-style: none;
+}
+.ul-prueba li a{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    background:white;
+    color: white;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+    transition: 0.5s;
+}
+.ul-prueba li a:hover{
+    background: yellow;
+}
