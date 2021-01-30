@@ -159,7 +159,8 @@ class AgregarPacienteComponent extends React.Component{
         this.setState({password: event.target.value})
     }
     cancel(){
-        this.props.history.push('/')
+        this.props.history.push('/pacientes')
+        window.location.reload();
     }
     onBlur(e) {
       this.state.isFocus=false;

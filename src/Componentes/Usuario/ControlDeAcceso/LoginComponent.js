@@ -117,7 +117,7 @@ class LoginComponent extends React.Component{
                         
                         <CheckButton style={{ display: "none" }} ref={c => {this.checkBtn = c;}}/>
                         </div>
-                        <Link className="registrar100-form-btn" exact to="/register" ><b>Regístrate</b></Link>
+                        <Link style={{display:"none"}}className="registrar100-form-btn" exact to="/register" ><b>Regístrate</b></Link>
                     </Form>
                 </div>
             </div>
