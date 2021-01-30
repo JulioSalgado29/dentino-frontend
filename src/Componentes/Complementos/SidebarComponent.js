@@ -37,7 +37,7 @@ class SidebarComponent extends React.Component {
                         </div>
                     </div>
                     <nav className="mt-2">
-                        <ul className="nav nav-pills nav-sidebar flex-column marginOFF-ul" data-widget="treeview" role="menu" data-accordion="false">
+                        <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                             {/* Left navbar links *<li className="nav-item">
                                 <a className="nav-link active" style={{cursor:"pointer"}}>
                                     <i className="nav-icon fas fa-tachometer-alt" />
