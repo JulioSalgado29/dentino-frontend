@@ -38,17 +38,17 @@
 }
 @media (max-height: 616px){
     .marginOFF-li{
-        margin-top: 136%;
+        margin-top: 133%;
     }
 }
 @media (max-height: 576px){
     .marginOFF-li{
-        margin-top: 128%;
+        margin-top: 125%;
     }
 }
 @media (max-height: 552px){
     .marginOFF-li{
-        margin-top: 117%;
+        margin-top: 114%;
     }
 }
 @media (max-height: 529px){
@@ -58,7 +58,7 @@
 }
 @media (max-height: 505px){
     .marginOFF-li{
-        margin-top: 95%;
+        margin-top: 92%;
     }
 }
 @media (max-height: 476px){
