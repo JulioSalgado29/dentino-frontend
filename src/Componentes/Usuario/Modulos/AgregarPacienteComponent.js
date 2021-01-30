@@ -178,6 +178,7 @@ class AgregarPacienteComponent extends React.Component{
       }
     }
     render (){
+      localStorage.setItem("paciente",true);
         return(
             <body class="hold-transition sidebar-mini layout-fixed">
                 <div class="wrapper">

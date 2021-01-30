@@ -16,6 +16,7 @@ class IndexComponent extends React.Component {
         window.location.reload(false);
     }
     render() {
+      localStorage.removeItem("paciente");
         return (
             <body class="hold-transition sidebar-mini layout-fixed">
               <div class="wrapper">

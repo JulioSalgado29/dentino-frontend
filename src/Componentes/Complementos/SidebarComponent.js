@@ -69,7 +69,7 @@ class SidebarComponent extends React.Component {
                             </li>
                             */}
                             <li className="nav-item">
-                                <NavLink  exact to="/" className="nav-link" onClick={this.isLandingPage} activeClassName="nav-link active">
+                                <NavLink  exact to="/" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
                                     <i className="nav-icon fas fa-th" />
                                     <p>
                                         Dashboard
@@ -77,13 +77,27 @@ class SidebarComponent extends React.Component {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink exact to="/pacientes" className="nav-link" onClick={this.isLandingPage} activeClassName="nav-link active">
+                            {
+                                (
+                                    localStorage.getItem("paciente")===null && <NavLink to="/pacientes" className="nav-link" onClick={this.isLandingPage} 
+                                    activeClassName="active">
                                     <i className="nav-icon fas fa-head-side-mask" />
                                     <p>
                                         Pacientes
                                     <span className="right badge badge-danger">New</span>
                                     </p>
                                 </NavLink>
+                                ||
+                                localStorage.getItem("paciente")==="true" && <NavLink to="/pacientes" className="nav-link" 
+                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente")==="true"}>
+                                    <i className="nav-icon fas fa-head-side-mask" />
+                                    <p>
+                                        Pacientes
+                                    <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
+                                )
+                            }
                             </li>
                             <li className="nav-item">
                                 <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer"}}>
