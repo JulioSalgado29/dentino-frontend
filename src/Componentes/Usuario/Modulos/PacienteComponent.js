@@ -3,7 +3,7 @@ import UsuarioService from '../../../Servicios/UsuarioService';
 import HeaderComponent from '../../Complementos/HeaderComponent';
 import Sidebar from '../../Complementos/SidebarComponent';
 import { NavLink } from 'react-router-dom';
-import {Table, Button, Modal, ModalBody, ModalHeader ,FormGroup, ModalFooter} from 'reactstrap';
+import {Table, Button} from 'reactstrap';
 
 const data = [
     { id: 1, personaje: "Naruto", anime: "Naruto" },
@@ -20,8 +20,6 @@ class PacienteComponent extends React.Component {
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
             data: data,
-            modalActualizar: false,
-            modalInsertar: false,
             form: {
               id: "",
               personaje: "",

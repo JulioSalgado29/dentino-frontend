@@ -61,8 +61,6 @@ class AgregarPacienteComponent extends React.Component{
         this.ChangeDireccionHandler = this.ChangeDireccionHandler.bind(this);
         this.ChangeTelefonoHandler = this.ChangeTelefonoHandler.bind(this);
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
-        this.ChangeUserNameHandler = this.ChangeUserNameHandler.bind(this);
-        this.ChangePasswordHandler = this.ChangePasswordHandler.bind(this);
         this.saveUsuario = this.saveUsuario.bind(this);
         this.cancel = this.cancel.bind(this);
 
@@ -152,12 +150,6 @@ class AgregarPacienteComponent extends React.Component{
     ChangeGeneroHandler= (event) => {
       this.setState({genero: event.target.value})
     }
-    ChangeUserNameHandler= (event) => {
-        this.setState({username: event.target.value})
-    }
-    ChangePasswordHandler= (event) => {
-        this.setState({password: event.target.value})
-    }
     cancel(){
         this.props.history.push('/pacientes')
         window.location.reload();
@@ -227,10 +219,14 @@ class AgregarPacienteComponent extends React.Component{
                                 </div>
                                 <div class="container container-register">
                                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="text" name="pass" placeholder="Dirección"/>
+                                        <select className="input100-julio" style={{border:"none"}}>
+                                          <option disabled selected value hidden selected>Eliga el Género</option>
+                                          <option value="M">Masculino</option>
+                                          <option value="F">Femenino</option>
+                                        </select>
                                         <span class="focus-input100"></span>
                                         <span class="symbol-input100">
-                                            <i class="fa fa-home" aria-hidden="true"></i>
+                                            <i class="fa fa-transgender" aria-hidden="true"></i>
                                         </span>
                                     </div>
                                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
@@ -243,33 +239,10 @@ class AgregarPacienteComponent extends React.Component{
                                 </div>
                                 <div class="container container-register">
                                 <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="text" name="pass" placeholder="Género"/>
+                                        <input class="input100-julio" type="text" name="pass" placeholder="Dirección"/>
                                         <span class="focus-input100"></span>
                                         <span class="symbol-input100">
-                                            <i class="fa fa-transgender" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                        <input class="input100-julio" type="text" name="email" placeholder="Username"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container container-register">
-                                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="password" name="pass" placeholder="Password"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-lock" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="password" name="pass" placeholder="Confirmar Password"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <i class="fa fa-home" aria-hidden="true"></i>
                                         </span>
                                     </div>
                                 </div>

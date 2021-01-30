@@ -1,0 +1,33 @@
+.marginOFF-ul{
+    height: 821px;
+}
+.marginOFF-li{
+    margin-top: 270%;
+}
+
+@media (min-height: 904px){
+    .marginOFF-li{
+        margin-top: 293%;
+    }
+}
+
+@media (max-height: 903px){
+    .marginOFF-li{
+        margin-top: 266%;
+    }
+}
+@media (max-height: 837px){
+    .marginOFF-li{
+        margin-top: 224%;
+    }
+}
+@media (max-height: 724px){
+    .marginOFF-li{
+        margin-top: 192%;
+    }
+}
+@media (max-height: 670px){
+    .marginOFF-li{
+        margin-top: 163%;
+    }
+}
