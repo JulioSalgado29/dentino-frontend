@@ -38,7 +38,7 @@ class IndexComponent extends React.Component {
                           <div className="icon">
                             <i className="ion ion-bag" />
                           </div>
-                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right"/></a>
                         </div>
                       </div>
                       {/* ./col */}
@@ -52,7 +52,7 @@ class IndexComponent extends React.Component {
                           <div className="icon">
                             <i className="ion ion-stats-bars" />
                           </div>
-                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right"/></a>
                         </div>
                       </div>
                       {/* ./col */}
@@ -66,7 +66,7 @@ class IndexComponent extends React.Component {
                           <div className="icon">
                             <i className="ion ion-person-add" />
                           </div>
-                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right"/></a>
                         </div>
                       </div>
                       {/* ./col */}
@@ -80,7 +80,7 @@ class IndexComponent extends React.Component {
                           <div className="icon">
                             <i className="ion ion-pie-graph" />
                           </div>
-                          <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right" /></a>
+                          <a className="small-box-footer" >More info <i className="fas fa-arrow-circle-right"/></a>
                         </div>
                       </div>
                       {/* ./col */}

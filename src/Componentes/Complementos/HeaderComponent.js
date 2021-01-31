@@ -64,7 +64,8 @@ class HeaderComponent extends React.Component {
                 {/* Left navbar links */}
                 <ul className="navbar-nav" >
                     <li className="nav-item">
-                        <a className="nav-link" data-widget="pushmenu" role="button"><i className="fas fa-bars" /></a>
+                    {/* eslint-disable */}
+                        <a className="nav-link" data-widget="pushmenu" role="button"><i className="fas fa-bars"/></a>
                     </li>
                 </ul>
                 {/* Right navbar links */}
@@ -72,7 +73,7 @@ class HeaderComponent extends React.Component {
                     {/* Notifications Dropdown Menu */}
                     <OutsideClickHandler onOutsideClick={() => {this.setHiddenNotify();}}>
                         <li className="nav-item dropdown">
-                            <a className="button-prueba" onClick={this.dropdownNotify}>
+                            <a className="button-prueba"  onClick={this.dropdownNotify}>
                                 <a className="nav-link">
                                     <i className="far fa-bell" />
                                     <span className="badge badge-warning navbar-badge">15</span>

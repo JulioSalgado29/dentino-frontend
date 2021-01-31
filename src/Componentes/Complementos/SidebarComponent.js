@@ -2,7 +2,7 @@ import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
 import logo from '../../Images/favicon.png';
 import perfil from '../../Images/imagen-perfil.png';
-import { NavLink,Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SidebarComponent extends React.Component {
     constructor(props) {
@@ -19,6 +19,7 @@ class SidebarComponent extends React.Component {
         const { currentUser } = this.state;
         return (
             <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{backgroundColor:"black"}}>
+                {/* eslint-disable */}
                 <a className="brand-link" style={{color:"white",cursor: "context-menu"}}>
                     <img src={logo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" />
                     <span className="brand-text font-weight-light">Dentino</span>
@@ -26,7 +27,7 @@ class SidebarComponent extends React.Component {
                 <div className="sidebar">
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src={perfil} class="img-circle elevation-2" alt="User Image"/>
+                            <img src={perfil} alt="perfil" class="img-circle elevation-2"/>
                         </div>
                         <div class="info">
                             <a style={{cursor: "context-menu"}}class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
@@ -83,7 +84,7 @@ class SidebarComponent extends React.Component {
                                     <span className="right badge badge-danger">New</span>
                                     </p>
                                 </NavLink>
-                                ||
+                                )||(
                                 localStorage.getItem("paciente")==="true" && <NavLink to="/pacientes" className="nav-link" 
                                 onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente")==="true"}>
                                     <i className="nav-icon fas fa-head-side-mask" />

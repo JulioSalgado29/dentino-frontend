@@ -2,8 +2,9 @@ import React from 'react';
 import UsuarioService from '../../../Servicios/UsuarioService';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import Select from "react-validation/build/select"
 import CheckButton from "react-validation/build/button";
-import { isEmail, isEmpty, isNumeric } from 'validator';
+import { isEmail, isNumeric} from 'validator';
 import HeaderComponent from '../../Complementos/HeaderComponent';
 import Sidebar from '../../Complementos/SidebarComponent';
 import Swal from 'sweetalert2';
@@ -11,30 +12,53 @@ import Swal from 'sweetalert2';
   const required = value => {
     if (value.length===0) {
       return (
-        <div className="alert alert-danger" role="alert">
-          Este campo es requerido
-        </div>
+        <div className="alert-validate" data-validate="Este campo es requerido" style={{width:"100%"}}/>
       );
     }
-  }; 
+  };
   const email = value => {
     if (!isEmail(value)) {
       return (
-        <div className="alert alert-danger" role="alert">
-          El email no es valido
-        </div>
+        <div className="alert-validate" data-validate="El formato del email no es valido" style={{width:"100%"}}/>
       );
     }
   };
-  const password = value => {
-    if (value.length < 6 ) {
+  const telefono = value =>{
+    if (!isNumeric(value)) {
       return (
-        <div className="alert alert-danger" role="alert">
-          La contraseña debe tener mas de 6 caracteres.
-        </div>
+        <div className="alert-validate" data-validate="El telefono debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-  };
+    else if(value<100000000){
+      return (
+      <div className="alert-validate" data-validate="El numero de teléfono no debe tener menos 9 digitos" style={{width:"100%"}}/>
+      );
+    }
+    else if(value>1000000000){
+      return (
+      <div className="alert-validate" data-validate="El numero de teléfono no debe tener mas de 9 digitos" style={{width:"100%"}}/>
+      );
+    }
+    else if(value<900000000){
+      return (
+      <div className="alert-validate" data-validate="El numero de teléfono debe iniciar con el numero 9" style={{width:"100%"}}/>
+      );
+    }
+  }
+  const apellido = value=>{
+    if (value.length<3){
+      return (
+        <div className="alert-validate" data-validate="El apellido debe tener mínimo 3 letras" style={{width:"100%"}}/>
+        );
+    }
+  }
+  const nombre = value=>{
+    if (value.length<3){
+      return (
+        <div className="alert-validate" data-validate="El nombre debe tener mínimo 3 letras" style={{width:"100%"}}/>
+        );
+    }
+  }
 
 class AgregarPacienteComponent extends React.Component{
 
@@ -61,6 +85,7 @@ class AgregarPacienteComponent extends React.Component{
         this.ChangeDireccionHandler = this.ChangeDireccionHandler.bind(this);
         this.ChangeTelefonoHandler = this.ChangeTelefonoHandler.bind(this);
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
+
         this.saveUsuario = this.saveUsuario.bind(this);
         this.cancel = this.cancel.bind(this);
 
@@ -83,7 +108,7 @@ class AgregarPacienteComponent extends React.Component{
             message: "",
             loading: true,
           });
-          if(this.form === undefined){
+          /*if(this.form === undefined){
             this.setState({
               loading: false
             });
@@ -92,14 +117,17 @@ class AgregarPacienteComponent extends React.Component{
               icon: 'warning',
               backdrop: 'rgba(50, 50, 30, 0.5)'})
           }
-          else{
+          else{*/
+            console.log(this.state.genero)
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
-            UsuarioService.registrar_user(/*this.state.nombre, this.state.apellido, this.state.fechaNac, this.state.email, this.state.direccion, this.state.telefono, 
-                                    this.state.genero, this.state.username, this.state.password*/)
+            console.log(this.state.genero)
+            console.log(this.state.genero)
+            UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, this.state.direccion, this.state.telefono, 
+                                    this.state.genero)
             .then(() => {
-              this.props.history.push("/");
-              //window.location.reload();
+              this.props.history.push('/pacientes')
+              window.location.reload();
             },
             error => {
               if(error.response.status === 401){
@@ -116,6 +144,10 @@ class AgregarPacienteComponent extends React.Component{
                 loading: false,
                 message: resMessage
               });
+              Swal.fire
+              ({title: resMessage,
+                icon: 'error',
+                backdrop: 'rgba(61, 0, 0, 0.4)'})
             }})
             .catch(function(error){
               this.setState({
@@ -127,7 +159,7 @@ class AgregarPacienteComponent extends React.Component{
             this.setState({
               loading: false
             });
-        }}
+        }//}
     }
     ChangeNombreHandler= (event) => {
       this.setState({nombre: event.target.value})
@@ -155,10 +187,12 @@ class AgregarPacienteComponent extends React.Component{
         window.location.reload();
     }
     onBlur(e) {
+      /* eslint-disable */
       this.state.isFocus=false;
       e.currentTarget.type = "text";
     }
     onFocus(e) {
+      /* eslint-disable */
       this.state.isFocus=true;
       e.currentTarget.type = "month";
     }
@@ -171,87 +205,96 @@ class AgregarPacienteComponent extends React.Component{
       }
     }
     render (){
+      
       localStorage.setItem("paciente",true);
         return(
-            <body class="hold-transition sidebar-mini layout-fixed">
-                <div class="wrapper">
+            <body className="hold-transition sidebar-mini layout-fixed">
+                <div className="wrapper">
                     <HeaderComponent />
                     <Sidebar />
                     <div className="content-wrapper" style={{background:"white"}}>
                         <div className="container-modulos">
-                            <div class="wrap-register200" style={{width:''}}>
-                            <span class="login100-form-title">
-                                        Registrar Paciente
-                                    </span>
-                                <form class="register100-form validate-form" style={{display:"contents"}}>
-                                <div class="container container-register">
-                                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                        <input class="input100-julio" type="text" name="email" placeholder="Nombres" autofocus/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="text" name="pass" placeholder="Apellidos"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-user" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container container-register">
-                                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                        <input class="input100-julio textbox-n" type="text" name="bday-month" placeholder="Fecha de Nacimiento"
-                                        onFocus={this.onFocus} onBlur={this.onBlur} onMouseEnter={this.onMouseEnter} onMouseOut={this.onMouseOut}/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-calendar" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                        <input class="input100-julio" type="text" name="email" placeholder="Email"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-envelope" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container container-register">
-                                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <select className="input100-julio" style={{border:"none"}}>
-                                          <option disabled selected value hidden selected style={{color:"red"}}>Eliga el Género</option>
-                                          <option value="M">Masculino</option>
-                                          <option value="F">Femenino</option>
-                                        </select>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-transgender" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                                        <input class="input100-julio" type="text" name="email" placeholder="Teléfono"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-phone" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container container-register">
-                                <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                        <input class="input100-julio" type="text" name="pass" placeholder="Dirección"/>
-                                        <span class="focus-input100"></span>
-                                        <span class="symbol-input100">
-                                            <i class="fa fa-home" aria-hidden="true"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="container-login100-form-btn">
-                                    <button className="registrar100-form-btn" onClick={this.saveUsuario} style={{maxWidth:"1140px"}}><b>Registrar</b></button>
-                                    <button className="volver100-form-btn" onClick={this.cancel} style={{maxWidth:"1140px"}}><b>Volver</b></button>
-                                </div>
-                                </form>
-                                </div>
+                            <div className="wrap-register200" style={{width:''}}>
+                              <span className="login100-form-title">Registrar Paciente</span>
+                                <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.saveUsuario} ref={c => {this.form = c;}}>
+                                  <div className="container container-register">
+
+                                      <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} 
+                                          onChange={this.ChangeNombreHandler} validations={[required,nombre]}/>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-user" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+
+                                      <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Apellidos" value={this.state.apellido} 
+                                          onChange={this.ChangeApellidoHandler} validations={[required,apellido]}/>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-user" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div className="container container-register">
+                                      <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio textbox-n" type="text" placeholder="Fecha de Nacimiento"
+                                          value={this.state.fechaNac} onChange={this.ChangeFechaNacHandler} validations={[required]}
+                                          onFocus={this.onFocus} onBlur={this.onBlur} onMouseEnter={this.onMouseEnter} onMouseOut={this.onMouseOut}/>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-calendar" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                      <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Email" value={this.state.email} 
+                                          onChange={this.ChangeEmailHandler} validations={[required,email]}/>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-envelope" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div className="container container-register">
+                                  <div className="wrap-input100 validate-input">
+                                          <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{border:"none"}} validations={[required]}>
+                                            <option selected hidden style={{color:"red"}} value="null">Eliga el Género</option>
+                                            <option value="M">Masculino</option>
+                                            <option value="F">Femenino</option>
+                                          </Select>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-transgender" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                      <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" name="email" placeholder="Teléfono"  value={this.state.telefono} 
+                                          onChange={this.ChangeTelefonoHandler} validations={[required,telefono]}/>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-phone" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div className="container container-register">
+                                  <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
+                                          onChange={this.ChangeDireccionHandler} validations={[required]}/>
+                                          <span className="focus-input100"></span>
+                                          <span className="symbol-input100">
+                                              <i className="fa fa-home" aria-hidden="true"></i>
+                                          </span>
+                                      </div>
+                                  </div>
+                                  <div className="container-login100-form-btn">
+                                      <button className="registrar100-form-btn" onClick={this.saveUsuario} style={{maxWidth:"1140px"}}
+                                      ref={c => {this.checkBtn = c;}} disabled={this.state.loading}>{this.state.loading && (
+                                      <span className="spinner-border spinner-border-sm"></span>)}<b>Registrar</b></button>
+                                      <CheckButton style={{ display: "none" }} ref={c => {this.checkBtn = c;}}/>
+                                      <button className="volver100-form-btn" onClick={this.cancel} style={{maxWidth:"1140px"}}><b>Volver</b></button>
+                                  </div>
+                                </Form>
+                            </div>
                         </div>
                     </div>
                 </div>

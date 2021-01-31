@@ -93,7 +93,7 @@ class LoginComponent extends React.Component{
                         <span className="login100-form-title">
                             Login
                         </span>
-                        <div className="wrap-input100">
+                        <div className="wrap-input100 validate-input">
                             <Input className="input100-julio" type="text" placeholder="Username" value={this.state.username} 
                                   onChange={this.ChangeUsernameHandler} validations={[required]}/>
                             <span className="symbol-input100">

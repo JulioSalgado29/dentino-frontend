@@ -1,11 +1,10 @@
-import {BrowserRouter as Router, Redirect, Route, Switch, HashRouter}from 'react-router-dom';
-import RegistrarComponent from './Componentes/Administrador/RegistrarComponent';
+import {BrowserRouter as Redirect, Route, Switch, HashRouter}from 'react-router-dom';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import PacienteComponent from './Componentes/Usuario/Modulos/PacienteComponent';
 import ScrollTop from './ScrollTop';
 import {ProtectedRoute} from './Servicios/Protected.Route';
-import {NoProtected} from './Servicios/NoProtected.Route';
 import AgregarPacienteComponent from './Componentes/Usuario/Modulos/AgregarPacienteComponent';
+//import {NoProtected} from './Servicios/NoProtected.Route';
 //<NoProtected exact path ="/register" component = {RegistrarComponent}/>
 
 function App(){

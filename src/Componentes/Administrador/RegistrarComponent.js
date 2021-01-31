@@ -153,18 +153,18 @@ class RegistrarComponent extends React.Component{
         this.props.history.push('/')
     }
     onBlur(e) {
-      this.state.isFocus=false;
+      this.setState.isFocus=false;
       e.currentTarget.type = "text";
     }
     onFocus(e) {
-      this.state.isFocus=true;
+      this.setState.isFocus=true;
       e.currentTarget.type = "month";
     }
     onMouseEnter (e){
       e.currentTarget.type = "month";
     }
     onMouseOut (e){
-      if(this.state.isFocus===false){
+      if(this.setState.isFocus===false){
         e.currentTarget.type = "text";
       }
     }
