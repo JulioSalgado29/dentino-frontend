@@ -184,7 +184,6 @@ class AgregarPacienteComponent extends React.Component{
     }
     cancel(){
         this.props.history.push('/pacientes')
-        window.location.reload();
     }
     onBlur(e) {
       /* eslint-disable */
@@ -205,10 +204,8 @@ class AgregarPacienteComponent extends React.Component{
       }
     }
     render (){
-      
       localStorage.setItem("paciente",true);
         return(
-            <body className="hold-transition sidebar-mini layout-fixed">
                 <div className="wrapper">
                     <HeaderComponent />
                     <Sidebar />
@@ -298,7 +295,6 @@ class AgregarPacienteComponent extends React.Component{
                         </div>
                     </div>
                 </div>
-            </body>
         )}
 }
 export default AgregarPacienteComponent

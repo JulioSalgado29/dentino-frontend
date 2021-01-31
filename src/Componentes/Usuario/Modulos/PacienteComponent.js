@@ -36,16 +36,15 @@ class PacienteComponent extends React.Component {
     }
     onlyPaciente (e){
         localStorage.setItem("paciente", true)
-        localStorage.setItem("isLandingPage", true)
+        //localStorage.setItem("isLandingPage", true)
     }
     render() {
         localStorage.getItem("page")
         return (
-            <body class="hold-transition sidebar-mini layout-fixed">
-                <div class="wrapper">
+                <div className="wrapper">
                     <HeaderComponent />
                     <Sidebar />
-                    <div className="content-wrapper">
+                    <div className="content-wrapper"  style={{background:"white"}}>
                         <div className="container-modulos">
                             <br/>
                             <NavLink style={{marginBottom:"3%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
@@ -81,7 +80,6 @@ class PacienteComponent extends React.Component {
                         </div>
                     </div>
                 </div>
-            </body>
         )
     }
 }

@@ -18,8 +18,7 @@ class IndexComponent extends React.Component {
     render() {
       localStorage.removeItem("paciente");
         return (
-            <body class="hold-transition sidebar-mini layout-fixed">
-              <div class="wrapper">
+              <div className="wrapper">
                 <HeaderComponent />
                 <Sidebar />
                 <div className="content-wrapper">
@@ -226,7 +225,6 @@ class IndexComponent extends React.Component {
                 {/* /.content */}
 </div>
               </div>
-            </body>
         )
     }
 }
