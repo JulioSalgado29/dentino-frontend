@@ -10,12 +10,16 @@ class HeaderComponent extends React.Component {
         super(props);
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
-            isActiveClass: false,
-            hidden: false
+            isActiveClassConfig: false,
+            isActiveClassNotify: false,
+            hiddenConfig: false,
+            hiddenNotify: false
         }
         this.logOut = this.logOut.bind(this);
-        this.dropdown = this.dropdown.bind(this);
-        this.setHidden = this.setHidden.bind(this);
+        this.dropdownConfig = this.dropdownConfig.bind(this);
+        this.setHiddenConfig = this.setHiddenConfig.bind(this);
+        this.setHiddenNotify = this.setHiddenNotify.bind(this);
+        this.dropdownNotify = this.dropdownNotify.bind(this);
     }
 
     logOut() {
@@ -23,24 +27,38 @@ class HeaderComponent extends React.Component {
         window.location.reload(false);
     }
 
-    dropdown() {
-        if(this.state.isActiveClass===false){
-            this.setState({ isActiveClass: true });
+    dropdownConfig() {
+        if(this.state.isActiveClassConfig===false){
+            this.setState({ isActiveClassConfig: true });
             this.setState({hidden:false});
         }
         else{
-            this.setState({ isActiveClass: false });
+            this.setState({ isActiveClassConfig: false });
             this.setState({hidden:true});
         }
     }
-    setHidden(){
-        this.setState({ isActiveClass: false });
+    setHiddenConfig(){
+        this.setState({ isActiveClassConfig: false });
+        this.setState({hidden:true});
+    }
+    dropdownNotify() {
+        if(this.state.isActiveClassNotify===false){
+            this.setState({ isActiveClassNotify: true });
+            this.setState({hidden:false});
+        }
+        else{
+            this.setState({ isActiveClassNotify: false });
+            this.setState({hidden:true});
+        }
+    }
+    setHiddenNotify(){
+        this.setState({isActiveClassNotify: false });
         this.setState({hidden:true});
     }
 
     render() {
-        const hidden=this.state.hidden;
-        const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClass });
+        const classdropdown_notify = cx('ul-prueba','dropdown-menu-lg dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassNotify });
+        const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassConfig });
         return (
             <nav className="main-header navbar navbar-expand navbar-white navbar-light">
                 {/* Left navbar links */}
@@ -52,49 +70,51 @@ class HeaderComponent extends React.Component {
                 {/* Right navbar links */}
                 <ul className="navbar-nav ml-auto">
                     {/* Notifications Dropdown Menu */}
-                    <li className="nav-item dropdown">
-                        <a className="nav-link" data-toggle="dropdown" style={{cursor:"pointer"}}>
-                            <i className="far fa-bell" />
-                            <span className="badge badge-warning navbar-badge">15</span>
-                        </a>
-                        <div className="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                            <span className="dropdown-item dropdown-header">15 Notifications</span>
-                            <div className="dropdown-divider" />
-                            <a className="dropdown-item">
-                                <i className="fas fa-envelope mr-2" /> 4 new messages
-                            <span className="float-right text-muted text-sm">3 mins</span>
+                    <OutsideClickHandler onOutsideClick={() => {this.setHiddenNotify();}}>
+                        <li className="nav-item dropdown">
+                            <a className="button-prueba" onClick={this.dropdownNotify}>
+                                <a className="nav-link">
+                                    <i className="far fa-bell" />
+                                    <span className="badge badge-warning navbar-badge">15</span>
+                                </a>
                             </a>
-                            <div className="dropdown-divider" />
-                            <a className="dropdown-item">
-                                <i className="fas fa-users mr-2" /> 8 friend requests
-                            <span className="float-right text-muted text-sm">12 hours</span>
+                            <div className={classdropdown_notify} style={{background:"#fff",cursor:"context-menu"}}>
+                                <span className="dropdown-item dropdown-header">15 Notifications</span>
+                                <div className="dropdown-divider" />
+                                <a className="dropdown-item" style={{cursor:"pointer"}}>
+                                    <i className="fas fa-envelope mr-2" /> 4 new messages
+                                <span className="float-right text-muted text-sm">3 mins</span>
+                                </a>
+                                <div className="dropdown-divider" />
+                                <a className="dropdown-item" style={{cursor:"pointer"}}>
+                                    <i className="fas fa-users mr-2" /> 8 friend requests
+                                <span className="float-right text-muted text-sm">12 hours</span>
+                                </a>
+                                <div className="dropdown-divider" />
+                                <a className="dropdown-item" style={{cursor:"pointer"}}>
+                                    <i className="fas fa-file mr-2" /> 3 new reports
+                                <span className="float-right text-muted text-sm">2 days</span>
+                                </a>
+                                <div className="dropdown-divider" />
+                                <a className="dropdown-item dropdown-footer" style={{cursor:"pointer"}}>See All Notifications</a>
+                            </div>
+                        </li>
+                    </OutsideClickHandler>
+                    <OutsideClickHandler onOutsideClick={() => {this.setHiddenConfig();}}>
+                        <li className="nav-item dropdown">
+                            <a className="button-prueba" onClick={this.dropdownConfig}>
+                                <a className="nav-link">
+                                    <i className="fas fa-cog"/>
+                                </a>
                             </a>
-                            <div className="dropdown-divider" />
-                            <a className="dropdown-item">
-                                <i className="fas fa-file mr-2" /> 3 new reports
-                            <span className="float-right text-muted text-sm">2 days</span>
-                            </a>
-                            <div className="dropdown-divider" />
-                            <a className="dropdown-item dropdown-footer">See All Notifications</a>
-                        </div>
-                    </li>
-                    <OutsideClickHandler onOutsideClick={() => {
-                        this.setHidden();
-                    }}>
-                    <li className="nav-item dropdown">
-                        <a className="button-prueba" onClick={this.dropdown}>
-                            <a className="nav-link">
-                                <i className="fas fa-cog"/>
-                            </a>
-                        </a>
-                        <ul className={classdropdown_config}>
-                            <li className="nav-item" style={{whiteSpace:"pre"}}>
-                                <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
-                                    <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> Cerrar Sesión
-                                </Link>
-                            </li>
-                        </ul>
-                    </li>
+                            <ul className={classdropdown_config}>
+                                <li className="nav-item" style={{whiteSpace:"pre"}}>
+                                    <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
+                                        <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> Cerrar Sesión
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
                     </OutsideClickHandler>
                 </ul>
             </nav>
