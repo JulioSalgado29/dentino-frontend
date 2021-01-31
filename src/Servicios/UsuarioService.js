@@ -1,8 +1,8 @@
 import axios from 'axios'
-const login = "https://dentino-303017.rj.r.appspot.com/login";
 //const admin = "https://dentino-303017.rj.r.appspot.com/admin";
+const login = "https://dentino-303017.rj.r.appspot.com/login";
 const user = "https://dentino-303017.rj.r.appspot.com/usuario";
-const paciente = "http://localhost:8080/paciente";
+const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
 
 class UsuarioService {
 
