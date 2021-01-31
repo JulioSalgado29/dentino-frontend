@@ -36,7 +36,6 @@ class PacienteComponent extends React.Component {
     }
     onlyPaciente (e){
         localStorage.setItem("paciente", true)
-        //localStorage.setItem("isLandingPage", true)
     }
     render() {
         localStorage.getItem("page")

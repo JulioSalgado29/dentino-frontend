@@ -223,7 +223,7 @@ class IndexComponent extends React.Component {
                   </div>{/* /.container-fluid */}
                 </section>
                 {/* /.content */}
-</div>
+                </div>
               </div>
         )
     }
