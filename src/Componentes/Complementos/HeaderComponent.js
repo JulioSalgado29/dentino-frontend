@@ -1,6 +1,7 @@
 import React from 'react';
 import UsuarioService from '../../Servicios/UsuarioService';
 import cx from 'classnames';
+import OutsideClickHandler from 'react-outside-click-handler'
 import { Link } from 'react-router-dom';
 
 class HeaderComponent extends React.Component {
@@ -10,9 +11,11 @@ class HeaderComponent extends React.Component {
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
             isActiveClass: false,
+            hidden: false
         }
         this.logOut = this.logOut.bind(this);
         this.dropdown = this.dropdown.bind(this);
+        this.setHidden = this.setHidden.bind(this);
     }
 
     logOut() {
@@ -23,14 +26,20 @@ class HeaderComponent extends React.Component {
     dropdown() {
         if(this.state.isActiveClass===false){
             this.setState({ isActiveClass: true });
+            this.setState({hidden:false});
         }
         else{
             this.setState({ isActiveClass: false });
+            this.setState({hidden:true});
         }
-        console.log(this.state.isActiveClass)
+    }
+    setHidden(){
+        this.setState({ isActiveClass: false });
+        this.setState({hidden:true});
     }
 
     render() {
+        const hidden=this.state.hidden;
         const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClass });
         return (
             <nav className="main-header navbar navbar-expand navbar-white navbar-light">
@@ -69,7 +78,10 @@ class HeaderComponent extends React.Component {
                             <a className="dropdown-item dropdown-footer">See All Notifications</a>
                         </div>
                     </li>
-                    <div className="dropdown">
+                    <OutsideClickHandler onOutsideClick={() => {
+                        this.setHidden();
+                    }}>
+                    <li className="nav-item dropdown">
                         <a className="button-prueba" onClick={this.dropdown}>
                             <a className="nav-link">
                                 <i className="fas fa-cog"/>
@@ -82,7 +94,8 @@ class HeaderComponent extends React.Component {
                                 </Link>
                             </li>
                         </ul>
-                    </div>
+                    </li>
+                    </OutsideClickHandler>
                 </ul>
             </nav>
 
