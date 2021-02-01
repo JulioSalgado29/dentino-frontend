@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/static/css/main.74cd8f1a.chunk.css",
-    "main.js": "/static/js/main.33e0fcba.chunk.js",
-    "main.js.map": "/static/js/main.33e0fcba.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.5be10c30.js",
-    "runtime-main.js.map": "/static/js/runtime-main.5be10c30.js.map",
-    "static/js/2.66cb0e77.chunk.js": "/static/js/2.66cb0e77.chunk.js",
-    "static/js/2.66cb0e77.chunk.js.map": "/static/js/2.66cb0e77.chunk.js.map",
-    "static/js/3.20b98a5b.chunk.js": "/static/js/3.20b98a5b.chunk.js",
-    "static/js/3.20b98a5b.chunk.js.map": "/static/js/3.20b98a5b.chunk.js.map",
+    "main.js": "/static/js/main.cc36019b.chunk.js",
+    "main.js.map": "/static/js/main.cc36019b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a70d90e3.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a70d90e3.js.map",
+    "static/js/2.b51b6b11.chunk.js": "/static/js/2.b51b6b11.chunk.js",
+    "static/js/2.b51b6b11.chunk.js.map": "/static/js/2.b51b6b11.chunk.js.map",
+    "static/js/3.25f3b0ff.chunk.js": "/static/js/3.25f3b0ff.chunk.js",
+    "static/js/3.25f3b0ff.chunk.js.map": "/static/js/3.25f3b0ff.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.74cd8f1a.chunk.css.map": "/static/css/main.74cd8f1a.chunk.css.map",
-    "static/js/2.66cb0e77.chunk.js.LICENSE.txt": "/static/js/2.66cb0e77.chunk.js.LICENSE.txt",
+    "static/js/2.b51b6b11.chunk.js.LICENSE.txt": "/static/js/2.b51b6b11.chunk.js.LICENSE.txt",
     "static/media/Dentino.e113557e.png": "/static/media/Dentino.e113557e.png",
     "static/media/favicon.983d1cbb.png": "/static/media/favicon.983d1cbb.png",
     "static/media/imagen-perfil.8a7d7084.png": "/static/media/imagen-perfil.8a7d7084.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.5be10c30.js",
-    "static/js/2.66cb0e77.chunk.js",
+    "static/js/runtime-main.a70d90e3.js",
+    "static/js/2.b51b6b11.chunk.js",
     "static/css/main.74cd8f1a.chunk.css",
-    "static/js/main.33e0fcba.chunk.js"
+    "static/js/main.cc36019b.chunk.js"
   ]
 }
