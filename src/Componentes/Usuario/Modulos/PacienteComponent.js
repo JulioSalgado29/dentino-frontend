@@ -3,7 +3,6 @@ import UsuarioService from '../../../Servicios/UsuarioService';
 import HeaderComponent from '../../Complementos/HeaderComponent';
 import Sidebar from '../../Complementos/SidebarComponent';
 import { NavLink } from 'react-router-dom';
-import {Table} from 'reactstrap';
 import Lista from './Paginacion/Lista';
 import Paginacion from './Paginacion/Paginacion';
 import '../Theme/style.css';
