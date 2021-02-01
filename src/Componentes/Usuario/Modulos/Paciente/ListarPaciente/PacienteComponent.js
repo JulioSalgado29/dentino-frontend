@@ -41,11 +41,12 @@ class PacienteComponent extends React.Component {
         }
         if(localStorage.getItem("init")){
             localStorage.removeItem("init")
-
+            this.setState({loading: true})
             UsuarioService.listar_pacientes("")
             .then((response) => {
                 this.setState({
                     datos: response,
+                    loading: false,
                 });
                 localStorage.setItem("pageC", true)
               })
