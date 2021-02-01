@@ -48,7 +48,7 @@ class PacienteComponent extends React.Component {
                     datos: response,
                     loading: false,
                 });
-                localStorage.setItem("pageC", true)
+                console.log(this.state.datos)
               })
               .catch((e) => {
                 //console.log(e);
