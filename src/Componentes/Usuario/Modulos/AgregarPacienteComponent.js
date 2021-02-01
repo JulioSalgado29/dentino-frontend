@@ -108,20 +108,10 @@ class AgregarPacienteComponent extends React.Component{
             message: "",
             loading: true,
           });
-          /*if(this.form === undefined){
-            this.setState({
-              loading: false
-            });
-            Swal.fire
-            ({title: "Esta opción aun no se encuentra habilitada",
-              icon: 'warning',
-              backdrop: 'rgba(50, 50, 30, 0.5)'})
-          }
-          else{*/
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
-            UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, this.state.direccion, this.state.telefono, 
-                                    this.state.genero)
+            UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
+              this.state.direccion, this.state.telefono, this.state.genero)
             .then(() => {
               this.props.history.push('/pacientes')
               window.location.reload();
@@ -129,9 +119,12 @@ class AgregarPacienteComponent extends React.Component{
             error => {
               if(error.response.status === 401){
                 this.setState({
-                  loading: false,
-                  message: "Personal No autorizado"
+                  loading: false
                 });
+                Swal.fire
+                ({title: "Personal No autorizado",
+                icon: 'error',
+                backdrop: 'rgba(61, 0, 0, 0.4)'})
               }
               else{
               const resMessage =
@@ -149,14 +142,17 @@ class AgregarPacienteComponent extends React.Component{
             .catch(function(error){
               this.setState({
                 loading: false,
-                message: "Error de Conexión con el Servidor"
               });
+              Swal.fire
+              ({title: "Error de Conexión con el Servidor",
+                icon: 'error',
+                backdrop: 'rgba(61, 0, 0, 0.4)'})
             }.bind(this))
           }else {
             this.setState({
               loading: false
             });
-        }//}
+        }
     }
     ChangeNombreHandler= (event) => {
       this.setState({nombre: event.target.value})
