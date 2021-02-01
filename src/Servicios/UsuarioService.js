@@ -25,6 +25,10 @@ class UsuarioService {
         };
         return axios.post(user + "/registration", usuario);
     }*/
+    listar_pacientes(keyword){
+        return axios.get(paciente + "/buscar",{params: {"keyword": keyword}})
+        .then(response =>  response.data/*JSON.stringify(response.data)*/);
+    }
     registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero) {
         const usuario = {
             "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",

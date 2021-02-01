@@ -118,11 +118,8 @@ class AgregarPacienteComponent extends React.Component{
               backdrop: 'rgba(50, 50, 30, 0.5)'})
           }
           else{*/
-            console.log(this.state.genero)
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
-            console.log(this.state.genero)
-            console.log(this.state.genero)
             UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, this.state.direccion, this.state.telefono, 
                                     this.state.genero)
             .then(() => {

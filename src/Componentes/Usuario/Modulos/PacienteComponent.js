@@ -4,72 +4,90 @@ import HeaderComponent from '../../Complementos/HeaderComponent';
 import Sidebar from '../../Complementos/SidebarComponent';
 import { NavLink } from 'react-router-dom';
 import {Table, Button} from 'reactstrap';
-
-const data = [
-    { id: 1, personaje: "Naruto", anime: "Naruto" },
-    { id: 2, personaje: "Goku", anime: "Dragon Ball" },
-    { id: 3, personaje: "Kenshin Himura", anime: "Rurouni Kenshin" },
-    { id: 4, personaje: "Monkey D. Luffy", anime: "One Piece" },
-    { id: 5, personaje: "Edward Elric", anime: "Fullmetal Alchemist: Brotherhood"},
-    { id: 6, personaje: "Seto Kaiba", anime: "Yu-Gi-Oh!" },
-  ];
+import '../Theme/style.css';
 
 class PacienteComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentUser: UsuarioService.getCurrentUser(),
-            data: data,
-            form: {
-              id: "",
-              personaje: "",
-              anime: "",
-            },
+            pacientes: [],
+            keyword: "",
         }
+        this.onChangeKeyword = this.onChangeKeyword.bind(this);
     }
-
+    onChangeKeyword= (event) => {
+        this.setState({keyword: event.target.value})
+        UsuarioService.listar_pacientes(event.target.value)
+          .then((response) => {
+            this.setState({
+                pacientes: response
+            });
+          })
+          .catch((e) => {
+            //console.log(e);
+          });
+    }
     componentDidMount() {
         if (localStorage.getItem("isLandingPage")) {
             localStorage.removeItem("isLandingPage");
             window.location.reload();
+        }
+        if(localStorage.getItem("init")){
+            localStorage.removeItem("init")
+            UsuarioService.listar_pacientes("")
+            .then((response) => {
+                this.setState({
+                    pacientes: response
+                });
+              })
+              .catch((e) => {
+                //console.log(e);
+              });
         }
     }
     onlyPaciente (e){
         localStorage.setItem("paciente", true)
     }
     render() {
-        localStorage.getItem("page")
+        localStorage.setItem("init",true)
         return (
                 <div className="wrapper">
                     <HeaderComponent />
                     <Sidebar />
                     <div className="content-wrapper"  style={{background:"white"}}>
                         <div className="container-modulos">
-                            <br/>
-                            <NavLink style={{marginBottom:"3%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
+                            <NavLink style={{marginBottom:"1%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
+                            <div className="search-bar">
+                                <input name="search" type="text" required value={this.state.keyword} onChange={this.onChangeKeyword}/>
+                                <button className="search-btn" type="button">
+                                    <span>Search</span>
+                                </button>
+                            </div>
                             <Table>
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Personaje</th>
-                                        <th>Anime</th>
-                                        <th>Acción</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Direccion</th>
+                                        <th>Email</th>
+                                        <th>Fecha de Nacimiento</th>
+                                        <th>Telefono</th>
+                                        <th>Opciones</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
-                                {this.state.data.map((dato) => (
-                                    <tr key={dato.id}>
-                                    <td>{dato.id}</td>
-                                    <td>{dato.personaje}</td>
-                                    <td>{dato.anime}</td>
+                                {this.state.pacientes.map((paciente) => (
+                                    <tr key={paciente.id}>
+                                    <td>{paciente.nombre}</td>
+                                    <td>{paciente.apellido}</td>
+                                    <td>{paciente.direccion}</td>
+                                    <td>{paciente.email}</td>
+                                    <td>{paciente.fechaNac}</td>
+                                    <td>{paciente.telefono}</td>
                                     <td>
-                                        <Button
-                                        color="primary"
-                                        /*onClick={() => this.mostrarModalActualizar(dato)}*/
-                                        >
-                                        Editar
-                                        </Button>{" "}
+                                        <Button color="primary" style={{padding:"6px 20px 6px 20px"}}/*onClick={() => this.mostrarModalActualizar(dato)}*/>Editar</Button>
                                         <Button color="danger" /*onClick={()=> this.eliminar(dato)}*/>Eliminar</Button>
                                     </td>
                                     </tr>
