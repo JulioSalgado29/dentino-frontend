@@ -6,17 +6,17 @@ const Lista = ({datos}) => {
     return(
         <ul className='list-group mb-4'>
             <Table>
-                                <thead>
-                                    <tr>
-                                        <th>Nombre</th>
-                                        <th>Apellido</th>
-                                        <th>Direccion</th>
-                                        <th>Email</th>
-                                        <th>Fecha de Nacimiento</th>
-                                        <th>Telefono</th>
-                                        <th>Opciones</th>
-                                    </tr>
-                                </thead>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Direccion</th>
+                        <th>Email</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Telefono</th>
+                        <th>Opciones</th>
+                        </tr>
+                        </thead>
 
                                 <tbody>
                                 {datos.map((dato) => (

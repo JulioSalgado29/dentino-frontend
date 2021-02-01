@@ -1,11 +1,12 @@
 import React from 'react';
-import UsuarioService from '../../../Servicios/UsuarioService';
-import HeaderComponent from '../../Complementos/HeaderComponent';
-import Sidebar from '../../Complementos/SidebarComponent';
+import UsuarioService from '../../../../../Servicios/UsuarioService';
+import HeaderComponent from '../../../../Complementos/HeaderComponent';
+import Sidebar from '../../../../Complementos/SidebarComponent';
 import { NavLink } from 'react-router-dom';
-import Lista from './Paginacion/Lista';
-import Paginacion from './Paginacion/Paginacion';
-import '../Theme/style.css';
+import {Spinner} from 'reactstrap'; 
+import Lista from './Lista';
+import Paginacion from './Paginacion';
+import '../../../Theme/style.css';
 
 class PacienteComponent extends React.Component {
     constructor(props) {
@@ -16,14 +17,16 @@ class PacienteComponent extends React.Component {
             keyword: "",
             currentPage: 1,
             postsPerPage: 5,
+            loading: false
         }
         this.onChangeKeyword = this.onChangeKeyword.bind(this);
     }
     onChangeKeyword= (event) => {
-        this.setState({keyword: event.target.value})
+        this.setState({keyword: event.target.value, loading: true})
         UsuarioService.listar_pacientes(event.target.value)
           .then((response) => {
             this.setState({
+                loading: false,
                 datos: response
             });
           })
@@ -38,11 +41,13 @@ class PacienteComponent extends React.Component {
         }
         if(localStorage.getItem("init")){
             localStorage.removeItem("init")
+
             UsuarioService.listar_pacientes("")
             .then((response) => {
                 this.setState({
-                    datos: response
+                    datos: response,
                 });
+                localStorage.setItem("pageC", true)
               })
               .catch((e) => {
                 //console.log(e);
@@ -75,12 +80,16 @@ class PacienteComponent extends React.Component {
                                     <span>Search</span>
                                 </button>
                             </div>
-                                <Lista datos={currentPosts} />
-                                <Paginacion
-                                postsPerPage={this.state.postsPerPage}
-                                totalPosts={this.state.datos.length}
-                                paginate={paginate}
-                                />
+                            {(this.state.loading===false&&
+                            <div>
+                                <Lista datos={currentPosts}/>
+                                <Paginacion postsPerPage={this.state.postsPerPage} totalPosts={this.state.datos.length} paginate={paginate}/>
+                            </div>)
+                            ||(this.state.loading===true && 
+                            <div style={{textAlign:"center",fontSize:"xxx-large",display:"grid",alignItems:"center",justifyContent:"center",minHeight:"49vh"}}>
+                            <Spinner color="primary" style={{position:"relative",marginTop:"22%",width:"10rem",height:"10rem"}}></Spinner>
+                            </div>
+                            )}
                         </div>
                     </div>
                 </div>

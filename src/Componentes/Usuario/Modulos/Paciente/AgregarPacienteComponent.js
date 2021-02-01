@@ -1,12 +1,12 @@
 import React from 'react';
-import UsuarioService from '../../../Servicios/UsuarioService';
+import UsuarioService from '../../../../Servicios/UsuarioService';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Select from "react-validation/build/select"
 import CheckButton from "react-validation/build/button";
 import { isEmail, isNumeric} from 'validator';
-import HeaderComponent from '../../Complementos/HeaderComponent';
-import Sidebar from '../../Complementos/SidebarComponent';
+import HeaderComponent from '../../../Complementos/HeaderComponent';
+import Sidebar from '../../../Complementos/SidebarComponent';
 import Swal from 'sweetalert2';
 
   const required = value => {
