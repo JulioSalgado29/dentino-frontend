@@ -37,6 +37,7 @@ class IndexComponent extends React.Component {
                           <div className="icon">
                             <i className="ion ion-bag" />
                           </div>
+                          {/* eslint-disable */}
                           <a className="small-box-footer">More info <i className="fas fa-arrow-circle-right"/></a>
                         </div>
                       </div>
