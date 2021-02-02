@@ -36,6 +36,14 @@ class UsuarioService {
         };
         return axios.post(paciente + "/registration", usuario);
     }
+    editar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, id) {
+        const persona = {
+            "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
+            "direccion": direccion, "telefono": telefono, "genero": genero, "id": id}
+        };
+        return axios.put(paciente + "/update", persona);
+    }
+
     login(username, password) {
         const usuario = {"username": username,"password": password};
         return axios.post(login + "/verificando", usuario).then(response => {

@@ -48,7 +48,6 @@ class PacienteComponent extends React.Component {
                     datos: response,
                     loading: false,
                 });
-                console.log(this.state.datos)
               })
               .catch((e) => {
                 //console.log(e);
@@ -66,7 +65,6 @@ class PacienteComponent extends React.Component {
 
         // Change page
         const paginate = pageNumber => this.setState({currentPage: pageNumber});;
-
         localStorage.setItem("init",true)
         return (
                 <div className="wrapper">

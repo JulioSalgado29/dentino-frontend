@@ -72,8 +72,6 @@ class AgregarPacienteComponent extends React.Component{
             direccion: '',
             telefono: '',
             genero: '',
-            username: '',
-            password: '',
             loading: false,
             message: "",
             isFocus: false,
