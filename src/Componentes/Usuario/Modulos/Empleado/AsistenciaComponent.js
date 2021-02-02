@@ -34,9 +34,11 @@ class AsistenciaComponent extends React.Component {
             style={previewStyle}
             onError={this.handleError}
             onScan={this.handleScan}
-            facingMode={'user'}
+            facingMode={'environment'}
             />
+            <h1>user</h1>
           <p>{this.state.result}</p>
+          <h1>environment</h1>
         </div>
       )
     }
