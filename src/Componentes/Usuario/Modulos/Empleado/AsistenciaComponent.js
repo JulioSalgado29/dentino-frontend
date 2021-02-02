@@ -1,5 +1,5 @@
 import React from 'react'
-import QrReader from 'react-qr-scanner'
+import QrReader from 'react-qr-reader2'
 
 class AsistenciaComponent extends React.Component {
   constructor(props) {
@@ -13,11 +13,11 @@ class AsistenciaComponent extends React.Component {
   }
   handleScan(data) {
     if (data != null) {
-      console.log(JSON.parse(data.text))
+      this.setState({
+        result: data,
+      })
+      console.log(data)
     }
-    /*this.setState({
-      result: data,
-    })*/
   }
   handleError(err) {
     console.error(err)
@@ -35,8 +35,11 @@ class AsistenciaComponent extends React.Component {
           style={previewStyle}
           onError={this.handleError}
           onScan={this.handleScan}
+          facingMode={'environment'}
         />
+        <h1>user</h1>
         <p>{this.state.result}</p>
+        <h1>environment</h1>
       </div>
     )
   }
