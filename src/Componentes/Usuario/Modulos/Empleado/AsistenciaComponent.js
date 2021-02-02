@@ -16,7 +16,11 @@ class AsistenciaComponent extends React.Component {
       this.setState({
         result: data,
       })
-      console.log(data)
+    }
+    else{
+      this.setState({
+        result: "Nulo",
+      })
     }
   }
   handleError(err) {
@@ -37,7 +41,7 @@ class AsistenciaComponent extends React.Component {
           onScan={this.handleScan}
           facingMode={'environment'}
         />
-        <p>{this.state.result}</p>
+        <h1>{this.state.result}</h1>
       </div>
     )
   }
