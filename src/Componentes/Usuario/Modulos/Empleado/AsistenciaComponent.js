@@ -34,6 +34,7 @@ class AsistenciaComponent extends React.Component {
             style={previewStyle}
             onError={this.handleError}
             onScan={this.handleScan}
+            facingMode="rear"
             />
           <p>{this.state.result}</p>
         </div>
