@@ -233,7 +233,7 @@ class EditarPacienteComponent extends React.Component{
                                           <Input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} 
                                           onChange={this.ChangeNombreHandler} validations={[required,nombre]}/>
                                           <span className="symbol-input100">
-                                              <i className="fa fa-user" aria-hidden="true"></i>
+                                              <i className="fa fa-N" aria-hidden="true"></i>
                                           </span>
                                       </div>
 
@@ -242,7 +242,7 @@ class EditarPacienteComponent extends React.Component{
                                           onChange={this.ChangeApellidoHandler} validations={[required,apellido]}/>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
-                                              <i className="fa fa-user" aria-hidden="true"></i>
+                                              <i className="fa fa-A" aria-hidden="true"></i>
                                           </span>
                                       </div>
                                   </div>

@@ -5,19 +5,26 @@ import AgregarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/Agr
 import EditarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/EditarPacienteComponent';
 import ScrollTop from './ScrollTop';
 import {ProtectedRoute} from './Servicios/Protected.Route';
+import AsistenciaComponent from './Componentes/Usuario/Modulos/Empleado/AsistenciaComponent';
+import NotFound from './Componentes/Usuario/ControlDeAcceso/NotFound';
 //import {NoProtected} from './Servicios/NoProtected.Route';
 //<NoProtected exact path ="/register" component = {RegistrarComponent}/>
 
 function App(){
+  const location = {
+    pathname: '/somewhere',
+    state: { fromDashboard: true }
+  }
   return (
     <HashRouter>
           <ScrollTop/>
           <Switch>
-            <ProtectedRoute path ="/pacientes" component = {PacienteComponent}/>
-            <ProtectedRoute path ="/pacientes-add" component = {AgregarPacienteComponent}/>
-            <ProtectedRoute path ="/pacientes-edit" component = {EditarPacienteComponent}/>
+            <ProtectedRoute exact path ="/pacientes" component = {PacienteComponent}/>
+            <ProtectedRoute exact path ="/pacientes-add" component = {AgregarPacienteComponent}/>
+            <ProtectedRoute exact path ="/pacientes-edit" component = {EditarPacienteComponent}/>
+            <ProtectedRoute exact path ="/asistencia" component = {AsistenciaComponent}/>
             <Route exact path ="/" component = {InicioComponent}/>
-            <Redirect path="/*" to="/"/>
+            <Route component={NotFound}/>
           </Switch>
       </HashRouter>
 )
