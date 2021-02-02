@@ -5,3 +5,14 @@
     margin-right: auto;
     margin-left: auto;
 }
+.fa-A:before {
+    font-family: Arial; /* your font family here! */
+    font-weight: bold;
+    content: 'A';
+}
+
+.fa-N:before {
+    font-family: Arial; /* your font family here! */
+    font-weight: bold;
+    content: 'N';
+}
