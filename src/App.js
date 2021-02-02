@@ -1,4 +1,4 @@
-import {BrowserRouter as Redirect, Route, Switch, HashRouter}from 'react-router-dom';
+import {BrowserRouter as Route, Switch, HashRouter}from 'react-router-dom';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import PacienteComponent from './Componentes/Usuario/Modulos/Paciente/ListarPaciente/PacienteComponent';
 import AgregarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/AgregarPacienteComponent';
@@ -11,10 +11,6 @@ import NotFound from './Componentes/Usuario/ControlDeAcceso/NotFound';
 //<NoProtected exact path ="/register" component = {RegistrarComponent}/>
 
 function App(){
-  const location = {
-    pathname: '/somewhere',
-    state: { fromDashboard: true }
-  }
   return (
     <HashRouter>
           <ScrollTop/>

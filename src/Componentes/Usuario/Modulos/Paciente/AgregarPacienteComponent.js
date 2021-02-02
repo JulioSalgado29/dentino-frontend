@@ -65,7 +65,7 @@ import Swal from 'sweetalert2';
         <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if (value.length!=8){
+    else if (value.length!==8){
       return (
         <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
         );

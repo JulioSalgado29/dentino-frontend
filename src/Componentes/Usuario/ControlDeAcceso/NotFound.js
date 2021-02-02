@@ -3,9 +3,6 @@ import './NotFoundTheme/style.css';
 import './NotFoundTheme/style.js';
 
 class NotFound extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div id="notfound">
@@ -21,6 +18,7 @@ class NotFound extends React.Component {
                     </div>
                     <h2>¡Ups! ¿Te perdiste?</h2>
                     <p>La página que estás buscando no está disponible.</p>
+                    {/* eslint-disable */}
                     <a href="#">Homepage</a>
                     <div class="notfound-social">
                         <a><i class="fa fa-facebook"></i></a>

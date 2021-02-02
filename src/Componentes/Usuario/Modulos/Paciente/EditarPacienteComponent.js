@@ -65,7 +65,7 @@ import Swal from 'sweetalert2';
         <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if (value.length!=8){
+    else if (value.length!==8){
       return (
         <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
         );
@@ -146,7 +146,6 @@ class EditarPacienteComponent extends React.Component{
             UsuarioService.editar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
               this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
             .then(() => {
-              localStorage.removeItem("dato");
               this.props.history.push('/pacientes')
               window.location.reload();
             },
@@ -235,6 +234,9 @@ class EditarPacienteComponent extends React.Component{
     }
 
     render (){
+      if(JSON.parse(localStorage.getItem("dato"))===null){
+        console.log("hola")
+      }
       localStorage.setItem("paciente",true);
         return(
                 <div className="wrapper">

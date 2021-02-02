@@ -42,7 +42,10 @@ class UsuarioService {
             "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
             "direccion": direccion, "telefono": telefono, "genero": genero, "id": id, "dni": dni}
         };
-        return axios.put(paciente + "/update", persona);
+        return axios.put(paciente + "/update", persona).then(response => {
+            localStorage.removeItem("dato");
+            localStorage.setItem("dato", JSON.stringify(response.data));
+        });
     }
 
     login(username, password) {
