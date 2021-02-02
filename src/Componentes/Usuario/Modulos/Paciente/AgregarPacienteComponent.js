@@ -59,6 +59,18 @@ import Swal from 'sweetalert2';
         );
     }
   }
+  const dni = value=>{
+    if (!isNumeric(value)) {
+      return (
+        <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
+      );
+    }
+    else if (value.length!=8){
+      return (
+        <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
+        );
+    }
+  }
 
 class AgregarPacienteComponent extends React.Component{
 
@@ -72,6 +84,7 @@ class AgregarPacienteComponent extends React.Component{
             direccion: '',
             telefono: '',
             genero: '',
+            dni: '',
             loading: false,
             message: "",
             isFocus: false,
@@ -83,6 +96,7 @@ class AgregarPacienteComponent extends React.Component{
         this.ChangeDireccionHandler = this.ChangeDireccionHandler.bind(this);
         this.ChangeTelefonoHandler = this.ChangeTelefonoHandler.bind(this);
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
+        this.ChangeDniHandler = this.ChangeDniHandler.bind(this);
 
         this.saveUsuario = this.saveUsuario.bind(this);
         this.cancel = this.cancel.bind(this);
@@ -109,7 +123,7 @@ class AgregarPacienteComponent extends React.Component{
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
             UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
-              this.state.direccion, this.state.telefono, this.state.genero)
+              this.state.direccion, this.state.telefono, this.state.genero,this.state.dni)
             .then(() => {
               this.props.history.push('/pacientes')
               window.location.reload();
@@ -172,6 +186,9 @@ class AgregarPacienteComponent extends React.Component{
     }
     ChangeGeneroHandler= (event) => {
       this.setState({genero: event.target.value})
+    }
+    ChangeDniHandler= (event) => {
+      this.setState({dni: event.target.value})
     }
     cancel(){
         this.props.history.push('/pacientes')
@@ -244,7 +261,7 @@ class AgregarPacienteComponent extends React.Component{
                                       </div>
                                   </div>
                                   <div className="container container-register">
-                                  <div className="wrap-input100 validate-input">
+                                    <div className="wrap-input100 validate-input">
                                           <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{border:"none"}} validations={[required]}>
                                             <option selected hidden style={{color:"red"}} value="null">Eliga el Género</option>
                                             <option value="M">Masculino</option>
@@ -265,15 +282,24 @@ class AgregarPacienteComponent extends React.Component{
                                       </div>
                                   </div>
                                   <div className="container container-register">
-                                  <div className="wrap-input100 validate-input">
-                                          <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
-                                          onChange={this.ChangeDireccionHandler} validations={[required]}/>
-                                          <span className="focus-input100"></span>
-                                          <span className="symbol-input100">
-                                              <i className="fa fa-home" aria-hidden="true"></i>
-                                          </span>
-                                      </div>
+                                    <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
+                                            onChange={this.ChangeDireccionHandler} validations={[required]}/>
+                                            <span className="focus-input100"></span>
+                                            <span className="symbol-input100">
+                                                <i className="fa fa-home" aria-hidden="true"></i>
+                                            </span>
+                                    </div>
+                                    <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" name="pass" placeholder="DNI" value={this.state.dni} 
+                                            onChange={this.ChangeDniHandler} validations={[required,dni]}/>
+                                            <span className="focus-input100"></span>
+                                            <span className="symbol-input100">
+                                                <i className="fas fa-id-card" aria-hidden="true"></i>
+                                            </span>
+                                    </div>
                                   </div>
+                                    
                                   <div className="container-login100-form-btn">
                                       <button className="registrar100-form-btn" onClick={this.saveUsuario} style={{maxWidth:"1140px"}}
                                       ref={c => {this.checkBtn = c;}} disabled={this.state.loading}>{this.state.loading && (

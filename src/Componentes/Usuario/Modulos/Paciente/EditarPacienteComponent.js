@@ -59,6 +59,18 @@ import Swal from 'sweetalert2';
         );
     }
   }
+  const dni = value=>{
+    if (!isNumeric(value)) {
+      return (
+        <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
+      );
+    }
+    else if (value.length!=8){
+      return (
+        <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
+        );
+    }
+  }
 
   function format(x, y) {
     var z = {
@@ -92,6 +104,7 @@ class EditarPacienteComponent extends React.Component{
             genero: JSON.parse(localStorage.getItem("dato")).genero,
             username: JSON.parse(localStorage.getItem("dato")).username,
             password: JSON.parse(localStorage.getItem("dato")).fechaNac,
+            dni: JSON.parse(localStorage.getItem("dato")).dni,
             loading: false,
             message: "",
             isFocus: false,
@@ -103,6 +116,8 @@ class EditarPacienteComponent extends React.Component{
         this.ChangeDireccionHandler = this.ChangeDireccionHandler.bind(this);
         this.ChangeTelefonoHandler = this.ChangeTelefonoHandler.bind(this);
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
+        this.ChangeDniHandler = this.ChangeDniHandler.bind(this);
+
 
         this.editUsuario = this.editUsuario.bind(this);
         this.cancel = this.cancel.bind(this);
@@ -129,7 +144,7 @@ class EditarPacienteComponent extends React.Component{
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
             UsuarioService.editar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
-              this.state.direccion, this.state.telefono, this.state.genero,this.state.id)
+              this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
             .then(() => {
               localStorage.removeItem("dato");
               this.props.history.push('/pacientes')
@@ -193,6 +208,9 @@ class EditarPacienteComponent extends React.Component{
     }
     ChangeGeneroHandler= (event) => {
       this.setState({genero: event.target.value})
+    }
+    ChangeDniHandler= (event) => {
+      this.setState({dni: event.target.value})
     }
     cancel(){
         this.props.history.push('/pacientes')
@@ -287,14 +305,22 @@ class EditarPacienteComponent extends React.Component{
                                       </div>
                                   </div>
                                   <div className="container container-register">
-                                  <div className="wrap-input100 validate-input">
-                                          <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
-                                          onChange={this.ChangeDireccionHandler} validations={[required]}/>
-                                          <span className="focus-input100"></span>
-                                          <span className="symbol-input100">
-                                              <i className="fa fa-home" aria-hidden="true"></i>
-                                          </span>
-                                      </div>
+                                    <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
+                                            onChange={this.ChangeDireccionHandler} validations={[required]}/>
+                                            <span className="focus-input100"></span>
+                                            <span className="symbol-input100">
+                                                <i className="fa fa-home" aria-hidden="true"></i>
+                                            </span>
+                                    </div>
+                                    <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" name="pass" placeholder="DNI" value={this.state.dni} 
+                                            onChange={this.ChangeDniHandler} validations={[required,dni]}/>
+                                            <span className="focus-input100"></span>
+                                            <span className="symbol-input100">
+                                                <i className="fas fa-id-card" aria-hidden="true"></i>
+                                            </span>
+                                    </div>
                                   </div>
                                   <div className="container-login100-form-btn">
                                       <button className="registrar100-form-btn" onClick={this.editUsuario} style={{maxWidth:"1140px"}}

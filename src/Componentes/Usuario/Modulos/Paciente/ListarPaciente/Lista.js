@@ -13,6 +13,7 @@ const Lista = ({datos}) => {
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>DNI</th>
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Direccion</th>
@@ -26,6 +27,7 @@ const Lista = ({datos}) => {
                     {datos.map((dato) => (
                     <tr key={dato.id}>
                         <td>{dato.id}</td>
+                        <td>{dato.dni}</td>
                         <td>{dato.nombre}</td>
                         <td>{dato.apellido}</td>
                         <td>{dato.direccion}</td>

@@ -1,5 +1,6 @@
 import axios from 'axios'
 //const admin = "https://dentino-303017.rj.r.appspot.com/admin";
+//const paciente = "http://localhost:8080/paciente";
 const login = "https://dentino-303017.rj.r.appspot.com/login";
 const user = "https://dentino-303017.rj.r.appspot.com/usuario";
 const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
@@ -29,17 +30,17 @@ class UsuarioService {
         return axios.get(paciente + "/buscar",{params: {"keyword": keyword}})
         .then(response =>  response.data/*JSON.stringify(response.data)*/);
     }
-    registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero) {
+    registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni) {
         const usuario = {
             "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
-            "direccion": direccion, "telefono": telefono, "genero": genero }
+            "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni }
         };
         return axios.post(paciente + "/registration", usuario);
     }
-    editar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, id) {
+    editar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, id, dni) {
         const persona = {
             "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
-            "direccion": direccion, "telefono": telefono, "genero": genero, "id": id}
+            "direccion": direccion, "telefono": telefono, "genero": genero, "id": id, "dni": dni}
         };
         return axios.put(paciente + "/update", persona);
     }
