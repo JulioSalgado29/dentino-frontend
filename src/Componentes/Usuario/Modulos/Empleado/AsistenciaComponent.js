@@ -1,5 +1,5 @@
 import React from 'react'
-import QrReader from 'react-qr-scanner'
+import QrReader from 'react-qr-reader2'
 
 class AsistenciaComponent extends React.Component {
     constructor(props){
