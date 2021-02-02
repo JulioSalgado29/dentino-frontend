@@ -1,4 +1,5 @@
-import {BrowserRouter as Route, Switch, HashRouter}from 'react-router-dom';
+// eslint-disable-next-line
+import {BrowserRouter as Redirect, Route, Switch, HashRouter}from 'react-router-dom';
 import InicioComponent from './Componentes/Usuario/InicioComponent';
 import PacienteComponent from './Componentes/Usuario/Modulos/Paciente/ListarPaciente/PacienteComponent';
 import AgregarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/AgregarPacienteComponent';
@@ -12,9 +13,11 @@ import NotFound from './Componentes/Usuario/ControlDeAcceso/NotFound';
 
 function App(){
   return (
+    
     <HashRouter>
           <ScrollTop/>
           <Switch>
+            
             <ProtectedRoute exact path ="/pacientes" component = {PacienteComponent}/>
             <ProtectedRoute exact path ="/pacientes-add" component = {AgregarPacienteComponent}/>
             <ProtectedRoute exact path ="/pacientes-edit" component = {EditarPacienteComponent}/>
