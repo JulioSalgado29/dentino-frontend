@@ -1,6 +1,5 @@
 import React from 'react';
 import './NotFoundTheme/style.css';
-import './NotFoundTheme/style.js';
 
 class NotFound extends React.Component {
     render() {
@@ -21,10 +20,10 @@ class NotFound extends React.Component {
                     {/* eslint-disable */}
                     <a href="#">Homepage</a>
                     <div class="notfound-social">
-                        <a><i class="fa fa-facebook"></i></a>
-                        <a><i class="fa fa-twitter"></i></a>
-                        <a><i class="fa fa-pinterest"></i></a>
-                        <a><i class="fa fa-google-plus"></i></a>
+                        <a><i class="fab fa-facebook-f"></i></a>
+                        <a><i class="fab fa-twitter"></i></a>
+                        <a><i class="fab fa-pinterest"></i></a>
+                        <a><i class="fab fa-google-plus"></i></a>
                     </div>
                 </div>
             </div>
