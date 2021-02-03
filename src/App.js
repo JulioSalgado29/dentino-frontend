@@ -4,6 +4,7 @@ import InicioComponent from './Componentes/Usuario/InicioComponent';
 import PacienteComponent from './Componentes/Usuario/Modulos/Paciente/ListarPaciente/PacienteComponent';
 import AgregarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/AgregarPacienteComponent';
 import EditarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/EditarPacienteComponent';
+import InformacionPacienteComponent from './Componentes/Usuario/Modulos/Paciente/InformacionPacienteComponent';
 import ScrollTop from './ScrollTop';
 import {ProtectedRoute} from './Servicios/Protected.Route';
 import AsistenciaComponent from './Componentes/Usuario/Modulos/Empleado/AsistenciaComponent';
@@ -21,6 +22,8 @@ function App(){
             <ProtectedRoute exact path ="/pacientes" component = {PacienteComponent}/>
             <ProtectedRoute exact path ="/pacientes-add" component = {AgregarPacienteComponent}/>
             <ProtectedRoute exact path ="/pacientes-edit" component = {EditarPacienteComponent}/>
+            <ProtectedRoute exact path ="/pacientes-info" component = {InformacionPacienteComponent}/>
+
             <ProtectedRoute exact path ="/asistencia" component = {AsistenciaComponent}/>
             <Route exact path ="/" component = {InicioComponent}/>
             <Route component={NotFound}/>

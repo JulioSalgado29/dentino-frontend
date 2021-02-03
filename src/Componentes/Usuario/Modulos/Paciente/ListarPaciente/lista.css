@@ -18,3 +18,13 @@
         display: none;
     }
 }
+@media (max-width: 434px) {
+    .row5 {
+        display: none;
+    }
+}
+@media (min-width: 718px) {
+    .btn-infor {
+        display: none;
+    }
+}
