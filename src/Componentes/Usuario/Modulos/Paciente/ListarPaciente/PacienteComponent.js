@@ -71,7 +71,7 @@ class PacienteComponent extends React.Component {
                 <div className="wrapper">
                     <HeaderComponent />
                     <Sidebar />
-                    <div className="content-wrapper"  style={{background:"white"}}>
+                    <div className="content-wrapper">
                         <div className="container-modulos">
                             <NavLink style={{marginBottom:"1%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
                             <div className="search-bar">

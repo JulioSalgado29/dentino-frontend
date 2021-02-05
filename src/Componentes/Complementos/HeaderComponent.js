@@ -60,7 +60,7 @@ class HeaderComponent extends React.Component {
         const classdropdown_notify = cx('ul-prueba','dropdown-menu-lg dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassNotify });
         const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassConfig });
         return (
-            <nav className="main-header navbar navbar-expand navbar-white navbar-light">
+            <nav className="main-header navbar navbar-expand">
                 {/* Left navbar links */}
                 <ul className="navbar-nav" >
                     <li className="nav-item">
@@ -80,7 +80,7 @@ class HeaderComponent extends React.Component {
                                 </a>
                             </a>
                             <div className={classdropdown_notify} style={{background:"#fff",cursor:"context-menu"}}>
-                                <span className="dropdown-item dropdown-header">15 Notifications</span>
+                                <span className="dropdown-item dropdown-header" style={{color:"black"}}>15 Notifications</span>
                                 <div className="dropdown-divider" />
                                 <a className="dropdown-item" style={{cursor:"pointer"}}>
                                     <i className="fas fa-envelope mr-2" /> 4 new messages
