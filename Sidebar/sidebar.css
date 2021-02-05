@@ -52,3 +52,10 @@
 .ul-prueba li a:hover{
     background: yellow;
 }
+a:not([href]):not([tabindex]) {
+    color: black;
+    text-decoration: none;
+}
+.dark-mode .dropdown-item {
+    color: black;
+}
