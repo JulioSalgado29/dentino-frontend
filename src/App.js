@@ -7,7 +7,7 @@ import EditarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/Edit
 import InformacionPacienteComponent from './Componentes/Usuario/Modulos/Paciente/InformacionPacienteComponent';
 import ScrollTop from './ScrollTop';
 import {ProtectedRoute} from './Servicios/Protected.Route';
-import AsistenciaComponent from './Componentes/Usuario/Modulos/Empleado/AsistenciaComponent';
+import AsistenciaComponent from './Componentes/Usuario/Modulos/Trabajador/AsistenciaComponent';
 import NotFound from './Componentes/Usuario/ControlDeAcceso/NotFound';
 //import {NoProtected} from './Servicios/NoProtected.Route';
 //<NoProtected exact path ="/register" component = {RegistrarComponent}/>

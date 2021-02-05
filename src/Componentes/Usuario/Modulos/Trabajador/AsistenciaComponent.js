@@ -12,16 +12,9 @@ class AsistenciaComponent extends React.Component {
     this.handleScan = this.handleScan.bind(this)
   }
   handleScan(data) {
-    if (data != null) {
       this.setState({
         result: data,
       })
-    }
-    else{
-      this.setState({
-        result: "Nulo",
-      })
-    }
   }
   handleError(err) {
     console.error(err)

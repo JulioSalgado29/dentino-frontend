@@ -110,7 +110,7 @@ class HeaderComponent extends React.Component {
                             </a>
                             <ul className={classdropdown_config}>
                                 <li className="nav-item" style={{whiteSpace:"pre"}}>
-                                    <Link exact to="/logout" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
+                                    <Link exact to="/" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
                                         <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> Cerrar Sesión
                                     </Link>
                                 </li>

@@ -96,6 +96,52 @@ class SidebarComponent extends React.Component {
                                 )
                             }
                             </li>
+                            <li className="nav-item">
+                            {
+                                (
+                                    localStorage.getItem("trabajador")===null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage} 
+                                    activeClassName="active">
+                                    <i className="nav-icon fas fa-user-md" />
+                                    <p>
+                                        Trabajadores
+                                    <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
+                                )||(
+                                localStorage.getItem("trabajador")==="true" && <NavLink to="/trabajadores" className="nav-link" 
+                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("trabajador")==="true"}>
+                                    <i className="nav-icon fas fa-user-md" />
+                                    <p>
+                                        Trabajadores
+                                    <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
+                                )
+                            }
+                            </li>
+                            <li className="nav-item">
+                            {
+                                (
+                                    localStorage.getItem("ingreso")===null && <NavLink to="/ingresos" className="nav-link" onClick={this.isLandingPage} 
+                                    activeClassName="active">
+                                    <i className="nav-icon fas fa-file-invoice-dollar" />
+                                    <p>
+                                        Ingresos
+                                    <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
+                                )||(
+                                localStorage.getItem("ingreso")==="true" && <NavLink to="/ingresos" className="nav-link" 
+                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("ingreso")==="true"}>
+                                    <i className="nav-icon fas fa-file-invoice-dollar" />
+                                    <p>
+                                        Ingresos
+                                    <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
+                                )
+                            }
+                            </li>
                         </ul>
                     </nav>
                 </div>

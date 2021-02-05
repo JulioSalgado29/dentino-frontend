@@ -9,6 +9,7 @@ import Paginacion from './Paginacion';
 import '../../../Theme/style.css';
 
 class PacienteComponent extends React.Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -39,7 +40,8 @@ class PacienteComponent extends React.Component {
             localStorage.removeItem("isLandingPage");
             window.location.reload();
         }
-        if(localStorage.getItem("init")){
+        if(localStorage.getItem("init") && localStorage.getItem("eliminado")){
+            console.log(localStorage.getItem("eliminado"))
             localStorage.removeItem("init")
             this.setState({loading: true})
             UsuarioService.listar_pacientes("")

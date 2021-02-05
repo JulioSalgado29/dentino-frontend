@@ -147,7 +147,6 @@ class EditarPacienteComponent extends React.Component{
               this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
             .then(() => {
               this.props.history.push('/pacientes')
-              window.location.reload();
             },
             error => {
               if(error.response.status === 401){

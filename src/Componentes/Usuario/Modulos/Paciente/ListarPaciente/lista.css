@@ -23,7 +23,7 @@
         display: none;
     }
 }
-@media (min-width: 718px) {
+@media (min-width: 1300px) {
     .btn-infor {
         display: none;
     }
