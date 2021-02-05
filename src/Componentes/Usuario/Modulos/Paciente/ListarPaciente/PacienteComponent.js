@@ -40,7 +40,7 @@ class PacienteComponent extends React.Component {
             localStorage.removeItem("isLandingPage");
             window.location.reload();
         }
-        if(localStorage.getItem("init") && localStorage.getItem("eliminado")){
+        if(localStorage.getItem("init")){
             console.log(localStorage.getItem("eliminado"))
             localStorage.removeItem("init")
             this.setState({loading: true})

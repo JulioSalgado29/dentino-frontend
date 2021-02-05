@@ -50,7 +50,7 @@ class UsuarioService {
     eliminar_pacientes(persona_id){
         console.log(persona_id.toString())
         return axios.post(paciente + "/delete",{"persona": { "id": persona_id}})
-        .then(response =>  console.log(response.data));
+        .then(response =>  response.data);
     }
 
     login(username, password) {
