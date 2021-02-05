@@ -41,7 +41,6 @@ class PacienteComponent extends React.Component {
             window.location.reload();
         }
         if(localStorage.getItem("init")){
-            console.log(localStorage.getItem("eliminado"))
             localStorage.removeItem("init")
             this.setState({loading: true})
             UsuarioService.listar_pacientes("")

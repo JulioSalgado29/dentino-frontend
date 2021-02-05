@@ -146,7 +146,15 @@ class EditarPacienteComponent extends React.Component{
             UsuarioService.editar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
               this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
             .then(() => {
-              this.props.history.push('/pacientes')
+              Swal.fire
+                        ({title: "Paciente actualizado",
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        backdrop: 'rgba(61, 0, 0, 0.4)'}).then((result) => {
+                            if(result.value){
+                              this.props.history.push('/pacientes')
+                            }
+                        })
             },
             error => {
               if(error.response.status === 401){

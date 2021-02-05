@@ -26,7 +26,8 @@ function Eliminar(persona_id,dni) {
                         backdrop: 'rgba(61, 0, 0, 0.4)'}).then((result) => {
                             if(result.value){
                                 window.location.reload();
-                            }})
+                            }
+                        })
                 })
             }
         })
