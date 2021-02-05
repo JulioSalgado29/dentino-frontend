@@ -3,7 +3,7 @@ import axios from 'axios'
 //const paciente = "http://localhost:8080/paciente";
 const login = "https://dentino-303017.rj.r.appspot.com/login";
 const user = "https://dentino-303017.rj.r.appspot.com/usuario";
-const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
+const paciente = "http://localhost:8080/paciente";
 
 class UsuarioService {
 
@@ -28,7 +28,7 @@ class UsuarioService {
     }*/
     listar_pacientes(keyword){
         return axios.get(paciente + "/buscar",{params: {"keyword": keyword}})
-        .then(response =>  response.data/*JSON.stringify(response.data)*/);
+        .then(response =>  response.data);
     }
     registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni) {
         const usuario = {
@@ -46,6 +46,11 @@ class UsuarioService {
             localStorage.removeItem("dato");
             localStorage.setItem("dato", JSON.stringify(response.data));
         });
+    }
+    eliminar_pacientes(persona_id){
+        console.log(persona_id.toString())
+        return axios.post(paciente + "/delete",{"persona": { "persona_id": persona_id}})
+        .then(response =>  console.log(response.data));
     }
 
     login(username, password) {
