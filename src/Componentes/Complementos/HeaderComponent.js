@@ -60,7 +60,7 @@ class HeaderComponent extends React.Component {
         const classdropdown_notify = cx('ul-prueba','dropdown-menu-lg dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassNotify });
         const classdropdown_config = cx('ul-prueba','dropdown-menu-right', { 'ul-prueba-active': this.state.isActiveClassConfig });
         return (
-            <nav className="main-header navbar navbar-expand">
+            <nav className="main-header navbar navbar-expand navbar-white navbar-light">
                 {/* Left navbar links */}
                 <ul className="navbar-nav" >
                     <li className="nav-item">

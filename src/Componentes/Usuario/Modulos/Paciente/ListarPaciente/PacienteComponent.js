@@ -68,10 +68,10 @@ class PacienteComponent extends React.Component {
         const paginate = pageNumber => this.setState({currentPage: pageNumber});;
         localStorage.setItem("init",true)
         return (
-                <div className="wrapper">
+                <div className="wrapper" style={{background:"white",color:"black"}}>
                     <HeaderComponent />
                     <Sidebar />
-                    <div className="content-wrapper">
+                    <div className="content-wrapper" style={{background:"white",color:"black"}}>
                         <div className="container-modulos">
                             <NavLink style={{marginBottom:"1%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
                             <div className="search-bar">
