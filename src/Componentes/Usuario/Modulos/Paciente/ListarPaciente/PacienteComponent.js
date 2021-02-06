@@ -13,7 +13,6 @@ class PacienteComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentUser: UsuarioService.getCurrentUser(),
             datos: [],
             keyword: "",
             antkeyword: "",

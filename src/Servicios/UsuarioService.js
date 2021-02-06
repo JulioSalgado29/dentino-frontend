@@ -59,8 +59,11 @@ class UsuarioService {
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }
-    actualizar_estado(username, token) {
-        return axios.post(login + "/actualizar-estado", { username,token }).then(response => {
+    actualizar_estado(username, codigo) {
+        const usuario = {"username": username,"codigo": codigo};
+        return axios.post(login + "/actualizar-estado", usuario).then(response => {
+            console.log(response)
+            localStorage.removeItem("usuario");
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }

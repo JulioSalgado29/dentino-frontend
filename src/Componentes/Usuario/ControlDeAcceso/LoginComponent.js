@@ -18,7 +18,6 @@ class LoginComponent extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-          currentUser: UsuarioService.getCurrentUser(),
           username: '',
           password: '',
           loading: false,
