@@ -20,11 +20,12 @@ class PacienteComponent extends React.Component {
             postsPerPage: 5,
             loading: false
         }
-        this.onChangeKeyword = this.onChangeKeyword.bind(this);
+        this.onClickKeyword = this.onClickKeyword.bind(this);
+        this.ChangeKeywordHandler = this.ChangeKeywordHandler.bind(this);
     }
-    onChangeKeyword= (event) => {
-        this.setState({keyword: event.target.value, loading: true})
-        UsuarioService.listar_pacientes(event.target.value)
+    onClickKeyword= (event) => {
+        this.setState({loading:true});
+        UsuarioService.listar_pacientes(this.state.keyword)
           .then((response) => {
             this.setState({
                 loading: false,
@@ -35,6 +36,9 @@ class PacienteComponent extends React.Component {
             //console.log(e);
           });
     }
+    ChangeKeywordHandler= (event) => {
+        this.setState({keyword: event.target.value})
+      }
     componentDidMount() {
         if (localStorage.getItem("isLandingPage")) {
             localStorage.removeItem("isLandingPage");
@@ -75,8 +79,8 @@ class PacienteComponent extends React.Component {
                         <div className="container-modulos">
                             <NavLink style={{marginBottom:"1%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
                             <div className="search-bar">
-                                <input name="search" type="text" required value={this.state.keyword} onChange={this.onChangeKeyword}/>
-                                <button className="search-btn" type="button">
+                                <input name="search" type="text" value={this.state.keyword} onChange={this.ChangeKeywordHandler}/>
+                                <button className="search-btn" type="button" onClick={this.onClickKeyword}>
                                     <span>Search</span>
                                 </button>
                             </div>
