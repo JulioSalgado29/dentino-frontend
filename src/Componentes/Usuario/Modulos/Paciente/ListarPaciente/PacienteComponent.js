@@ -16,29 +16,49 @@ class PacienteComponent extends React.Component {
             currentUser: UsuarioService.getCurrentUser(),
             datos: [],
             keyword: "",
+            antkeyword: "",
             currentPage: 1,
             postsPerPage: 5,
             loading: false
         }
-        this.onClickKeyword = this.onClickKeyword.bind(this);
+        this.buscarKeyword = this.buscarKeyword.bind(this);
         this.ChangeKeywordHandler = this.ChangeKeywordHandler.bind(this);
     }
-    onClickKeyword= (event) => {
-        this.setState({loading:true});
-        UsuarioService.listar_pacientes(this.state.keyword)
-          .then((response) => {
-            this.setState({
-                loading: false,
-                datos: response
+    buscarKeyword= (evento) => {
+        if(this.state.keyword!==this.state.antkeyword){
+            this.setState({loading:true});
+            UsuarioService.listar_pacientes(this.state.keyword)
+            .then((response) => {
+                this.setState({
+                    antkeyword: this.state.keyword,
+                    loading: false,
+                    datos: response
+                });
+            })
+            .catch((e) => {
+                //console.log(e);
             });
-          })
-          .catch((e) => {
-            //console.log(e);
-          });
+        }
     }
     ChangeKeywordHandler= (event) => {
         this.setState({keyword: event.target.value})
-      }
+    }
+    onKeyPress = (event) => {
+        if(event.key === 'Enter' && this.state.keyword!==this.state.antkeyword){
+            this.setState({loading:true});
+            UsuarioService.listar_pacientes(this.state.keyword)
+            .then((response) => {
+                this.setState({
+                    antkeyword: this.state.keyword,
+                    loading: false,
+                    datos: response
+                });
+            })
+            .catch((e) => {
+                //console.log(e);
+            });
+          }
+    }
     componentDidMount() {
         if (localStorage.getItem("isLandingPage")) {
             localStorage.removeItem("isLandingPage");
@@ -79,8 +99,8 @@ class PacienteComponent extends React.Component {
                         <div className="container-modulos">
                             <NavLink style={{marginBottom:"1%"}} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
                             <div className="search-bar">
-                                <input name="search" type="text" value={this.state.keyword} onChange={this.ChangeKeywordHandler}/>
-                                <button className="search-btn" type="button" onClick={this.onClickKeyword}>
+                                <input name="search" type="text" value={this.state.keyword} onChange={this.ChangeKeywordHandler} onKeyPress={this.onKeyPress}/>
+                                <button className="search-btn" type="button" onClick={this.buscarKeyword}>
                                     <span>Search</span>
                                 </button>
                             </div>
