@@ -57,7 +57,7 @@ class AduanaComponent extends React.Component{
         window.location.reload(false);
     }
     ChangeCodigoHandler= (event) => {
-        this.setState({codigo: event.target.value})
+        this.setState({codigo: event.target.value.toUpperCase()})
         if(event.target.value!==""){
             this.setState({isNotNullInput: true})
         }
