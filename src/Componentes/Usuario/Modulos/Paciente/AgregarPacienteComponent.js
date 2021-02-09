@@ -223,7 +223,6 @@ class AgregarPacienteComponent extends React.Component{
                               <span className="login100-form-title">Registrar Paciente</span>
                                 <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.saveUsuario} ref={c => {this.form = c;}}>
                                   <div className="container container-register">
-
                                       <div className="wrap-input100 validate-input">
                                           <Input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} 
                                           onChange={this.ChangeNombreHandler} validations={[required,nombre]}/>
@@ -297,6 +296,32 @@ class AgregarPacienteComponent extends React.Component{
                                             <span className="symbol-input100">
                                                 <i className="fas fa-id-card" aria-hidden="true"></i>
                                             </span>
+                                    </div>
+                                  </div>
+                                  <div className="container container-register">
+                                    <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button" 
+                                    aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px"}}>Antecedentes</a>
+                                  </div>
+                                  
+                                  {/* collapse or collapse show*/}
+                                  <div className="collapse" id="collapseInputs" style={{width:"-webkit-fill-available",marginTop:"3%"}}>
+                                    <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} 
+                                            onChange={this.ChangeNombreHandler} validations={[required,nombre]}/>
+                                            <span className="symbol-input100">
+                                              <i className="fa fa-N" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+
+                                        <div className="wrap-input100 validate-input">
+                                            <Input className="input100-julio" type="text" placeholder="Apellidos" value={this.state.apellido} 
+                                            onChange={this.ChangeApellidoHandler} validations={[required,apellido]}/>
+                                            <span className="focus-input100"></span>
+                                            <span className="symbol-input100">
+                                              <i className="fa fa-A" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                   </div>
                                     

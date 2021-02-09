@@ -62,7 +62,7 @@ const Lista = ({datos}) => {
                         <td className="row1" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.telefono}</td>
                         <td style={{display:"grid",border:"none"}}>
                             <Link to="/pacientes-edit" className="btn btn-primary" style={{padding:"6px 20px 6px 20px"}} onClick={EnviarPaciente.bind(this,dato)}>Editar</Link>
-                            <Link to="/pacientes-info" className="btn btn-warning btn-infor" style={{padding:"6px 20px 6px 20px"}} onClick={EnviarPaciente.bind(this,dato)}>Info</Link>
+                            <Link to="/pacientes-info" className="btn btn-warning" style={{padding:"6px 20px 6px 20px", color:"white"}} onClick={EnviarPaciente.bind(this,dato)}>Info</Link>
                             <Button className="btn btn-danger" onClick={Eliminar.bind(this,dato.id,dato.dni)}>Eliminar</Button>
                         </td>
                     </tr>))}

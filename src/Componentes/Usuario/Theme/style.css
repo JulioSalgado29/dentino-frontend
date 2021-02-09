@@ -156,3 +156,18 @@
 		background: #f1f1f1;
 	}
 }
+
+.border-color-an{
+	animation: colorchange 7s;
+  	animation-iteration-count:infinite;
+}
+@keyframes colorchange
+    {
+      0%   {border:3px solid red}
+      16%   {border:3px solid orange}
+      32% {border:3px solid yellow}
+	  48% {border:3px solid green}
+	  64% {border:3px solid blue}
+	  80% {border:3px solid violet}
+	  96% {border:3px solid red}
+    }
