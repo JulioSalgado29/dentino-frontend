@@ -233,7 +233,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 20px 21px 0px 21px;
+  padding: 20px 21px 20px 21px;
 }
 
 /*------------------------------------------------------------------
