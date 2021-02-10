@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.4dc0b845.chunk.css",
+    "main.css": "/static/css/main.7af90bbc.chunk.css",
     "main.js": "/static/js/main.2c1f6e2a.chunk.js",
     "main.js.map": "/static/js/main.2c1f6e2a.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.b26f6d7d.js",
@@ -10,7 +10,7 @@
     "static/js/3.a1ddb413.chunk.js": "/static/js/3.a1ddb413.chunk.js",
     "static/js/3.a1ddb413.chunk.js.map": "/static/js/3.a1ddb413.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.4dc0b845.chunk.css.map": "/static/css/main.4dc0b845.chunk.css.map",
+    "static/css/main.7af90bbc.chunk.css.map": "/static/css/main.7af90bbc.chunk.css.map",
     "static/js/2.b771bb03.chunk.js.LICENSE.txt": "/static/js/2.b771bb03.chunk.js.LICENSE.txt",
     "static/media/Dentino.e113557e.png": "/static/media/Dentino.e113557e.png",
     "static/media/favicon.983d1cbb.png": "/static/media/favicon.983d1cbb.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.b26f6d7d.js",
     "static/js/2.b771bb03.chunk.js",
-    "static/css/main.4dc0b845.chunk.css",
+    "static/css/main.7af90bbc.chunk.css",
     "static/js/main.2c1f6e2a.chunk.js"
   ]
 }
