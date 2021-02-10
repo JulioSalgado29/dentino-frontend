@@ -143,6 +143,15 @@ class EditarPacienteComponent extends React.Component{
           });
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
+            Swal.fire
+            ({title: "Estas seguro de editar al paciente: '" + JSON.parse(localStorage.getItem("dato")).nombre+" "+JSON.parse(localStorage.getItem("dato")).apellido+"'",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33', 
+            confirmButtonText: 'Si',
+            backdrop: 'rgba(100, 100, 43, 0.4)'}).then((result) => {
+            if(result.value){
             UsuarioService.editar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
               this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
             .then(() => {
@@ -150,7 +159,7 @@ class EditarPacienteComponent extends React.Component{
                         ({title: "Paciente actualizado",
                         icon: 'success',
                         confirmButtonColor: '#3085d6',
-                        backdrop: 'rgba(61, 0, 0, 0.4)'}).then((result) => {
+                        backdrop: 'rgba(0, 61, 0, 0.4)'}).then((result) => {
                             if(result.value){
                               this.props.history.push('/pacientes')
                             }
@@ -188,11 +197,17 @@ class EditarPacienteComponent extends React.Component{
                 icon: 'error',
                 backdrop: 'rgba(61, 0, 0, 0.4)'})
             }.bind(this))
-          }else {
+          }
+          else{
             this.setState({
               loading: false
             });
-        }
+          }})
+      }else {
+        this.setState({
+        loading: false
+        });
+      }
     }
     ChangeNombreHandler= (event) => {
       this.setState({nombre: event.target.value})

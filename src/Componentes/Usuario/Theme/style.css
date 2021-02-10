@@ -158,7 +158,7 @@
 }
 
 .border-color-an{
-	animation: colorchange 7s;
+	animation: colorchange 3s;
   	animation-iteration-count:infinite;
 }
 @keyframes colorchange
@@ -169,5 +169,100 @@
 	  48% {border:3px solid green}
 	  64% {border:3px solid blue}
 	  80% {border:3px solid violet}
-	  96% {border:3px solid red}
+	  100% {border:3px solid red}
     }
+	.container-yesorno {
+		background-color: white;
+		height: 45px;
+		width: 100%;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 2px 2px 8px -2px #444444;
+	}
+	input[type="radio"] {
+		display: none;
+	}
+	.label1{
+		display: inline-block;
+		height: 180px;
+		width: 50%;
+		background: linear-gradient(
+					to bottom,
+					white 0, white 90px,
+					blue 90px, blue 180px
+		);
+		top: 0;
+		color: #2c2c2c;
+		transition: 0.5s;
+	}
+	.label2 {
+		display: inline-block;
+		height: 180px;
+		width: 50%;
+		background: linear-gradient(
+					to bottom,
+					white 0, white 90px,
+					#2c2c2c 90px, #2c2c2c 180px
+		);
+		top: 0;
+		color: #2c2c2c;
+		transition: 0.5s;
+		right: 0;
+	}
+
+	.label-1{
+		display: inline-block;
+		height: 180px;
+		width: 33.3%;
+		background: linear-gradient(
+					to bottom,
+					white 0, white 90px,
+					blue 90px, blue 180px
+		);
+		top: 0;
+		color: #2c2c2c;
+		transition: 0.5s;
+	}
+	.label-2 {
+		display: inline-block;
+		height: 180px;
+		width: 33.3%;
+		background: linear-gradient(
+					to bottom,
+					white 0, white 90px,
+					#2c2c2c 90px,#2c2c2c 180px
+		);
+		top: 0;
+		color: #2c2c2c;
+		transition: 0.5s;
+		right: 0;
+	}
+	.label-3 {
+		display: inline-block;
+		height: 180px;
+		width: 33.403%;
+		background: linear-gradient(
+					to bottom,
+					white 0, white 90px,
+					slategray 90px, slategray 180px
+		);
+		top: 0;
+		color: #2c2c2c;
+		transition: 0.5s;
+		right: 0;
+	}
+	.span-class {
+		display: flex;
+		height: 45px;
+		width: 130px;
+		justify-content: center;
+		align-items: center;
+		font-family: sans-serif;
+		font-weight: bold;
+		font-size: 22px;
+	}
+	input:checked + label {
+		background-position: 0 -90px;
+		color: white;
+		transition: 0.7s;
+	}

@@ -8,9 +8,9 @@ import './lista.css';
 function EnviarPaciente(dato) {
     localStorage.setItem("dato", JSON.stringify(dato));
 }
-function Eliminar(persona_id,dni) {
+function Eliminar(persona_id,nombre,apellido) {
     Swal.fire
-        ({title: "Estas seguro de eliminar al paciente de DNI: '" + dni +"'",
+        ({title: "Estas seguro de eliminar al paciente: '" + nombre +" "+apellido+ "'",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -63,7 +63,7 @@ const Lista = ({datos}) => {
                         <td style={{display:"grid",border:"none"}}>
                             <Link to="/pacientes-edit" className="btn btn-primary" style={{padding:"6px 20px 6px 20px"}} onClick={EnviarPaciente.bind(this,dato)}>Editar</Link>
                             <Link to="/pacientes-info" className="btn btn-warning" style={{padding:"6px 20px 6px 20px", color:"white"}} onClick={EnviarPaciente.bind(this,dato)}>Info</Link>
-                            <Button className="btn btn-danger" onClick={Eliminar.bind(this,dato.id,dato.dni)}>Eliminar</Button>
+                            <Button className="btn btn-danger" onClick={Eliminar.bind(this,dato.id,dato.nombre,dato.apellido)}>Eliminar</Button>
                         </td>
                     </tr>))}
                 </tbody>
