@@ -88,22 +88,22 @@ class AgregarPacienteComponent extends React.Component{
 
             tratamientoMedico: '',
             alergias: '',
-            presionArterial: '',
             problemasCardiacos: '',
             diabetes: '',
-            sangrado: '',
-            fuma: '',
+            fumaHC: '',
+            fumaF: '',
 
-            loading: false,
-            message: '',
-            isFocus: false,
             tratamientoMedicoB: 'no',
             alergiasB: 'no',
             presionB: 'normal',
             problemasB: 'no',
             diabetesB: 'no',
-            sangradoB: 'no',
+            sangradoB: false,
             fumaB: 'no',
+
+            loading: false,
+            message: '',
+            isFocus: false,
         }
         this.ChangeNombreHandler = this.ChangeNombreHandler.bind(this);
         this.ChangeApellidoHandler = this.ChangeApellidoHandler.bind(this);
@@ -114,6 +114,9 @@ class AgregarPacienteComponent extends React.Component{
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
         this.ChangeDniHandler = this.ChangeDniHandler.bind(this);
         this.ChangeTratamientoMedicoHandler = this.ChangeTratamientoMedicoHandler.bind(this);
+        this.ChangeAlergiasHandler = this.ChangeAlergiasHandler.bind(this);
+        this.ChangeFumaHCHandler = this.ChangeFumaHCHandler.bind(this);
+        this.ChangeFumaFHandler = this.ChangeFumaFHandler.bind(this);
 
         this.ChangeOnTHandler = this.ChangeOnTHandler.bind(this);
         this.ChangeOffTHandler = this.ChangeOffTHandler.bind(this);
@@ -132,7 +135,7 @@ class AgregarPacienteComponent extends React.Component{
         this.ChangeNormalPHandler = this.ChangeNormalPHandler.bind(this);
         this.ChangeAltaPHandler = this.ChangeAltaPHandler.bind(this);
 
-        this.saveUsuario = this.saveUsuario.bind(this);
+        this.savePaciente = this.savePaciente.bind(this);
         this.cancel = this.cancel.bind(this);
 
         this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -148,7 +151,7 @@ class AgregarPacienteComponent extends React.Component{
       }
   }
 
-    saveUsuario(e){
+    savePaciente(e){
         e.preventDefault();
         this.setState({
             message: "",
@@ -157,10 +160,19 @@ class AgregarPacienteComponent extends React.Component{
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
             UsuarioService.registrar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
-              this.state.direccion, this.state.telefono, this.state.genero,this.state.dni)
+              this.state.direccion, this.state.telefono, this.state.genero,this.state.dni,this.state.tratamientoMedicoB,this.state.tratamientoMedico,
+              this.state.alergiasB,this.state.alergias,this.state.presionB,this.state.problemasB,this.state.problemasCardiacos,
+              this.state.diabetesB,this.state.diabetes,this.state.sangradoB,this.state.fumaB,this.state.fumaHC,this.state.fumaF)
             .then(() => {
-              this.props.history.push('/pacientes')
-              window.location.reload();
+              Swal.fire
+              ({title: "El Paciente '" + this.state.nombre +" "+this.state.apellido+ "' fue registrado con éxito",
+              icon: 'success',
+              confirmButtonColor: '#3085d6',
+              backdrop: 'rgba(0, 61, 0, 0.4)'}).then((result) => {
+                if(result.value){
+                  this.props.history.push('/pacientes')
+                }
+              })
             },
             error => {
               if(error.response.status === 401){
@@ -232,20 +244,17 @@ class AgregarPacienteComponent extends React.Component{
     ChangeAlergiasHandler= (event) => {
       this.setState({alergias: event.target.value})
     }
-    ChangePresionArterialHandler= (event) => {
-      this.setState({presionArterial: event.target.value})
-    }
     ChangeProblemasCardiacosHandler= (event) => {
       this.setState({problemasCardiacos: event.target.value})
     }
     ChangeDiabetesHandler= (event) => {
       this.setState({diabetes: event.target.value})
     }
-    ChangeSangradoHandler= (event) => {
-      this.setState({sangrado: event.target.value})
+    ChangeFumaHCHandler= (event) => {
+      this.setState({fumaHC: event.target.value})
     }
-    ChangeFumaHandler= (event) => {
-      this.setState({fuma: event.target.value})
+    ChangeFumaFHandler= (event) => {
+      this.setState({fumaF: event.target.value})
     }
 
     ChangeOnTHandler= () => {
@@ -282,12 +291,10 @@ class AgregarPacienteComponent extends React.Component{
       this.setState({diabetesB: "no"})
     }
     ChangeOnSHandler= () => {
-      this.setState({sangradoB: "si"})
-      this.setState({sangrado: "si"})
+      this.setState({sangradoB: true})
     }
     ChangeOffSHandler= () => {
-      this.setState({sangradoB: "no"})
-      this.setState({sangrado: "no"})
+      this.setState({sangradoB: false})
     }
     ChangeOnFHandler= () => {
       this.setState({fumaB: "si"})
@@ -322,6 +329,9 @@ class AgregarPacienteComponent extends React.Component{
       }
     }
     render (){
+      //console.log(this.state.tratamientoMedicoB,this.state.alergiasB,this.state.presionB,this.state.problemasB,this.state.sangradoB,this.state.fumaB)
+      //console.log(this.state.tratamientoMedico,this.state.alergias,this.state.problemasCardiacos,this.state.sangrado,this.state.fuma)
+      console.log(this.state.sangradoB);
       localStorage.setItem("paciente",true);
         return(
                 <div className="wrapper">
@@ -331,7 +341,7 @@ class AgregarPacienteComponent extends React.Component{
                         <div className="container-modulos">
                             <div className="wrap-register200" style={{width:''}}>
                               <span className="login100-form-title">Registrar Paciente</span>
-                                <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.saveUsuario} ref={c => {this.form = c;}}>
+                                <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.savePaciente} ref={c => {this.form = c;}}>
                                   <div className="container container-register">
                                       <div className="wrap-input100 validate-input">
                                           <Input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} 
@@ -410,7 +420,7 @@ class AgregarPacienteComponent extends React.Component{
                                   </div>
                                   <div className="container container-register">
                                     <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button" 
-                                    aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px"}}>Antecedentes</a>
+                                    aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px"}}>Antecedentes Médicos</a>
                                   </div>
                                   
                                   {/* collapse or collapse show*/}
@@ -540,12 +550,12 @@ class AgregarPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>Sangrado Excesivo por Heridas o Exodoncias</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio6" id="opt12" onChange={this.ChangeOnSHandler} checked={this.state.sangradoB==="si"}/>
+                                      <input type="radio" name="radio6" id="opt12" onChange={this.ChangeOnSHandler} checked={this.state.sangradoB===true}/>
                                       <label for="opt12" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio6" id="opt13" onChange={this.ChangeOffSHandler} checked={this.state.sangradoB==="no"}/>
+                                      <input type="radio" name="radio6" id="opt13" onChange={this.ChangeOffSHandler} checked={this.state.sangradoB===false}/>
                                       <label for="opt13" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
@@ -566,10 +576,28 @@ class AgregarPacienteComponent extends React.Component{
                                       </label>
                                     </div>
 
+                                    {(this.state.fumaB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Hace Cuánto" value={this.state.fumaHC} 
+                                          onChange={this.ChangeFumaHCHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fa fa-clock-o" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Frecuencia" value={this.state.fumaF} 
+                                          onChange={this.ChangeFumaFHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-smoking" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
                                   </div>
                                     
                                   <div className="container-login100-form-btn">
-                                      <button className="registrar100-form-btn" onClick={this.saveUsuario} style={{maxWidth:"1140px"}}
+                                      <button className="registrar100-form-btn" onClick={this.savePaciente} style={{maxWidth:"1140px"}}
                                       ref={c => {this.checkBtn = c;}} disabled={this.state.loading}>{this.state.loading && (
                                       <span className="spinner-border spinner-border-sm"></span>)}<b>Registrar</b></button>
                                       <CheckButton style={{ display: "none" }} ref={c => {this.checkBtn = c;}}/>

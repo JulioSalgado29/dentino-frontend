@@ -119,7 +119,7 @@ class EditarPacienteComponent extends React.Component{
         this.ChangeDniHandler = this.ChangeDniHandler.bind(this);
 
 
-        this.editUsuario = this.editUsuario.bind(this);
+        this.editPaciente = this.editPaciente.bind(this);
         this.cancel = this.cancel.bind(this);
 
         this.onMouseEnter = this.onMouseEnter.bind(this);
@@ -135,7 +135,7 @@ class EditarPacienteComponent extends React.Component{
       }
   }
 
-    editUsuario(e){
+    editPaciente(e){
         e.preventDefault();
         this.setState({
             message: "",
@@ -268,7 +268,7 @@ class EditarPacienteComponent extends React.Component{
                         <div className="container-modulos">
                             <div className="wrap-register200" style={{width:''}}>
                               <span className="login100-form-title">Actualizar Paciente</span>
-                                <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.editUsuario} ref={c => {this.form = c;}}>
+                                <Form className="register100-form validate-form" style={{display:"contents"}} onSubmit={this.editPaciente} ref={c => {this.form = c;}}>
                                   <div className="container container-register">
 
                                       <div className="wrap-input100 validate-input">
@@ -347,7 +347,7 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                   </div>
                                   <div className="container-login100-form-btn">
-                                      <button className="registrar100-form-btn" onClick={this.editUsuario} style={{maxWidth:"1140px"}}
+                                      <button className="registrar100-form-btn" onClick={this.editPaciente} style={{maxWidth:"1140px"}}
                                       ref={c => {this.checkBtn = c;}} disabled={this.state.loading}>{this.state.loading && (
                                       <span className="spinner-border spinner-border-sm"></span>)}<b>Actualizar</b></button>
                                       <CheckButton style={{ display: "none" }} ref={c => {this.checkBtn = c;}}/>

@@ -13,7 +13,7 @@ class UsuarioService {
             "direccion": "Heredia586", "telefono": "920691763", "genero": "M" },
             "usuario": {"username": "username","password": "password","fechaCre": "2020-07-10"}
         };
-        const auth = { 
+        const auth = {  
             auth: {username: 'admin',"password": '1234abcd'}
         };
         return axios.post(admin + "/registration", usuario, auth);
@@ -26,16 +26,28 @@ class UsuarioService {
         };
         return axios.post(user + "/registration", usuario);
     }*/
+
     listar_pacientes(keyword){
         return axios.get(paciente + "/buscar",{params: {"keyword": keyword}})
         .then(response =>  response.data);
     }
-    registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni) {
-        const usuario = {
-            "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
-            "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni }
-        };
-        return axios.post(paciente + "/registration", usuario);
+    registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
+        tratamientoMedicoB,tratamientoMedico,alergiasB,alergias,presionB,problemasB,problemasCardiacos,
+        diabetesB,diabetes,sangradoB,fumaB,fumaHC,fumaF) {
+
+            var tratamientoMedicoJson = '{ "tratamientoMedicoB":"'+tratamientoMedicoB+'", "tratamientoMedico":"'+tratamientoMedico+'"}';
+            var alergiasJson = '{ "alergiasB":"'+alergiasB+'", "alergias":"'+alergias+'"}';
+            var problemasCardiacosJson = '{ "problemasB":"'+problemasB+'", "problemasCardiacos":"'+problemasCardiacos+'"}';
+            var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
+            var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
+            const pacienteAux = {
+                "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
+                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
+                "antecedente":{"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
+                "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 
+            };
+
+            return axios.post(paciente + "/registration", pacienteAux);
     }
     editar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, id, dni) {
         const persona = {
