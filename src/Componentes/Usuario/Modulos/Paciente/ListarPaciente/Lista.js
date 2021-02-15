@@ -52,18 +52,18 @@ const Lista = ({datos}) => {
                 <tbody>
                     {datos.map((dato) => (
                     <tr key={dato.id} style={{borderTop:"1px solid #e9ecef",borderBottomWidth:"1px"}}>
-                        <td className="row5" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.id}</td>
-                        <td className="row5" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.dni}</td>
-                        <td style={{textAlign:"center",verticalAlign:"middle"}}>{dato.nombre}</td>
-                        <td style={{textAlign:"center",verticalAlign:"middle"}}>{dato.apellido}</td>
-                        <td className="row3" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.direccion}</td>
-                        <td className="row4" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.email}</td>
-                        <td className="row2" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.fechaNac}</td>
-                        <td className="row1" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.telefono}</td>
+                        <td className="row5" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.id}</td>
+                        <td className="row5" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.dni}</td>
+                        <td style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.nombre}</td>
+                        <td style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.apellido}</td>
+                        <td className="row3" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.direccion}</td>
+                        <td className="row4" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.email}</td>
+                        <td className="row2" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.fechaNac}</td>
+                        <td className="row1" style={{textAlign:"center",verticalAlign:"middle"}}>{dato.persona.telefono}</td>
                         <td style={{display:"grid",border:"none"}}>
                             <Link to="/pacientes-edit" className="btn btn-primary" style={{padding:"6px 20px 6px 20px"}} onClick={EnviarPaciente.bind(this,dato)}>Editar</Link>
                             <Link to="/pacientes-info" className="btn btn-warning" style={{padding:"6px 20px 6px 20px", color:"white"}} onClick={EnviarPaciente.bind(this,dato)}>Info</Link>
-                            <Button className="btn btn-danger" onClick={Eliminar.bind(this,dato.id,dato.nombre,dato.apellido)}>Eliminar</Button>
+                            <Button className="btn btn-danger" onClick={Eliminar.bind(this,dato.persona.id,dato.persona.nombre,dato.persona.apellido)}>Eliminar</Button>
                         </td>
                     </tr>))}
                 </tbody>

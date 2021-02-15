@@ -94,17 +94,15 @@ class EditarPacienteComponent extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            id: JSON.parse(localStorage.getItem("dato")).id,
-            nombre: JSON.parse(localStorage.getItem("dato")).nombre,
-            apellido: JSON.parse(localStorage.getItem("dato")).apellido,
-            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).fechaNac),"yyyy-MM"),
-            email: JSON.parse(localStorage.getItem("dato")).email,
-            direccion: JSON.parse(localStorage.getItem("dato")).direccion,
-            telefono: String(JSON.parse(localStorage.getItem("dato")).telefono),
-            genero: JSON.parse(localStorage.getItem("dato")).genero,
-            username: JSON.parse(localStorage.getItem("dato")).username,
-            password: JSON.parse(localStorage.getItem("dato")).fechaNac,
-            dni: JSON.parse(localStorage.getItem("dato")).dni,
+            id: JSON.parse(localStorage.getItem("dato")).persona.id,
+            nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
+            apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
+            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM"),
+            email: JSON.parse(localStorage.getItem("dato")).persona.email,
+            direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
+            telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
+            genero: JSON.parse(localStorage.getItem("dato")).persona.genero,
+            dni: JSON.parse(localStorage.getItem("dato")).persona.dni,
             loading: false,
             message: "",
             isFocus: false,
@@ -256,10 +254,6 @@ class EditarPacienteComponent extends React.Component{
     }
 
     render (){
-      if(JSON.parse(localStorage.getItem("dato"))===null){
-        console.log("hola")
-      }
-      localStorage.setItem("paciente",true);
         return(
                 <div className="wrapper">
                     <HeaderComponent />
