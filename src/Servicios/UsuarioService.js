@@ -41,7 +41,7 @@ class UsuarioService {
             var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
             var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
             const pacienteAux = {
-                "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
+                "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
                 "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
                 "antecedente":{"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
                 "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 
@@ -59,7 +59,7 @@ class UsuarioService {
             var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
             var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
             const pacienteAux = {
-                "persona": { "id":id, "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
+                "persona": { "id":id, "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
                 "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
                 "antecedente":{"id":antecedenteId,"codigoPaciente":codigoPaciente,"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
                 "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 

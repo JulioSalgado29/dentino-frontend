@@ -316,10 +316,10 @@ class AgregarPacienteComponent extends React.Component{
     onFocus(e) {
       /* eslint-disable */
       this.state.isFocus=true;
-      e.currentTarget.type = "month";
+      e.currentTarget.type = "date";
     }
     onMouseEnter (e){
-      e.currentTarget.type = "month";
+      e.currentTarget.type = "date";
     }
     onMouseOut (e){
       if(this.state.isFocus===false){
@@ -358,7 +358,7 @@ class AgregarPacienteComponent extends React.Component{
                                   <div className="container container-register">
                                       <div className="wrap-input100 validate-input">
                                           <Input className="input100-julio textbox-n" type="text" placeholder="Fecha de Nacimiento"
-                                          value={this.state.fechaNac} onChange={this.ChangeFechaNacHandler} validations={[required]}
+                                          value={this.state.fechaNac} onChange={this.ChangeFechaNacHandler}
                                           onFocus={this.onFocus} onBlur={this.onBlur} onMouseEnter={this.onMouseEnter} onMouseOut={this.onMouseOut}/>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
@@ -367,7 +367,7 @@ class AgregarPacienteComponent extends React.Component{
                                       </div>
                                       <div className="wrap-input100 validate-input">
                                           <Input className="input100-julio" type="text" placeholder="Email" value={this.state.email} 
-                                          onChange={this.ChangeEmailHandler} validations={[required,email]}/>
+                                          onChange={this.ChangeEmailHandler} validations={[email]}/>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
                                               <i className="fa fa-envelope" aria-hidden="true"></i>
@@ -388,7 +388,7 @@ class AgregarPacienteComponent extends React.Component{
                                       </div>
                                       <div className="wrap-input100 validate-input">
                                           <Input className="input100-julio" type="text" name="email" placeholder="Teléfono"  value={this.state.telefono} 
-                                          onChange={this.ChangeTelefonoHandler} validations={[required,telefono]}/>
+                                          onChange={this.ChangeTelefonoHandler} validations={[telefono]}/>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
                                               <i className="fa fa-phone" aria-hidden="true"></i>
@@ -398,7 +398,7 @@ class AgregarPacienteComponent extends React.Component{
                                   <div className="container container-register">
                                     <div className="wrap-input100 validate-input">
                                             <Input className="input100-julio" type="text" name="pass" placeholder="Dirección" value={this.state.direccion} 
-                                            onChange={this.ChangeDireccionHandler} validations={[required]}/>
+                                            onChange={this.ChangeDireccionHandler}/>
                                             <span className="focus-input100"></span>
                                             <span className="symbol-input100">
                                                 <i className="fa fa-home" aria-hidden="true"></i>
@@ -406,7 +406,7 @@ class AgregarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="wrap-input100 validate-input">
                                             <Input className="input100-julio" type="text" name="pass" placeholder="DNI" value={this.state.dni} 
-                                            onChange={this.ChangeDniHandler} validations={[required,dni]}/>
+                                            onChange={this.ChangeDniHandler} validations={[dni]}/>
                                             <span className="focus-input100"></span>
                                             <span className="symbol-input100">
                                                 <i className="fas fa-id-card" aria-hidden="true"></i>
