@@ -361,8 +361,6 @@ class EditarPacienteComponent extends React.Component{
     }
 
     render (){
-      console.log(JSON.parse(localStorage.getItem("dato")))
-      console.log(JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.alergias))
         return(
                 <div className="wrapper">
                     <HeaderComponent />
