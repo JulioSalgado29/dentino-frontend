@@ -4,7 +4,7 @@ import Sidebar from '../../../Complementos/SidebarComponent';
   function format(x, y) {
     var z = {
         M: x.getMonth() + 1,
-        d: x.getDate() + 2,
+        d: x.getDate() + 1,
         h: x.getHours(),
         m: x.getMinutes(),
         s: x.getSeconds()
