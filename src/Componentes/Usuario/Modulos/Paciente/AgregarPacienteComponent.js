@@ -298,11 +298,9 @@ class AgregarPacienteComponent extends React.Component{
     }
     ChangeOnFHandler= () => {
       this.setState({fumaB: "si"})
-      this.setState({fuma: "si"})
     }
     ChangeOffFHandler= () => {
       this.setState({fumaB: "no"})
-      this.setState({fuma: "no"})
     }
 
     cancel(){
@@ -329,9 +327,6 @@ class AgregarPacienteComponent extends React.Component{
       }
     }
     render (){
-      //console.log(this.state.tratamientoMedicoB,this.state.alergiasB,this.state.presionB,this.state.problemasB,this.state.sangradoB,this.state.fumaB)
-      //console.log(this.state.tratamientoMedico,this.state.alergias,this.state.problemasCardiacos,this.state.sangrado,this.state.fuma)
-      console.log(this.state.sangradoB);
       localStorage.setItem("paciente",true);
         return(
                 <div className="wrapper">

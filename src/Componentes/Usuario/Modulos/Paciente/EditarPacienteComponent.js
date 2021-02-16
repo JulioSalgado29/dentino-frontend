@@ -103,6 +103,24 @@ class EditarPacienteComponent extends React.Component{
             telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
             genero: JSON.parse(localStorage.getItem("dato")).persona.genero,
             dni: JSON.parse(localStorage.getItem("dato")).persona.dni,
+            codigoPaciente  : JSON.parse(localStorage.getItem("dato")).codigo,
+
+            antecedenteId: JSON.parse(localStorage.getItem("dato")).antecedente.id,
+            tratamientoMedico: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.tratamientoMedico).tratamientoMedico,
+            alergias: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.alergias).alergias,
+            problemasCardiacos: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.problemasCardiacos).problemasCardiacos,
+            diabetes: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.diabetes).diabetes,
+            fumaHC: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.fuma).fumaHC,
+            fumaF: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.fuma).fumaF,
+
+            tratamientoMedicoB: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.tratamientoMedico).tratamientoMedicoB,
+            alergiasB: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.alergias).alergiasB,
+            presionB: JSON.parse(localStorage.getItem("dato")).antecedente.presionArterial,
+            problemasB: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.problemasCardiacos).problemasB,
+            diabetesB: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.diabetes).diabetesB,
+            sangradoB: JSON.parse(localStorage.getItem("dato")).antecedente.sangrado,
+            fumaB: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.fuma).fumaB,
+
             loading: false,
             message: "",
             isFocus: false,
@@ -115,7 +133,27 @@ class EditarPacienteComponent extends React.Component{
         this.ChangeTelefonoHandler = this.ChangeTelefonoHandler.bind(this);
         this.ChangeGeneroHandler = this.ChangeGeneroHandler.bind(this);
         this.ChangeDniHandler = this.ChangeDniHandler.bind(this);
+        this.ChangeTratamientoMedicoHandler = this.ChangeTratamientoMedicoHandler.bind(this);
+        this.ChangeAlergiasHandler = this.ChangeAlergiasHandler.bind(this);
+        this.ChangeFumaHCHandler = this.ChangeFumaHCHandler.bind(this);
+        this.ChangeFumaFHandler = this.ChangeFumaFHandler.bind(this);
 
+        this.ChangeOnTHandler = this.ChangeOnTHandler.bind(this);
+        this.ChangeOffTHandler = this.ChangeOffTHandler.bind(this);
+        this.ChangeOnAHandler = this.ChangeOnAHandler.bind(this);
+        this.ChangeOffAHandler = this.ChangeOffAHandler.bind(this);
+        this.ChangeOnPHandler = this.ChangeOnPHandler.bind(this);
+        this.ChangeOffPHandler = this.ChangeOffPHandler.bind(this);
+        this.ChangeOnDHandler = this.ChangeOnDHandler.bind(this);
+        this.ChangeOffDHandler = this.ChangeOffDHandler.bind(this);
+        this.ChangeOnSHandler = this.ChangeOnSHandler.bind(this);
+        this.ChangeOffSHandler = this.ChangeOffSHandler.bind(this);
+        this.ChangeOnFHandler = this.ChangeOnFHandler.bind(this);
+        this.ChangeOffFHandler = this.ChangeOffFHandler.bind(this);
+
+        this.ChangeBajaPHandler = this.ChangeBajaPHandler.bind(this);
+        this.ChangeNormalPHandler = this.ChangeNormalPHandler.bind(this);
+        this.ChangeAltaPHandler = this.ChangeAltaPHandler.bind(this);
 
         this.editPaciente = this.editPaciente.bind(this);
         this.cancel = this.cancel.bind(this);
@@ -142,7 +180,7 @@ class EditarPacienteComponent extends React.Component{
           this.form.validateAll();
           if (this.checkBtn.context._errors.length === 0){
             Swal.fire
-            ({title: "Estas seguro de editar al paciente: '" + JSON.parse(localStorage.getItem("dato")).nombre+" "+JSON.parse(localStorage.getItem("dato")).apellido+"'",
+            ({title: "Estas seguro de editar al paciente: '" + JSON.parse(localStorage.getItem("dato")).persona.nombre+" "+JSON.parse(localStorage.getItem("dato")).persona.apellido+"'",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -150,8 +188,10 @@ class EditarPacienteComponent extends React.Component{
             confirmButtonText: 'Si',
             backdrop: 'rgba(100, 100, 43, 0.4)'}).then((result) => {
             if(result.value){
-            UsuarioService.editar_paciente(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
-              this.state.direccion, this.state.telefono, this.state.genero,this.state.id,this.state.dni)
+            UsuarioService.editar_paciente(this.state.id,this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac, 
+              this.state.direccion, this.state.telefono, this.state.genero,this.state.dni,this.state.antecedenteId,this.state.codigoPacientew,
+              this.state.tratamientoMedicoB,this.state.tratamientoMedico,this.state.alergiasB,this.state.alergias,this.state.presionB,this.state.problemasB,this.state.problemasCardiacos,
+              this.state.diabetesB,this.state.diabetes,this.state.sangradoB,this.state.fumaB,this.state.fumaHC,this.state.fumaF)
             .then(() => {
               Swal.fire
                         ({title: "Paciente actualizado",
@@ -231,6 +271,73 @@ class EditarPacienteComponent extends React.Component{
     ChangeDniHandler= (event) => {
       this.setState({dni: event.target.value})
     }
+
+    ChangeTratamientoMedicoHandler= (event) => {
+      this.setState({tratamientoMedico: event.target.value})
+    }
+    ChangeAlergiasHandler= (event) => {
+      this.setState({alergias: event.target.value})
+    }
+    ChangeProblemasCardiacosHandler= (event) => {
+      this.setState({problemasCardiacos: event.target.value})
+    }
+    ChangeDiabetesHandler= (event) => {
+      this.setState({diabetes: event.target.value})
+    }
+    ChangeFumaHCHandler= (event) => {
+      this.setState({fumaHC: event.target.value})
+    }
+    ChangeFumaFHandler= (event) => {
+      this.setState({fumaF: event.target.value})
+    }
+
+    ChangeOnTHandler= () => {
+      this.setState({tratamientoMedicoB: "si"})
+    }
+    ChangeOffTHandler= () => {
+      this.setState({tratamientoMedicoB: "no"})
+    }
+    ChangeOnAHandler= () => {
+      this.setState({alergiasB: "si"})
+    }
+    ChangeOffAHandler= () => {
+      this.setState({alergiasB: "no"})
+    }
+    ChangeBajaPHandler= () => {
+      this.setState({presionB: "baja"})
+    }
+    ChangeNormalPHandler= () => {
+      this.setState({presionB: "normal"})
+    }
+    ChangeAltaPHandler= () => {
+      this.setState({presionB: "alta"})
+    }
+    ChangeOnPHandler= () => {
+      this.setState({problemasB: "si"})
+    }
+    ChangeOffPHandler= () => {
+      this.setState({problemasB: "no"})
+    }
+    ChangeOnDHandler= () => {
+      this.setState({diabetesB: "si"})
+    }
+    ChangeOffDHandler= () => {
+      this.setState({diabetesB: "no"})
+    }
+    ChangeOnSHandler= () => {
+      this.setState({sangradoB: true})
+    }
+    ChangeOffSHandler= () => {
+      this.setState({sangradoB: false})
+    }
+    ChangeOnFHandler= () => {
+      this.setState({fumaB: "si"})
+    }
+    ChangeOffFHandler= () => {
+      this.setState({fumaB: "no"})
+    }
+
+
     cancel(){
         this.props.history.push('/pacientes')
     }
@@ -254,6 +361,8 @@ class EditarPacienteComponent extends React.Component{
     }
 
     render (){
+      console.log(JSON.parse(localStorage.getItem("dato")))
+      console.log(JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.alergias))
         return(
                 <div className="wrapper">
                     <HeaderComponent />
@@ -340,6 +449,184 @@ class EditarPacienteComponent extends React.Component{
                                             </span>
                                     </div>
                                   </div>
+                                  <div className="container container-register">
+                                    <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button" 
+                                    aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px"}}>Antecedentes Médicos</a>
+                                  </div>
+                                  
+                                  {/* collapse or collapse show*/}
+                                  <div className="collapse" id="collapseInputs" style={{width:"-webkit-fill-available",marginTop:"1%"}}>
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Se encuentra en tratamiento medico?</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio" id="opt1" onChange={this.ChangeOnTHandler} checked={this.state.tratamientoMedicoB==="si"}/>
+                                      <label for="opt1" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio" id="opt2" onChange={this.ChangeOffTHandler} checked={this.state.tratamientoMedicoB==="no"}/>
+                                      <label for="opt2" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+                                    {(this.state.tratamientoMedicoB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="¿Tiene o ha tenido?" value={this.state.tratamientoMedico} 
+                                          onChange={this.ChangeTratamientoMedicoHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-hand-holding-medical" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Alergias?</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio2" id="opt3" onChange={this.ChangeOnAHandler} checked={this.state.alergiasB==="si"}/>
+                                      <label for="opt3" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio2" id="opt4" onChange={this.ChangeOffAHandler} checked={this.state.alergiasB==="no"}/>
+                                      <label for="opt4" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+                                    {(this.state.alergiasB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Especifique" value={this.state.alergias} 
+                                          onChange={this.ChangeAlergiasHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-head-side-cough" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>Presión Arterial</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio3" id="opt5" onChange={this.ChangeBajaPHandler} checked={this.state.presionB==="baja"}/>
+                                      <label for="opt5" className="label-1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">BAJA</span>
+                                      </label>
+
+                                      <input type="radio" name="radio3" id="opt6" onChange={this.ChangeNormalPHandler} checked={this.state.presionB==="normal"}/>
+                                      <label for="opt6" className="label-2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NORMAL</span>
+                                      </label>
+
+                                      <input type="radio" name="radio3" id="opt7" onChange={this.ChangeAltaPHandler} checked={this.state.presionB==="alta"}/>
+                                      <label for="opt7" className="label-3" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">ALTA</span>
+                                      </label>
+                                    </div>
+
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Problemas Cardíacos?</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio4" id="opt8" onChange={this.ChangeOnPHandler} checked={this.state.problemasB==="si"}/>
+                                      <label for="opt8" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio4" id="opt9" onChange={this.ChangeOffPHandler} checked={this.state.problemasB==="no"}/>
+                                      <label for="opt9" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+                                    {(this.state.problemasB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Especifique" value={this.state.problemasCardiacos} 
+                                          onChange={this.ChangeProblemasCardiacosHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-heartbeat" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Diabetes?</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio5" id="opt10" onChange={this.ChangeOnDHandler} checked={this.state.diabetesB==="si"}/>
+                                      <label for="opt10" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio5" id="opt11" onChange={this.ChangeOffDHandler} checked={this.state.diabetesB==="no"}/>
+                                      <label for="opt11" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+                                    {(this.state.diabetesB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Especifique" value={this.state.diabetes} 
+                                          onChange={this.ChangeDiabetesHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-syringe" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>Sangrado Excesivo por Heridas o Exodoncias</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio6" id="opt12" onChange={this.ChangeOnSHandler} checked={this.state.sangradoB===true}/>
+                                      <label for="opt12" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio6" id="opt13" onChange={this.ChangeOffSHandler} checked={this.state.sangradoB===false}/>
+                                      <label for="opt13" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+
+                                    <div className="wrap-input100 validate-input">
+                                      <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Fuma?</label>
+                                    </div>
+                                    <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
+                                      <input type="radio" name="radio7" id="opt14" onChange={this.ChangeOnFHandler} checked={this.state.fumaB==="si"}/>
+                                      <label for="opt14" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">SI</span>
+                                      </label>
+
+                                      <input type="radio" name="radio7" id="opt15" onChange={this.ChangeOffFHandler} checked={this.state.fumaB==="no"}/>
+                                      <label for="opt15" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                          <span className="span-class">NO</span>
+                                      </label>
+                                    </div>
+
+                                    {(this.state.fumaB==="si" && 
+                                      <div className="container container-register">
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Hace Cuánto" value={this.state.fumaHC} 
+                                          onChange={this.ChangeFumaHCHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fa fa-clock-o" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                        <div className="wrap-input100 validate-input">
+                                          <Input className="input100-julio" type="text" placeholder="Frecuencia" value={this.state.fumaF} 
+                                          onChange={this.ChangeFumaFHandler}/>
+                                          <span className="symbol-input100">
+                                            <i className="fas fa-smoking" aria-hidden="true"></i>
+                                          </span>
+                                        </div>
+                                      </div>)}
+
+                                  </div>
+                                    
                                   <div className="container-login100-form-btn">
                                       <button className="registrar100-form-btn" onClick={this.editPaciente} style={{maxWidth:"1140px"}}
                                       ref={c => {this.checkBtn = c;}} disabled={this.state.loading}>{this.state.loading && (

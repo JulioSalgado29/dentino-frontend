@@ -49,15 +49,24 @@ class UsuarioService {
 
             return axios.post(paciente + "/registration", pacienteAux);
     }
-    editar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, id, dni) {
-        const persona = {
-            "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
-            "direccion": direccion, "telefono": telefono, "genero": genero, "id": id, "dni": dni}
-        };
-        return axios.put(paciente + "/update", persona).then(response => {
-            localStorage.removeItem("dato");
-            localStorage.setItem("dato", JSON.stringify(response.data));
-        });
+    editar_paciente(id,nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
+        antecedenteId,codigoPaciente,tratamientoMedicoB,tratamientoMedico,alergiasB,alergias,presionB,problemasB,problemasCardiacos,
+        diabetesB,diabetes,sangradoB,fumaB,fumaHC,fumaF) {
+            var tratamientoMedicoJson = '{ "tratamientoMedicoB":"'+tratamientoMedicoB+'", "tratamientoMedico":"'+tratamientoMedico+'"}';
+            var alergiasJson = '{ "alergiasB":"'+alergiasB+'", "alergias":"'+alergias+'"}';
+            var problemasCardiacosJson = '{ "problemasB":"'+problemasB+'", "problemasCardiacos":"'+problemasCardiacos+'"}';
+            var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
+            var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
+            const pacienteAux = {
+                "persona": { "id":id, "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac+"-01",
+                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
+                "antecedente":{"id":antecedenteId,"codigoPaciente":codigoPaciente,"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
+                "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 
+            };
+            return axios.put(paciente + "/update", pacienteAux).then(response => {
+                localStorage.removeItem("dato");
+                localStorage.setItem("dato", JSON.stringify(response.data));
+            });
     }
     eliminar_pacientes(persona_id){
         console.log(persona_id.toString())
