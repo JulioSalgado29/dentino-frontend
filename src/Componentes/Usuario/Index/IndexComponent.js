@@ -47,7 +47,7 @@ class IndexComponent extends React.Component {
                         <div className="small-box bg-success">
                           <div className="inner">
                             <h3>53<sup style={{fontSize: 20}}>%</sup></h3>
-                            <p>Reportes</p>
+                            <p>Ingresos</p>
                           </div>
                           <div className="icon">
                             <i className="ion ion-stats-bars" />
