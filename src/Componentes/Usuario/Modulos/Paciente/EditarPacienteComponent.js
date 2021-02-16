@@ -17,29 +17,29 @@ import Swal from 'sweetalert2';
     }
   };
   const email = value => {
-    if (!isEmail(value)) {
+    if (!isEmail(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El formato del email no es valido" style={{width:"100%"}}/>
       );
     }
   };
   const telefono = value =>{
-    if (!isNumeric(value)) {
+    if (!isNumeric(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El telefono debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if(value<100000000){
+    else if(value<100000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono no debe tener menos 9 digitos" style={{width:"100%"}}/>
       );
     }
-    else if(value>1000000000){
+    else if(value>1000000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono no debe tener mas de 9 digitos" style={{width:"100%"}}/>
       );
     }
-    else if(value<900000000){
+    else if(value<900000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono debe iniciar con el numero 9" style={{width:"100%"}}/>
       );
@@ -60,12 +60,12 @@ import Swal from 'sweetalert2';
     }
   }
   const dni = value=>{
-    if (!isNumeric(value)) {
+    if (!isNumeric(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if (value.length!==8){
+    else if (value.length!==8 && value.length!==0){
       return (
         <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
         );
@@ -74,8 +74,8 @@ import Swal from 'sweetalert2';
 
   function format(x, y) {
     var z = {
-        M: x.getMonth() + 1,
-        d: x.getDate(),
+        M: x.getMonth() +1  ,
+        d: x.getDate() +2 ,
         h: x.getHours(),
         m: x.getMinutes(),
         s: x.getSeconds()
@@ -97,7 +97,7 @@ class EditarPacienteComponent extends React.Component{
             id: JSON.parse(localStorage.getItem("dato")).persona.id,
             nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
             apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
-            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"dd-mm-yyyy"),
+            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM-dd"),
             email: JSON.parse(localStorage.getItem("dato")).persona.email,
             direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
             telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
@@ -168,6 +168,11 @@ class EditarPacienteComponent extends React.Component{
       if (localStorage.getItem("isLandingPage")) {
           localStorage.removeItem("isLandingPage");
           window.location.reload();
+      }
+      if(this.state.telefono==="null"){
+        this.setState({
+          telefono: "",
+        });
       }
   }
 
@@ -349,10 +354,10 @@ class EditarPacienteComponent extends React.Component{
     onFocus(e) {
       /* eslint-disable */
       this.state.isFocus=true;
-      e.currentTarget.type = "month";
+      e.currentTarget.type = "date";
     }
     onMouseEnter (e){
-      e.currentTarget.type = "month";
+      e.currentTarget.type = "date";
     }
     onMouseOut (e){
       if(this.state.isFocus===false){

@@ -4,7 +4,7 @@ import Sidebar from '../../../Complementos/SidebarComponent';
   function format(x, y) {
     var z = {
         M: x.getMonth() + 1,
-        d: x.getDate(),
+        d: x.getDate() + 2,
         h: x.getHours(),
         m: x.getMinutes(),
         s: x.getSeconds()
@@ -26,7 +26,7 @@ class InformacionPacienteComponent extends React.Component{
             id: JSON.parse(localStorage.getItem("dato")).persona.id,
             nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
             apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
-            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM"),
+            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM-dd"),
             email: JSON.parse(localStorage.getItem("dato")).persona.email,
             direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
             telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
@@ -60,6 +60,11 @@ class InformacionPacienteComponent extends React.Component{
       if (localStorage.getItem("isLandingPage")) {
           localStorage.removeItem("isLandingPage");
           window.location.reload();
+      }
+      console.log(this.state.telefono)
+      if(this.state.telefono==="null"){
+        this.setState.telefono="s"
+        console.log(this.state.telefono)
       }
     }
     cancel(){
@@ -99,7 +104,7 @@ class InformacionPacienteComponent extends React.Component{
                                   </div>
                                   <div className="container container-register">
                                       <div className="wrap-input100 validate-input">
-                                          <input className="input100-julio textbox-n" type="month" placeholder="Fecha de Nacimiento" value={this.state.fechaNac} disabled/>
+                                          <input className="input100-julio textbox-n" type="date" placeholder="Fecha de Nacimiento" value={this.state.fechaNac} disabled/>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
                                               <i className="fa fa-calendar" aria-hidden="true"></i>

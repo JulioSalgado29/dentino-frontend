@@ -17,29 +17,29 @@ import Swal from 'sweetalert2';
     }
   };
   const email = value => {
-    if (!isEmail(value)) {
+    if (!isEmail(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El formato del email no es valido" style={{width:"100%"}}/>
       );
     }
   };
   const telefono = value =>{
-    if (!isNumeric(value)) {
+    if (!isNumeric(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El telefono debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if(value<100000000){
+    else if(value<100000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono no debe tener menos 9 digitos" style={{width:"100%"}}/>
       );
     }
-    else if(value>1000000000){
+    else if(value>1000000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono no debe tener mas de 9 digitos" style={{width:"100%"}}/>
       );
     }
-    else if(value<900000000){
+    else if(value<900000000 && value.length!==0){
       return (
       <div className="alert-validate" data-validate="El numero de teléfono debe iniciar con el numero 9" style={{width:"100%"}}/>
       );
@@ -60,12 +60,12 @@ import Swal from 'sweetalert2';
     }
   }
   const dni = value=>{
-    if (!isNumeric(value)) {
+    if (!isNumeric(value) && value.length!==0) {
       return (
         <div className="alert-validate" data-validate="El dni debe solo contener numeros" style={{width:"100%"}}/>
       );
     }
-    else if (value.length!==8){
+    else if (value.length!==8 && value.length!==0){
       return (
         <div className="alert-validate" data-validate="El dni debe tener 8 digitos" style={{width:"100%"}}/>
         );

@@ -3,7 +3,7 @@ import axios from 'axios'
 //const paciente = "http://localhost:8080/paciente";
 const login = "https://dentino-303017.rj.r.appspot.com/login";
 const user = "https://dentino-303017.rj.r.appspot.com/usuario";
-const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
+const paciente = "http://localhost:8080/paciente";
 
 class UsuarioService {
 
