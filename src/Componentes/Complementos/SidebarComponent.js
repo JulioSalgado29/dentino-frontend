@@ -96,7 +96,7 @@ class SidebarComponent extends React.Component {
                                 )
                             }
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item" style={{display:"none"}}>
                             {
                                 (
                                     localStorage.getItem("trabajador")===null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage} 
@@ -106,7 +106,7 @@ class SidebarComponent extends React.Component {
                                         Trabajadores
                                     <span className="right badge badge-danger">New</span>
                                     </p>
-                                </NavLink>
+                                </NavLink>  
                                 )||(
                                 localStorage.getItem("trabajador")==="true" && <NavLink to="/trabajadores" className="nav-link" 
                                 onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("trabajador")==="true"}>
@@ -119,7 +119,7 @@ class SidebarComponent extends React.Component {
                                 )
                             }
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item" style={{display:"none"}}>
                             {
                                 (
                                     localStorage.getItem("ingreso")===null && <NavLink to="/ingresos" className="nav-link" onClick={this.isLandingPage} 
