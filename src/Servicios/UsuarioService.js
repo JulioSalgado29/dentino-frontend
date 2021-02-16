@@ -52,6 +52,7 @@ class UsuarioService {
     editar_paciente(id,nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
         antecedenteId,codigoPaciente,tratamientoMedicoB,tratamientoMedico,alergiasB,alergias,presionB,problemasB,problemasCardiacos,
         diabetesB,diabetes,sangradoB,fumaB,fumaHC,fumaF) {
+            
             var tratamientoMedicoJson = '{ "tratamientoMedicoB":"'+tratamientoMedicoB+'", "tratamientoMedico":"'+tratamientoMedico+'"}';
             var alergiasJson = '{ "alergiasB":"'+alergiasB+'", "alergias":"'+alergias+'"}';
             var problemasCardiacosJson = '{ "problemasB":"'+problemasB+'", "problemasCardiacos":"'+problemasCardiacos+'"}';
