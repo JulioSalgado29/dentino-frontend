@@ -63,8 +63,9 @@ class InformacionPacienteComponent extends React.Component{
       }
       console.log(this.state.telefono)
       if(this.state.telefono==="null"){
-        this.setState.telefono="s"
-        console.log(this.state.telefono)
+        this.setState({
+          telefono: "",
+        });
       }
     }
     cancel(){
