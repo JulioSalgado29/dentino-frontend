@@ -17,7 +17,7 @@ class PacienteComponent extends React.Component {
             keyword: "",
             antkeyword: "",
             currentPage: 1,
-            postsPerPage: 5,
+            postsPerPage: 10,
             loading: false
         }
         this.buscarKeyword = this.buscarKeyword.bind(this);
