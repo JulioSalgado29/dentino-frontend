@@ -1,0 +1,30 @@
+@media (max-width: 1300px) {
+    .row1 {
+        display: none;
+    }
+}
+@media (max-width: 1190px) {
+    .row2 {
+        display: none;
+    }
+}
+@media (max-width: 1074px) {
+    .row3 {
+        display: none;
+    }
+}
+@media (max-width: 718px) {
+    .row4 {
+        display: none;
+    }
+}
+@media (max-width: 434px) {
+    .row5 {
+        display: none;
+    }
+}
+@media (min-width: 1300px) {
+    .btn-infor {
+        display: none;
+    }
+}

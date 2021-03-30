@@ -12,25 +12,25 @@ class SidebarComponent extends React.Component {
         }
         this.isLandingPage = this.isLandingPage.bind(this);
     }
-    isLandingPage(){
+    isLandingPage() {
         localStorage.setItem("isLandingPage", true)
     }
     render() {
         const { currentUser } = this.state;
         return (
-            <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{backgroundColor:"black"}}>
+            <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{ backgroundColor: "black" }}>
                 {/* eslint-disable */}
-                <a className="brand-link" style={{color:"white",cursor: "context-menu"}}>
+                <a className="brand-link" style={{ color: "white", cursor: "context-menu" }}>
                     <img src={logo} alt="AdminLTE Logo" className="brand-image img-circle elevation-3" />
                     <span className="brand-text font-weight-light">Dentino</span>
                 </a>
                 <div className="sidebar">
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src={perfil} alt="perfil" class="img-circle elevation-2"/>
+                            <img src={perfil} alt="perfil" class="img-circle elevation-2" />
                         </div>
                         <div class="info">
-                            <a style={{cursor: "context-menu"}}class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
+                            <a style={{ cursor: "context-menu" }} class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
                         </div>
                     </div>
                     <nav className="mt-2">
@@ -66,7 +66,7 @@ class SidebarComponent extends React.Component {
                             </li>
                             */}
                             <li className="nav-item">
-                                <NavLink  exact to="/" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
+                                <NavLink exact to="/" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
                                     <i className="nav-icon fas fa-th" />
                                     <p>
                                         Dashboard
@@ -74,79 +74,125 @@ class SidebarComponent extends React.Component {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                            {
-                                (
-                                    localStorage.getItem("paciente")===null && <NavLink to="/pacientes" className="nav-link" onClick={this.isLandingPage} 
-                                    activeClassName="active">
-                                    <i className="nav-icon fas fa-head-side-mask" />
-                                    <p>
-                                        Pacientes
+                                {
+                                    (
+                                        localStorage.getItem("paciente") === null && <NavLink to="/pacientes" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Pacientes
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                                )||(
-                                localStorage.getItem("paciente")==="true" && <NavLink to="/pacientes" className="nav-link" 
-                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente")==="true"}>
-                                    <i className="nav-icon fas fa-head-side-mask" />
-                                    <p>
-                                        Pacientes
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("paciente") === "true" && <NavLink to="/pacientes" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente") === "true"}>
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Pacientes
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                                )
-                            }
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
                             </li>
-                            <li className="nav-item" style={{display:"none"}}>
-                            {
-                                (
-                                    localStorage.getItem("trabajador")===null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage} 
-                                    activeClassName="active">
-                                    <i className="nav-icon fas fa-user-md" />
-                                    <p>
-                                        Trabajadores
+                            <li className="nav-item">
+                                {
+                                    (
+                                        localStorage.getItem("paciente") === null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Trabajadores
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>  
-                                )||(
-                                localStorage.getItem("trabajador")==="true" && <NavLink to="/trabajadores" className="nav-link" 
-                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("trabajador")==="true"}>
-                                    <i className="nav-icon fas fa-user-md" />
-                                    <p>
-                                        Trabajadores
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("paciente") === "true" && <NavLink to="/trabajadores" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente") === "true"}>
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Trabajadores
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                                )
-                            }
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
                             </li>
-                            <li className="nav-item" style={{display:"none"}}>
-                            {
-                                (
-                                    localStorage.getItem("ingreso")===null && <NavLink to="/ingresos" className="nav-link" onClick={this.isLandingPage} 
-                                    activeClassName="active">
-                                    <i className="nav-icon fas fa-file-invoice-dollar" />
-                                    <p>
-                                        Ingresos
+                            <li className="nav-item">
+                                {
+                                    (
+                                        localStorage.getItem("paciente") === null && <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Asistecia
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                                )||(
-                                localStorage.getItem("ingreso")==="true" && <NavLink to="/ingresos" className="nav-link" 
-                                onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("ingreso")==="true"}>
-                                    <i className="nav-icon fas fa-file-invoice-dollar" />
-                                    <p>
-                                        Ingresos
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("paciente") === "true" && <NavLink to="/asistencia" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente") === "true"}>
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Pacientes
                                     <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                                )
-                            }
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
+                            </li>
+                            <li className="nav-item" style={{ display: "none" }}>
+                                {
+                                    (
+                                        localStorage.getItem("trabajador") === null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-user-md" />
+                                            <p>
+                                                Trabajadores
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("trabajador") === "true" && <NavLink to="/trabajadores" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("trabajador") === "true"}>
+                                            <i className="nav-icon fas fa-user-md" />
+                                            <p>
+                                                Trabajadores
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
+                            </li>
+                            <li className="nav-item" style={{ display: "none" }}>
+                                {
+                                    (
+                                        localStorage.getItem("ingreso") === null && <NavLink to="/ingresos" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-file-invoice-dollar" />
+                                            <p>
+                                                Ingresos
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("ingreso") === "true" && <NavLink to="/ingresos" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("ingreso") === "true"}>
+                                            <i className="nav-icon fas fa-file-invoice-dollar" />
+                                            <p>
+                                                Ingresos
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
                             </li>
                         </ul>
                     </nav>
                 </div>
             </aside>
-            
+
         )
     }
 }

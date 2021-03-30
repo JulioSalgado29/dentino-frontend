@@ -1,9 +1,13 @@
 import axios from 'axios'
 //const admin = "https://dentino-303017.rj.r.appspot.com/admin";
 //const paciente = "http://localhost:8080/paciente";
-const login = "https://dentino-303017.rj.r.appspot.com/login";
-const user = "https://dentino-303017.rj.r.appspot.com/usuario";
-const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
+
+const login = "http://localhost:8000/login";
+const user = "http://localhost:8000/usuario";
+const paciente = "http://localhost:8000/paciente";
+//const login = "https://dentino-303017.rj.r.appspot.com/login";
+//const user = "https://dentino-303017.rj.r.appspot.com/usuario";
+//const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
 
 class UsuarioService {
 
@@ -27,70 +31,78 @@ class UsuarioService {
         return axios.post(user + "/registration", usuario);
     }*/
 
-    listar_pacientes(keyword){
-        return axios.get(paciente + "/buscar",{params: {"keyword": keyword}})
-        .then(response =>  response.data);
+    listar_pacientes(keyword) {
+        return axios.get(paciente + "/buscar", { params: { "keyword": keyword } })
+            .then(response => response.data);
     }
     registrar_paciente(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
-        tratamientoMedicoB,tratamientoMedico,alergiasB,alergias,presionB,problemasB,problemasCardiacos,
-        diabetesB,diabetes,sangradoB,fumaB,fumaHC,fumaF) {
+        tratamientoMedicoB, tratamientoMedico, alergiasB, alergias, presionB, problemasB, problemasCardiacos,
+        diabetesB, diabetes, sangradoB, fumaB, fumaHC, fumaF) {
 
-            var tratamientoMedicoJson = '{ "tratamientoMedicoB":"'+tratamientoMedicoB+'", "tratamientoMedico":"'+tratamientoMedico+'"}';
-            var alergiasJson = '{ "alergiasB":"'+alergiasB+'", "alergias":"'+alergias+'"}';
-            var problemasCardiacosJson = '{ "problemasB":"'+problemasB+'", "problemasCardiacos":"'+problemasCardiacos+'"}';
-            var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
-            var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
-            const pacienteAux = {
-                "persona": { "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
-                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
-                "antecedente":{"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
-                "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 
-            };
+        var tratamientoMedicoJson = '{ "tratamientoMedicoB":"' + tratamientoMedicoB + '", "tratamientoMedico":"' + tratamientoMedico + '"}';
+        var alergiasJson = '{ "alergiasB":"' + alergiasB + '", "alergias":"' + alergias + '"}';
+        var problemasCardiacosJson = '{ "problemasB":"' + problemasB + '", "problemasCardiacos":"' + problemasCardiacos + '"}';
+        var diabetesJson = '{ "diabetesB":"' + diabetesB + '", "diabetes":"' + diabetes + '"}';
+        var fumaJson = '{ "fumaB":"' + fumaB + '", "fumaHC":"' + fumaHC + '", "fumaF":"' + fumaF + '"}';
+        const pacienteAux = {
+            "persona": {
+                "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
+                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni
+            },
+            "antecedente": {
+                "tratamientoMedico": tratamientoMedicoJson, "alergias": alergiasJson, "presionArterial": presionB,
+                "problemasCardiacos": problemasCardiacosJson, "diabetes": diabetesJson, "sangrado": sangradoB, "fuma": fumaJson
+            }
+        };
 
-            return axios.post(paciente + "/registration", pacienteAux);
+        return axios.post(paciente + "/registration", pacienteAux);
     }
-    editar_paciente(id,nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
-        antecedenteId,codigoPaciente,tratamientoMedicoB,tratamientoMedico,alergiasB,alergias,presionB,problemasB,problemasCardiacos,
-        diabetesB,diabetes,sangradoB,fumaB,fumaHC,fumaF) {
-            
-            var tratamientoMedicoJson = '{ "tratamientoMedicoB":"'+tratamientoMedicoB+'", "tratamientoMedico":"'+tratamientoMedico+'"}';
-            var alergiasJson = '{ "alergiasB":"'+alergiasB+'", "alergias":"'+alergias+'"}';
-            var problemasCardiacosJson = '{ "problemasB":"'+problemasB+'", "problemasCardiacos":"'+problemasCardiacos+'"}';
-            var diabetesJson = '{ "diabetesB":"'+diabetesB+'", "diabetes":"'+diabetes+'"}';
-            var fumaJson = '{ "fumaB":"'+fumaB+'", "fumaHC":"'+fumaHC+'", "fumaF":"'+fumaF+'"}';
-            const pacienteAux = {
-                "persona": { "id":id, "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
-                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni},
-                "antecedente":{"id":antecedenteId,"codigoPaciente":codigoPaciente,"tratamientoMedico": tratamientoMedicoJson,"alergias": alergiasJson,"presionArterial": presionB,
-                "problemasCardiacos": problemasCardiacosJson,"diabetes": diabetesJson,"sangrado":sangradoB,"fuma":fumaJson} 
-            };
-            return axios.put(paciente + "/update", pacienteAux).then(response => {
-                localStorage.removeItem("dato");
-                localStorage.setItem("dato", JSON.stringify(response.data));
-            });
+    editar_paciente(id, nombre, apellido, email, fechaNac, direccion, telefono, genero, dni,
+        antecedenteId, codigoPaciente, tratamientoMedicoB, tratamientoMedico, alergiasB, alergias, presionB, problemasB, problemasCardiacos,
+        diabetesB, diabetes, sangradoB, fumaB, fumaHC, fumaF) {
+
+        var tratamientoMedicoJson = '{ "tratamientoMedicoB":"' + tratamientoMedicoB + '", "tratamientoMedico":"' + tratamientoMedico + '"}';
+        var alergiasJson = '{ "alergiasB":"' + alergiasB + '", "alergias":"' + alergias + '"}';
+        var problemasCardiacosJson = '{ "problemasB":"' + problemasB + '", "problemasCardiacos":"' + problemasCardiacos + '"}';
+        var diabetesJson = '{ "diabetesB":"' + diabetesB + '", "diabetes":"' + diabetes + '"}';
+        var fumaJson = '{ "fumaB":"' + fumaB + '", "fumaHC":"' + fumaHC + '", "fumaF":"' + fumaF + '"}';
+        const pacienteAux = {
+            "persona": {
+                "id": id, "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
+                "direccion": direccion, "telefono": telefono, "genero": genero, "dni": dni
+            },
+            "antecedente": {
+                "id": antecedenteId, "codigoPaciente": codigoPaciente, "tratamientoMedico": tratamientoMedicoJson, "alergias": alergiasJson, "presionArterial": presionB,
+                "problemasCardiacos": problemasCardiacosJson, "diabetes": diabetesJson, "sangrado": sangradoB, "fuma": fumaJson
+            }
+        };
+        return axios.put(paciente + "/update", pacienteAux).then(response => {
+            localStorage.removeItem("dato");
+            localStorage.setItem("dato", JSON.stringify(response.data));
+        });
     }
-    eliminar_pacientes(persona_id){
+    eliminar_pacientes(persona_id) {
         console.log(persona_id.toString())
-        return axios.post(paciente + "/delete",{"persona": { "id": persona_id}})
-        .then(response =>  response.data);
+        return axios.post(paciente + "/delete", { "persona": { "id": persona_id } })
+            .then(response => response.data);
     }
 
     login(username, password) {
-        const usuario = {"username": username,"password": password};
+        const usuario = { "username": username, "password": password };
         return axios.post(login + "/verificando", usuario).then(response => {
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }
     actualizar_estado(username, codigo) {
-        const usuario = {"username": username,"codigo": codigo};
+        const usuario = { "username": username, "codigo": codigo };
         return axios.post(login + "/actualizar-estado", usuario).then(response => {
             console.log(response)
             localStorage.removeItem("usuario");
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });
     }
-    verificar_usuario(username){
-        return axios.put(user + "/verificar-estado", {username}).then(response => {
+    verificar_usuario(username) {
+        return axios.put(user + "/verificar-estado", { username }).then(response => {
             localStorage.setItem("usuario2", JSON.stringify(response.data));
         });
     }

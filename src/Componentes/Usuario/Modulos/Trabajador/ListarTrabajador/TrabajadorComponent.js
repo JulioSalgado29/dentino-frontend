@@ -1,5 +1,5 @@
 import React from 'react';
-import UsuarioService from '../../../../../Servicios/UsuarioService';
+import TrabajadorService from '../../../../../Servicios/TrabajadorService';
 import HeaderComponent from '../../../../Complementos/HeaderComponent';
 import Sidebar from '../../../../Complementos/SidebarComponent';
 import { NavLink } from 'react-router-dom';
@@ -8,7 +8,7 @@ import Lista from './Lista';
 import Paginacion from './Paginacion';
 import '../../../Theme/style.css';
 
-class PacienteComponent extends React.Component {
+class TrabajadorComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -26,7 +26,7 @@ class PacienteComponent extends React.Component {
     buscarKeyword = (evento) => {
         if (this.state.keyword !== this.state.antkeyword) {
             this.setState({ loading: true });
-            UsuarioService.listar_pacientes(this.state.keyword)
+            TrabajadorService.listarTrabajadores(this.state.keyword)
                 .then((response) => {
                     this.setState({
                         antkeyword: this.state.keyword,
@@ -45,7 +45,7 @@ class PacienteComponent extends React.Component {
     onKeyPress = (event) => {
         if (event.key === 'Enter' && this.state.keyword !== this.state.antkeyword) {
             this.setState({ loading: true });
-            UsuarioService.listar_pacientes(this.state.keyword)
+            TrabajadorService.listarTrabajadores(this.state.keyword)
                 .then((response) => {
                     this.setState({
                         antkeyword: this.state.keyword,
@@ -66,7 +66,7 @@ class PacienteComponent extends React.Component {
         if (localStorage.getItem("init")) {
             localStorage.removeItem("init")
             this.setState({ loading: true })
-            UsuarioService.listar_pacientes("")
+            TrabajadorService.listarTrabajadores("")
                 .then((response) => {
                     this.setState({
                         datos: response,
@@ -78,8 +78,8 @@ class PacienteComponent extends React.Component {
                 });
         }
     }
-    onlyPaciente(e) {
-        localStorage.setItem("paciente", true)
+    onlyTrabajador(e) {
+        localStorage.setItem("trabajador", true)
     }
     render() {
         // Get current posts
@@ -96,7 +96,7 @@ class PacienteComponent extends React.Component {
                 <Sidebar />
                 <div className="content-wrapper" style={{ background: "white", color: "black" }}>
                     <div className="container-modulos">
-                        <NavLink style={{ marginBottom: "1%" }} class="registrar100-form-btn" to="/pacientes-add" onClick={this.onlyPaciente}> Agregar Paciente</NavLink>
+                        <NavLink style={{ marginBottom: "1%" }} class="registrar100-form-btn" to="/trabajadores-add" onClick={this.onlyTrabajador}> Agregar Trabajador</NavLink>
                         <div className="search-bar">
                             <input name="search" type="text" value={this.state.keyword} onChange={this.ChangeKeywordHandler} onKeyPress={this.onKeyPress} />
                             <button className="search-btn" type="button" onClick={this.buscarKeyword}>
@@ -119,4 +119,4 @@ class PacienteComponent extends React.Component {
         )
     }
 }
-export default PacienteComponent
+export default TrabajadorComponent
