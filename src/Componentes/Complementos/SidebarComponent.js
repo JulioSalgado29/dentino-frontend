@@ -99,52 +99,6 @@ class SidebarComponent extends React.Component {
                             <li className="nav-item">
                                 {
                                     (
-                                        localStorage.getItem("paciente") === null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage}
-                                            activeClassName="active">
-                                            <i className="nav-icon fas fa-head-side-mask" />
-                                            <p>
-                                                Trabajadores
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    ) || (
-                                        localStorage.getItem("paciente") === "true" && <NavLink to="/trabajadores" className="nav-link"
-                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente") === "true"}>
-                                            <i className="nav-icon fas fa-head-side-mask" />
-                                            <p>
-                                                Trabajadores
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    )
-                                }
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    (
-                                        localStorage.getItem("paciente") === null && <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage}
-                                            activeClassName="active">
-                                            <i className="nav-icon fas fa-head-side-mask" />
-                                            <p>
-                                                Asistecia
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    ) || (
-                                        localStorage.getItem("paciente") === "true" && <NavLink to="/asistencia" className="nav-link"
-                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("paciente") === "true"}>
-                                            <i className="nav-icon fas fa-head-side-mask" />
-                                            <p>
-                                                Pacientes
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    )
-                                }
-                            </li>
-                            <li className="nav-item" style={{ display: "none" }}>
-                                {
-                                    (
                                         localStorage.getItem("trabajador") === null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage}
                                             activeClassName="active">
                                             <i className="nav-icon fas fa-user-md" />
@@ -164,6 +118,15 @@ class SidebarComponent extends React.Component {
                                         </NavLink>
                                     )
                                 }
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
+                                    <i className="nav-icon fas fa-calendar-alt" />
+                                    <p>
+                                        Asistencia
+                                        <span className="right badge badge-danger">New</span>
+                                    </p>
+                                </NavLink>
                             </li>
                             <li className="nav-item" style={{ display: "none" }}>
                                 {

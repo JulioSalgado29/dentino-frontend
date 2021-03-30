@@ -144,8 +144,7 @@ class AgregarTrabajadorComponent extends React.Component {
     if (this.checkBtn.context._errors.length === 0) {
       TrabajadorService.registrarTrabajador(this.state.nombre, this.state.apellido, this.state.email, this.state.fechaNac,
         this.state.direccion, this.state.telefono, this.state.genero, this.state.dni, this.state.username, this.state.password)
-        .then((responseee) => {
-          console.log(responseee);
+        .then((response) => {
           Swal.fire
             ({
               title: "El Trabajador '" + this.state.nombre + " " + this.state.apellido + "' fue registrado con éxito",
@@ -260,6 +259,7 @@ class AgregarTrabajadorComponent extends React.Component {
     }
   }
   render() {
+    localStorage.removeItem("paciente");
     localStorage.setItem("trabajador", true);
     return (
       <div className="wrapper">
@@ -293,16 +293,16 @@ class AgregarTrabajadorComponent extends React.Component {
                     <Input className="input100-julio" type="text" placeholder="Usuario" value={this.state.username}
                       onChange={this.ChangeUsernameHandler} validations={[required, username]} />
                     <span className="symbol-input100">
-                      <i className="fa fa-N" aria-hidden="true"></i>
+                      <i className="fa fa-user" aria-hidden="true"></i>
                     </span>
                   </div>
 
                   <div className="wrap-input100 validate-input">
-                    <Input className="input100-julio" type="text" placeholder="Contraseña" value={this.state.password}
+                    <Input className="input100-julio" type="password" placeholder="Contraseña" value={this.state.password}
                       onChange={this.ChangePasswordHandler} validations={[required, password]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-A" aria-hidden="true"></i>
+                      <i className="fa fa-key" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>

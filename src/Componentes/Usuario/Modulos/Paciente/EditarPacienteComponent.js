@@ -366,6 +366,7 @@ class EditarPacienteComponent extends React.Component{
     }
 
     render (){
+      localStorage.setItem("paciente", true);
         return(
                 <div className="wrapper">
                     <HeaderComponent />

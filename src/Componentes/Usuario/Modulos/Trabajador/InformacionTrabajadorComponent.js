@@ -24,6 +24,8 @@ class InformacionTrabajadorComponent extends React.Component {
     super(props);
     this.state = {
       id: JSON.parse(localStorage.getItem("dato")).persona.id,
+      username: JSON.parse(localStorage.getItem("dato")).username,
+      password: JSON.parse(localStorage.getItem("dato")).password,
       nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
       apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
       fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac), "yyyy-MM-dd"),
@@ -57,9 +59,6 @@ class InformacionTrabajadorComponent extends React.Component {
   }
 
   render() {
-    if (JSON.parse(localStorage.getItem("dato")) === null) {
-      console.log("hola")
-    }
     localStorage.setItem("trabajador", true);
     return (
       <div className="wrapper">
@@ -71,19 +70,33 @@ class InformacionTrabajadorComponent extends React.Component {
               <span className="login100-form-title">Informacion de Trabajador</span>
               <form className="register100-form validate-form" style={{ display: "contents" }}>
                 <div className="container container-register">
-
                   <div className="wrap-input100 validate-input">
                     <input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} disabled />
                     <span className="symbol-input100">
                       <i className="fa fa-N" aria-hidden="true"></i>
                     </span>
                   </div>
-
                   <div className="wrap-input100 validate-input">
                     <input className="input100-julio" type="text" placeholder="Apellidos" value={this.state.apellido} disabled />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
                       <i className="fa fa-A" aria-hidden="true"></i>
+                    </span>
+                  </div>
+                </div>
+                <div className="container container-register">
+                  <div className="wrap-input100 validate-input">
+                    <input className="input100-julio" type="text" placeholder="Usuario" value={this.state.username} disabled/>
+                    <span className="symbol-input100">
+                      <i className="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                  </div>
+
+                  <div className="wrap-input100 validate-input">
+                    <input className="input100-julio" type="password" placeholder="Contraseña" value={this.state.password} disabled/>
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                      <i className="fa fa-key" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>

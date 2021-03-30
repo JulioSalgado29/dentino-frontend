@@ -163,8 +163,7 @@ class AgregarPacienteComponent extends React.Component {
         this.state.direccion, this.state.telefono, this.state.genero, this.state.dni, this.state.tratamientoMedicoB, this.state.tratamientoMedico,
         this.state.alergiasB, this.state.alergias, this.state.presionB, this.state.problemasB, this.state.problemasCardiacos,
         this.state.diabetesB, this.state.diabetes, this.state.sangradoB, this.state.fumaB, this.state.fumaHC, this.state.fumaF)
-        .then((responseee) => {
-          console.log(responseee);
+        .then((response) => {
           Swal.fire
             ({
               title: "El Paciente '" + this.state.nombre + " " + this.state.apellido + "' fue registrado con éxito",
@@ -337,6 +336,7 @@ class AgregarPacienteComponent extends React.Component {
     }
   }
   render() {
+    localStorage.removeItem("trabajador");
     localStorage.setItem("paciente", true);
     return (
       <div className="wrapper">

@@ -17,6 +17,7 @@ class IndexComponent extends React.Component {
   }
   render() {
     localStorage.removeItem("paciente");
+    localStorage.removeItem("trabajador");
     return (
       <div className="wrapper">
         <HeaderComponent />

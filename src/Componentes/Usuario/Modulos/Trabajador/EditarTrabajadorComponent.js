@@ -75,7 +75,7 @@ const dni = value => {
 function format(x, y) {
   var z = {
     M: x.getMonth() + 1,
-    d: x.getDate() + 2,
+    d: x.getDate() + 1,
     h: x.getHours(),
     m: x.getMinutes(),
     s: x.getSeconds()
@@ -272,6 +272,7 @@ class EditarTrabajadorComponent extends React.Component {
   }
 
   render() {
+    localStorage.setItem("trabajador", true);
     return (
       <div className="wrapper">
         <HeaderComponent />

@@ -20,6 +20,12 @@ class AsistenciaComponent extends React.Component {
 
     this.handleScan = this.handleScan.bind(this)
   }
+  componentDidMount() {
+    if (localStorage.getItem("isLandingPage")) {
+      localStorage.removeItem("isLandingPage");
+      window.location.reload();
+    }
+  }
   logOut() {
     UsuarioService.logout();
     window.location.reload(false);
@@ -58,9 +64,9 @@ class AsistenciaComponent extends React.Component {
       height: 240,
       width: 340
     }
-
+    localStorage.removeItem("paciente");
+    localStorage.removeItem("trabajador");
     return (
-      <body>
         <div class="wrapper">
           <HeaderComponent />
           <Sidebar />
@@ -91,7 +97,6 @@ class AsistenciaComponent extends React.Component {
             </table>
           </div>
         </div>
-      </body>
     )
   }
 }
