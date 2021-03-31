@@ -67,24 +67,9 @@ class AsistenciaComponent extends React.Component {
     localStorage.removeItem("paciente");
     localStorage.removeItem("trabajador");
     return (
-        <div class="wrapper">
+        <div className="wrapper">
           <HeaderComponent />
           <Sidebar />
-          <div style={{ backgroundColor: '#2762f3', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '94vh' }}>
-            <table>
-              <tr>
-                <th>
-                  <div>
-                    <h1 style={{ color: 'white' }} >Enfoque el código QR del trabajador </h1>
-                  </div>
-                </th>
-                <th>
-                  <div style={{ justifyContent: 'center', alignItems: 'center' }}>
-                  </div>
-                </th>
-              </tr>
-              <tr>
-                <th>
                   <QrReader
                     delay={this.state.delay}
                     style={previewStyle}
@@ -92,10 +77,6 @@ class AsistenciaComponent extends React.Component {
                     onScan={this.handleScan}
                     facingMode={'environment'}
                   />
-                </th>
-              </tr>
-            </table>
-          </div>
         </div>
     )
   }

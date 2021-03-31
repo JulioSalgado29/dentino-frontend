@@ -47,7 +47,6 @@ class InformacionTrabajadorComponent extends React.Component {
       localStorage.removeItem("isLandingPage");
       window.location.reload();
     }
-    console.log(this.state.telefono)
     if (this.state.telefono === "null") {
       this.setState({
         telefono: "",
@@ -93,7 +92,7 @@ class InformacionTrabajadorComponent extends React.Component {
                   </div>
 
                   <div className="wrap-input100 validate-input">
-                    <input className="input100-julio" type="password" placeholder="Contraseña" value={this.state.password} disabled/>
+                    <input className="input100-julio" type="text" placeholder="Contraseña" value={this.state.password} disabled/>
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
                       <i className="fa fa-key" aria-hidden="true"></i>
@@ -151,8 +150,8 @@ class InformacionTrabajadorComponent extends React.Component {
                     </span>
                   </div>
                 </div>
-
                 <div className="container-login100-form-btn">
+                  <button className="imprimir100-form-btn" onClick={this.cancel} style={{ maxWidth: "1140px" }}><b>Imprimir</b></button>
                   <button className="volver100-form-btn" onClick={this.cancel} style={{ maxWidth: "1140px" }}><b>Volver</b></button>
                 </div>
               </form>

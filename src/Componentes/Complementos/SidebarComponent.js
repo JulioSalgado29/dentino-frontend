@@ -25,12 +25,12 @@ class SidebarComponent extends React.Component {
                     <span className="brand-text font-weight-light">Dentino</span>
                 </a>
                 <div className="sidebar">
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src={perfil} alt="perfil" class="img-circle elevation-2" />
+                    <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div className="image">
+                            <img src={perfil} alt="perfil" className="img-circle elevation-2" />
                         </div>
-                        <div class="info">
-                            <a style={{ cursor: "context-menu" }} class="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
+                        <div className="info">
+                            <a style={{ cursor: "context-menu" }} className="d-block">{currentUser.persona.nombre} {currentUser.persona.apellido}</a>
                         </div>
                     </div>
                     <nav className="mt-2">

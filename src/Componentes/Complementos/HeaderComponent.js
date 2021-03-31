@@ -119,7 +119,6 @@ class HeaderComponent extends React.Component {
                     </OutsideClickHandler>
                 </ul>
             </nav>
-
         )
     }
 }
