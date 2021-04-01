@@ -121,7 +121,7 @@ class InformacionPacienteComponent extends React.Component{
                                   </div>
                                   <div className="container container-register">
                                   <div className="wrap-input100 validate-input">
-                                          <select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{border:"none"}} disabled>
+                                          <select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" disabled>
                                             <option selected hidden value="M">Masculino</option>
                                             <option selected hidden value="F">Femenino</option>
                                           </select>

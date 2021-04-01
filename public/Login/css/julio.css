@@ -41,3 +41,18 @@
   -moz-transition: all 0.4s;
   transition: all 0.4s;
 }
+@media print {
+  .input100-julio{
+  border: 1px solid black;
+  width: 70%;
+  }
+  .login100-form-title{
+    border: 1px solid black;
+  }
+  .imprimir100-form-btn{
+    display: none;
+  }
+  .volver100-form-btn{
+    display: none;
+  }
+}
