@@ -40,6 +40,7 @@ class InformacionTrabajadorComponent extends React.Component {
       isFocus: false,
     }
     this.cancel = this.cancel.bind(this);
+    this.imprimir = this.imprimir.bind(this);
   }
 
   componentDidMount() {
@@ -52,6 +53,9 @@ class InformacionTrabajadorComponent extends React.Component {
         telefono: "",
       });
     }
+  }
+  imprimir(){
+    window.print();
   }
   cancel() {
     this.props.history.push('/trabajadores')
@@ -151,7 +155,7 @@ class InformacionTrabajadorComponent extends React.Component {
                   </div>
                 </div>
                 <div className="container-login100-form-btn">
-                  <button className="imprimir100-form-btn" onClick={this.cancel} style={{ maxWidth: "1140px" }}><b>Imprimir</b></button>
+                  <button className="imprimir100-form-btn" onClick={this.imprimir} style={{ maxWidth: "1140px" }}><b>Imprimir</b></button>
                   <button className="volver100-form-btn" onClick={this.cancel} style={{ maxWidth: "1140px" }}><b>Volver</b></button>
                 </div>
               </form>
