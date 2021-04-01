@@ -4,6 +4,7 @@ import UsuarioService from '../../../../Servicios/UsuarioService';
 import AsistenciaService from '../../../../Servicios/AsistenciaService';
 import HeaderComponent from '../../../Complementos/HeaderComponent';
 import Sidebar from '../../../Complementos/SidebarComponent';
+import './ListarTrabajador/lista.css';
 import Swal from 'sweetalert2';
 
 class AsistenciaComponent extends React.Component {
@@ -46,7 +47,10 @@ class AsistenciaComponent extends React.Component {
             backdrop: 'rgba(0, 61, 0, 0.4)'
           }).then((result) => {
             if (result.value) {
-              //this.props.history.push('/asistencia')
+              this.setState({
+                data: null,
+                detected: false
+              });
             }
           })
       })
@@ -60,23 +64,20 @@ class AsistenciaComponent extends React.Component {
     console.error(err)
   }
   render() {
-    const previewStyle = {
-      height: 240,
-      width: 340
-    }
     localStorage.removeItem("paciente");
     localStorage.removeItem("trabajador");
     return (
         <div className="wrapper">
-          <HeaderComponent />
-          <Sidebar />
-                  <QrReader
-                    delay={this.state.delay}
-                    style={previewStyle}
-                    onError={this.handleError}
-                    onScan={this.handleScan}
-                    facingMode={'environment'}
-                  />
+            <HeaderComponent />
+            <Sidebar />
+            <div className="content-wrapper" style={{ background: "white" }}>
+              <div className="container-modulos">
+                <div style={{ marginBottom: "1%" }} className="title100">ESCÁNER DE ASISTENCIA QR</div>
+                  <div className="scanner-padding" style={{textAlign:"-webkit-center", background:"black", borderRadius:"20px"}}>
+                        <QrReader delay={this.state.delay} className="scanner" onError={this.handleError} onScan={this.handleScan} facingMode={'environment'}/>
+                    </div>
+                </div>
+              </div>
         </div>
     )
   }

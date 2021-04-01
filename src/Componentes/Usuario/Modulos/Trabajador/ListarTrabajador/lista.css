@@ -28,3 +28,36 @@
         display: none;
     }
 }
+
+.title{
+    text-align: center;
+    width: 100%;
+    color: royalblue;
+    font-size: 40px;
+    letter-spacing: 5px;
+    
+    text-shadow: -1px -1px 0px rgb(153 171 126), 3px 3px 0px rgb(86 86 128), 6px 6px 0px rgb(108 171 139);
+}
+.scanner-padding{
+    margin: 36px 150px 20px
+}
+.scanner{
+    height: 100%;
+    width: 50%;
+}
+
+@media (max-width: 1194px) {
+    .scanner{
+        height: 100%;
+        width: 80%;
+    }
+}
+@media (max-width: 992px) {
+    .scanner{
+        height: 100%;
+        width: 100%;
+    }
+    .scanner-padding{
+        margin:0px
+    }
+}

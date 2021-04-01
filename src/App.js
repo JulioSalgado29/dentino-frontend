@@ -23,7 +23,6 @@ function App() {
     <HashRouter>
       <ScrollTop />
       <Switch>
-
         <ProtectedRoute exact path="/pacientes" component={PacienteComponent} />
         <ProtectedRoute exact path="/pacientes-add" component={AgregarPacienteComponent} />
         <ProtectedRoute exact path="/pacientes-edit" component={EditarPacienteComponent} />
