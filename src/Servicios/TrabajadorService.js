@@ -8,11 +8,7 @@ class TrabajadorService {
     }
 
     eliminarTrabajador(usuarioId) {
-        const usuario = {
-            "id": usuarioId
-        }
-        console.log(usuario);
-        return axios.post(trabajador + "/delete", { usuario })
+        return axios.post(trabajador + "/delete", { "persona": { "id": usuarioId } })
             .then(response => response.data);
     }
 

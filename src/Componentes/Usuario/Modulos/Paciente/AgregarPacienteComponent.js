@@ -80,11 +80,11 @@ class AgregarPacienteComponent extends React.Component {
       nombre: '',
       apellido: '',
       fechaNac: '',
-      email: '',
+      email: null,
       direccion: '',
       telefono: '',
       genero: '',
-      dni: '',
+      dni: null,
 
       tratamientoMedico: '',
       alergias: '',
