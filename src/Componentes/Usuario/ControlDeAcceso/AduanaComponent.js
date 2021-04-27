@@ -37,7 +37,6 @@ class AduanaComponent extends React.Component{
                 window.location.reload(true);
               },
               error => {
-                  console.log(error)
                 const resMessage =
                 (error.response && error.response.data) || error.message 
                 || error.toString();

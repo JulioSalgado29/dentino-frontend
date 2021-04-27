@@ -96,10 +96,10 @@ class AgregarTrabajadorComponent extends React.Component {
       apellido: '',
       fechaNac: '',
       email: '',
-      direccion: '',
-      telefono: '',
+      direccion: null,
+      telefono: null,
       genero: '',
-      dni: '',
+      dni: null,
       username: '',
       password: '',
 
@@ -319,7 +319,7 @@ class AgregarTrabajadorComponent extends React.Component {
                   </div>
                   <div className="wrap-input100 validate-input">
                     <Input className="input100-julio" type="text" placeholder="Email" value={this.state.email}
-                      onChange={this.ChangeEmailHandler} validations={[email]} />
+                      onChange={this.ChangeEmailHandler} validations={[email,required]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
                       <i className="fa fa-envelope" aria-hidden="true"></i>

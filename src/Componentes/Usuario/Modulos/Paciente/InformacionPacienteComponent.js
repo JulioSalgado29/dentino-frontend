@@ -61,7 +61,6 @@ class InformacionPacienteComponent extends React.Component{
           localStorage.removeItem("isLandingPage");
           window.location.reload();
       }
-      console.log(this.state.telefono)
       if(this.state.telefono==="null"){
         this.setState({
           telefono: "",
@@ -73,9 +72,6 @@ class InformacionPacienteComponent extends React.Component{
     }
 
     render (){
-      if(JSON.parse(localStorage.getItem("dato"))===null){
-        console.log("hola")
-      }
       localStorage.setItem("paciente",true);
         return(
                 <div className="wrapper">

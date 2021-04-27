@@ -69,7 +69,8 @@ const Lista = ({ datos }) => {
                                 <Link to="/trabajadores-info" className="btn btn-warning" style={{ padding: "6px 20px 6px 20px", color: "white" }} onClick={EnviarTrabajador.bind(this, dato)}>Info</Link>
                                 <Button className="btn btn-danger" onClick={Eliminar.bind(this, dato.id, dato.persona.nombre, dato.persona.apellido)}>Eliminar</Button>
                             </td>
-                        </tr>))}
+                        </tr>))
+                        }
                 </tbody>
             </Table>
         </ul>

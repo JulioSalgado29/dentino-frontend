@@ -28,7 +28,11 @@ class TrabajadorService {
     }
 
     registrarTrabajador(nombre, apellido, email, fechaNac, direccion, telefono, genero, dni, username, password) {
-
+        var tratamientoMedicoJson = '{ "tratamientoMedicoB":"no", "tratamientoMedico":""}';
+        var alergiasJson = '{ "alergiasB":"no", "alergias":""}';
+        var problemasCardiacosJson = '{ "problemasB":"no", "problemasCardiacos":""}';
+        var diabetesJson = '{ "diabetesB":"no", "diabetes":""}';
+        var fumaJson = '{ "fumaB":"no", "fumaHC":"", "fumaF":""}';
         const trabajadorObj = {
             "persona": {
                 "nombre": nombre, "apellido": apellido, "email": email, "fechaNac": fechaNac,
@@ -36,6 +40,10 @@ class TrabajadorService {
             },
             "usuario": {
                 "username": username, "password": password
+            },
+            "antecedente": {
+                "tratamientoMedico": tratamientoMedicoJson, "alergias": alergiasJson, "presionArterial": "normal",
+                "problemasCardiacos": problemasCardiacosJson, "diabetes": diabetesJson, "sangrado": 0, "fuma": fumaJson
             }
         };
 

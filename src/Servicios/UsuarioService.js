@@ -82,7 +82,6 @@ class UsuarioService {
         });
     }
     eliminar_pacientes(persona_id) {
-        console.log(persona_id.toString())
         return axios.post(paciente + "/delete", { "persona": { "id": persona_id } })
             .then(response => response.data);
     }
@@ -96,7 +95,6 @@ class UsuarioService {
     actualizar_estado(username, codigo) {
         const usuario = { "username": username, "codigo": codigo };
         return axios.post(login + "/actualizar-estado", usuario).then(response => {
-            console.log(response)
             localStorage.removeItem("usuario");
             localStorage.setItem("usuario", JSON.stringify(response.data));
         });

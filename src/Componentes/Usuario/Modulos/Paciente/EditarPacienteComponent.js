@@ -97,7 +97,7 @@ class EditarPacienteComponent extends React.Component{
             id: JSON.parse(localStorage.getItem("dato")).persona.id,
             nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
             apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
-            fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM-dd"),
+            fechaNac: null,
             email: JSON.parse(localStorage.getItem("dato")).persona.email,
             direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
             telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
@@ -172,6 +172,11 @@ class EditarPacienteComponent extends React.Component{
       if(this.state.telefono==="null"){
         this.setState({
           telefono: "",
+        });
+      }
+      if(JSON.parse(localStorage.getItem("dato")).persona.fechaNac!==null){
+        this.setState({
+          fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM-dd"),
         });
       }
   }

@@ -25,8 +25,8 @@ render (){
     return(
         <div>
             {  (currentUser===null     && <LoginComponent/>)
-            || (currentUser.estado===2 && <AduanaComponent/>)
-            || (currentUser.estado===1 && <IndexComponent/>)}
+            || (currentUser.usuarioEstado===2 && <AduanaComponent/>)
+            || (currentUser.usuarioEstado===1 && <IndexComponent/>)}
         </div>
     )}
 }

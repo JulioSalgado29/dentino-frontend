@@ -22,7 +22,7 @@ class LoginComponent extends React.Component{
           password: '',
           loading: false,
           message: "",
-          estado: '',
+          usuarioEstado: '',
           token: ""
         }
         this.ChangeUsernameHandler = this.ChangeUsernameHandler.bind(this);
