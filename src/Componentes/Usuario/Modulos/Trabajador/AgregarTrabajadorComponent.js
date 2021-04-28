@@ -2,7 +2,7 @@ import React from 'react';
 import TrabajadorService from '../../../../Servicios/TrabajadorService';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import Select from "react-validation/build/select"
+import Select from "react-validation/build/select";
 import CheckButton from "react-validation/build/button";
 import { isEmail, isNumeric } from 'validator';
 import HeaderComponent from '../../../Complementos/HeaderComponent';
@@ -329,7 +329,7 @@ class AgregarTrabajadorComponent extends React.Component {
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
                     <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                      <option selected hidden style={{ color: "red" }} value="null">Eliga el Género</option>
+                      <option selected hidden style={{ color: "red" }} value="null">Elija el Género</option>
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                     </Select>
