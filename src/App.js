@@ -7,6 +7,7 @@ import EditarPacienteComponent from './Componentes/Usuario/Modulos/Paciente/Edit
 import InformacionPacienteComponent from './Componentes/Usuario/Modulos/Paciente/InformacionPacienteComponent';
 import ScrollTop from './ScrollTop';
 import { ProtectedRoute } from './Servicios/Protected.Route';
+import { AdminProtectedRoute } from './Servicios/AdminProtected.Route';
 import AsistenciaComponent from './Componentes/Usuario/Modulos/Trabajador/AsistenciaComponent';
 import NotFound from './Componentes/Usuario/ControlDeAcceso/NotFound';
 import TrabajadorComponent from './Componentes/Usuario/Modulos/Trabajador/ListarTrabajador/TrabajadorComponent';
@@ -31,7 +32,7 @@ function App() {
         <ProtectedRoute exact path="/trabajadores-add" component={AgregarTrabajadorComponent} />
         <ProtectedRoute exact path="/trabajadores-info" component={InformacionTrabajadorComponent} />
         <ProtectedRoute exact path="/trabajadores-edit" component={EditarTrabajadorComponent} />
-        <ProtectedRoute exact path="/asistencia" component={AsistenciaComponent} />
+        <AdminProtectedRoute exact path="/asistencia" component={AsistenciaComponent} />
         <Route exact path="/" component={InicioComponent} />
         <Route component={NotFound} />
       </Switch>

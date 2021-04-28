@@ -61,3 +61,8 @@
         margin:0px
     }
 }
+.pintarRow{
+    font-weight: 700;
+    background: black;
+    color: white;
+}

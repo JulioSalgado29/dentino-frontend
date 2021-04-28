@@ -98,7 +98,7 @@ class TrabajadorComponent extends React.Component {
                 <Sidebar />
                 <div className="content-wrapper" style={{ background: "white", color: "black" }}>
                     <div className="container-modulos">
-                        <NavLink style={{ marginBottom: "1%" }} className   ="registrar100-form-btn" to="/trabajadores-add" onClick={this.onlyTrabajador}> Agregar Trabajador</NavLink>
+                        <NavLink style={{ marginBottom: "1%" }} className="registrar100-form-btn" to="/trabajadores-add" onClick={this.onlyTrabajador}> Agregar Trabajador</NavLink>
                         <div className="search-bar">
                             <input name="search" type="text" value={this.state.keyword} onChange={this.ChangeKeywordHandler} onKeyPress={this.onKeyPress} />
                             <button className="search-btn" type="button" onClick={this.buscarKeyword}>

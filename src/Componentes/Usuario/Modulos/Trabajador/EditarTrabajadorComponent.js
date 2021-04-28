@@ -174,6 +174,8 @@ class EditarTrabajadorComponent extends React.Component {
                   }).then((result) => {
                     if (result.value) {
                       this.props.history.push('/trabajadores')
+                    }else{
+                      this.props.history.push('/trabajadores')
                     }
                   })
               },
@@ -357,7 +359,7 @@ class EditarTrabajadorComponent extends React.Component {
                   </div>
                   <div className="wrap-input100 validate-input">
                     <Input className="input100-julio" type="text" name="pass" placeholder="DNI" value={this.state.dni}
-                      onChange={this.ChangeDniHandler} validations={[dni]} />
+                      onChange={this.ChangeDniHandler} validations={[dni,required]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
                       <i className="fas fa-id-card" aria-hidden="true"></i>

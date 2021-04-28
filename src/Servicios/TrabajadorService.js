@@ -11,6 +11,10 @@ class TrabajadorService {
         return axios.post(trabajador + "/delete", { "persona": { "id": usuarioId } })
             .then(response => response.data);
     }
+    convertirTrabajador(usuarioId) {
+        return axios.post(trabajador + "/convertir-trabajador", { "persona": { "id": usuarioId } })
+            .then(response => response.data);
+    }
 
 
     editar_trabajador(id, nombre, apellido, email, fechaNac, direccion, telefono, genero, dni) {

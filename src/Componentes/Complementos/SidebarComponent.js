@@ -119,6 +119,7 @@ class SidebarComponent extends React.Component {
                                     )
                                 }
                             </li>
+                            { UsuarioService.getCurrentUser().rol.tipo==="admin" &&
                             <li className="nav-item">
                                 <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
                                     <i className="nav-icon far fa-calendar-check" />
@@ -128,6 +129,7 @@ class SidebarComponent extends React.Component {
                                     </p>
                                 </NavLink>
                             </li>
+                            }
                             <li className="nav-item" style={{ display: "none" }}>
                                 {
                                     (

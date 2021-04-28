@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import TrabajadorService from '../../../../../Servicios/TrabajadorService';
+import UsuarioService from '../../../../../Servicios/UsuarioService';
 import Swal from 'sweetalert2';
 import './lista.css';
 
@@ -31,18 +32,53 @@ function Eliminar(usuarioId, nombre, apellido) {
                             if (result.value) {
                                 window.location.reload();
                             }
+                            else{
+                                window.location.reload();
+                            }
+                        })
+                })
+            }
+        })
+}
+function ConvertirPaciente(usuarioId, nombre, apellido) {
+    Swal.fire
+        ({
+            title: "Estas seguro de agregar como paciente al trabajador: '" + nombre + " " + apellido + "'",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si',
+            backdrop: 'rgba(100, 100, 43, 0.4)'
+        }).then((result) => {
+            if (result.value) {
+                TrabajadorService.convertirTrabajador(usuarioId).then((response) => {
+                    Swal.fire
+                        ({
+                            title: response,
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            backdrop: 'rgba(61, 0, 0, 0.4)'
+                        }).then((result) => {
+                            if (result.value) {
+                                window.location.reload();
+                            }
+                            else{
+                                window.location.reload();
+                            }
                         })
                 })
             }
         })
 }
 const Lista = ({ datos }) => {
+    console.log(datos)
     return (
         <ul className='list-group mb-4'>
             <Table>
                 <thead>
                     <tr>
-                        <th className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>Id</th>
+                        <th className="row5" style={{ textAlign: "center", verticalAlign: "middle", display:"none"}}>Id</th>
                         <th className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>Dni</th>
                         <th style={{ textAlign: "center", verticalAlign: "middle" }}>Nombre</th>
                         <th style={{ textAlign: "center", verticalAlign: "middle" }}>Apellido</th>
@@ -56,7 +92,7 @@ const Lista = ({ datos }) => {
                 <tbody>
                     {datos.map((dato) => (
                         <tr key={dato.id} style={{ borderTop: "1px solid #e9ecef", borderBottomWidth: "1px" }}>
-                            <td className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.id}</td>
+                            <td className="row5" style={{ textAlign: "center", verticalAlign: "middle", display:"none" }}>{dato.persona.id}</td>
                             <td className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.dni}</td>
                             <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.nombre}</td>
                             <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.apellido}</td>
@@ -65,9 +101,14 @@ const Lista = ({ datos }) => {
                             <td className="row2" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.fechaNac}</td>
                             <td className="row1" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.telefono}</td>
                             <td style={{ display: "grid", border: "none" }}>
+                                { dato.pacienteEstado===0 &&
+                                <Button className="btn btn-secondary" onClick={ConvertirPaciente.bind(this, dato.id, dato.persona.nombre, dato.persona.apellido)}>Paciente</Button>
+                                }
                                 <Link to="/trabajadores-edit" className="btn btn-primary" style={{ padding: "6px 20px 6px 20px" }} onClick={EnviarTrabajador.bind(this, dato)}>Editar</Link>
                                 <Link to="/trabajadores-info" className="btn btn-warning" style={{ padding: "6px 20px 6px 20px", color: "white" }} onClick={EnviarTrabajador.bind(this, dato)}>Info</Link>
+                                { UsuarioService.getCurrentUser().rol.tipo==="admin" &&
                                 <Button className="btn btn-danger" onClick={Eliminar.bind(this, dato.id, dato.persona.nombre, dato.persona.apellido)}>Eliminar</Button>
+                                }
                             </td>
                         </tr>))
                         }
