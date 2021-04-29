@@ -73,6 +73,7 @@ class SidebarComponent extends React.Component {
                                     </p>
                                 </NavLink>
                             </li>
+
                             <li className="nav-item">
                                 {
                                     (
@@ -90,6 +91,29 @@ class SidebarComponent extends React.Component {
                                             <i className="nav-icon fas fa-head-side-mask" />
                                             <p>
                                                 Pacientes
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
+                            </li>
+                            <li className="nav-item">
+                                {
+                                    (
+                                        localStorage.getItem("consultorio") === null && <NavLink to="/consultorios" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Consultorios
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("consultorio") === "true" && <NavLink to="/consultorios" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("consultorio") === "true"}>
+                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <p>
+                                                Consultorios
                                     <span className="right badge badge-danger">New</span>
                                             </p>
                                         </NavLink>
@@ -119,16 +143,16 @@ class SidebarComponent extends React.Component {
                                     )
                                 }
                             </li>
-                            { UsuarioService.getCurrentUser().rol.tipo==="admin" &&
-                            <li className="nav-item">
-                                <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
-                                    <i className="nav-icon far fa-calendar-check" />
-                                    <p>
-                                        Asistencia
+                            {UsuarioService.getCurrentUser().rol.tipo === "admin" &&
+                                <li className="nav-item">
+                                    <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage} activeClassName="active">
+                                        <i className="nav-icon far fa-calendar-check" />
+                                        <p>
+                                            Asistencia
                                         <span className="right badge badge-danger">New</span>
-                                    </p>
-                                </NavLink>
-                            </li>
+                                        </p>
+                                    </NavLink>
+                                </li>
                             }
                             <li className="nav-item" style={{ display: "none" }}>
                                 {

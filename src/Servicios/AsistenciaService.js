@@ -5,8 +5,12 @@ import axios from 'axios'
 const asistencia = "http://localhost:8000/asistencia";
 
 class AsistenciaService {
-    marcarAsistencia(dni) {
-        return axios.get(asistencia + "/marcar", { params: { "dni": dni } })
+    marcarAsistencia(dni, codigoConsultorio) {
+        return axios.get(asistencia + "/marcar", { params: { "dni": dni, "codigoConsultorio": codigoConsultorio } })
+            .then(response => response.data);
+    }
+    listarAsistencias() {
+        return axios.get(asistencia + "/all")
             .then(response => response.data);
     }
 }

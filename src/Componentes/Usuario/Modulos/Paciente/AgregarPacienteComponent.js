@@ -241,6 +241,7 @@ class AgregarPacienteComponent extends React.Component {
   }
   ChangeGeneroHandler = (event) => {
     this.setState({ genero: event.target.value })
+    console.log(this.state.genero)
   }
   ChangeDniHandler = (event) => {
     this.setState({ dni: event.target.value })
