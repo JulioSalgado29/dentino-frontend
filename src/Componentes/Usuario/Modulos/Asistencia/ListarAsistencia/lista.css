@@ -66,3 +66,13 @@
     background: black;
     color: white;
 }
+.pintarTarde{
+    font-weight: 700;
+    background: red;
+    color: white;
+}
+.pintarTemprano{
+    font-weight: 700;
+    background: blue;
+    color: white;
+}

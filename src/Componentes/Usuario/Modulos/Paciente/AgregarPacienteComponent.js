@@ -174,6 +174,9 @@ class AgregarPacienteComponent extends React.Component {
               if (result.value) {
                 this.props.history.push('/pacientes')
               }
+              else{
+                this.props.history.push('/consultorios')
+              }
             })
         },
           error => {

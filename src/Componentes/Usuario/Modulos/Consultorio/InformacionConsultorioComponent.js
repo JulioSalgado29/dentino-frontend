@@ -53,7 +53,7 @@ class InformacionConsultorioComponent extends React.Component {
                   <div className="wrap-input100 validate-input">
                     <input className="input100-julio" type="text" placeholder="Código" value={this.state.codigo} disabled />
                     <span className="symbol-input100">
-                      <i className="fa fa-N" aria-hidden="true"></i>
+                      <i className="fa fa-C" aria-hidden="true"></i>
                     </span>
                   </div>
                   <div className="wrap-input100 validate-input">

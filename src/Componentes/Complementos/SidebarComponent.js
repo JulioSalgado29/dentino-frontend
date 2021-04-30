@@ -102,7 +102,7 @@ class SidebarComponent extends React.Component {
                                     (
                                         localStorage.getItem("consultorio") === null && <NavLink to="/consultorios" className="nav-link" onClick={this.isLandingPage}
                                             activeClassName="active">
-                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <i className="nav-icon fas fa-hospital" />
                                             <p>
                                                 Consultorios
                                     <span className="right badge badge-danger">New</span>
@@ -111,7 +111,7 @@ class SidebarComponent extends React.Component {
                                     ) || (
                                         localStorage.getItem("consultorio") === "true" && <NavLink to="/consultorios" className="nav-link"
                                             onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("consultorio") === "true"}>
-                                            <i className="nav-icon fas fa-head-side-mask" />
+                                            <i className="nav-icon fas fa-hospital" />
                                             <p>
                                                 Consultorios
                                     <span className="right badge badge-danger">New</span>

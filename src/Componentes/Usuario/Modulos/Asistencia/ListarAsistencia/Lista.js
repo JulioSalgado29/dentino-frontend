@@ -6,32 +6,29 @@ import Swal from 'sweetalert2';
 import './lista.css';
 
 const Lista = ({ datos }) => {
+    console.log(datos.estadoAsistencia)
     return (
         <ul className='list-group mb-4'>
             <Table>
                 <thead>
                     <tr>
-                        <th className="row5" style={{ textAlign: "center", verticalAlign: "middle", display: "none" }}>Id</th>
-                        <th className="row3" style={{ textAlign: "center", verticalAlign: "middle" }}>Fecha</th>
+                        <th className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>Fecha</th>
                         <th className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>Hora</th>
-                        <th className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>Consultorio</th>
+                        <th style={{ textAlign: "center", verticalAlign: "middle" }}>Consultorio</th>
                         <th style={{ textAlign: "center", verticalAlign: "middle" }}>Nombres</th>
-                        <th style={{ textAlign: "center", verticalAlign: "middle" }}>Apellidos</th>
-                        <th className="row2" style={{ textAlign: "center", verticalAlign: "middle" }}>Estado Asistencia</th>
+                        <th className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>Apellidos</th>
+                        <th style={{ textAlign: "center", verticalAlign: "middle" }}>Estado Asistencia</th>
                     </tr>
                 </thead>
                 <tbody>
                     {datos.map((dato) => (
-
-                        <tr key={dato.id} style={{ borderTop: "1px solid #e9ecef", borderBottomWidth: "1px" }}>
-                            <td className="row5" style={{ textAlign: "center", verticalAlign: "middle", display: "none" }}>{dato.id}</td>
-                            <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.fecha}</td>
-                            <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.hora}</td>
-                            <td className="row2" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.consultorio.nombre}</td>
-                            <td className="row5" style={{ textAlign: "center", verticalAlign: "middle", display: "none" }}>{dato.id}</td>
-                            <td className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.usuario.persona.nombre}</td>
+                        <tr key={dato.id} style={{ borderTop: "1px solid #e9ecef", borderBottomWidth: "1px" }} className={dato.estadoAsistencia === "TARDE" ? 'pintarTarde' : 'pintarTemprano'}>
+                            <td className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.fecha}</td>
+                            <td className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.hora}</td>
+                            <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.consultorio.nombre}</td>
+                            <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.usuario.persona.nombre}</td>
                             <td className="row4" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.usuario.persona.apellido}</td>
-                            <td className="row1" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.estadoAsistencia}</td>
+                            <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.estadoAsistencia}</td>
                         </tr>))
                     }
                 </tbody>

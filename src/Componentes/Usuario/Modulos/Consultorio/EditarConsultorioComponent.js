@@ -212,12 +212,6 @@ class EditarConsultorioComponent extends React.Component {
               <Form className="register100-form validate-form" style={{ display: "contents" }} onSubmit={this.editTrabajador} ref={c => { this.form = c; }}>
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
-                    <Input className="input100-julio" type="text" placeholder="Código" value={this.state.codigo} disabled />
-                    <span className="symbol-input100">
-                      <i className="fa fa-N" aria-hidden="true"></i>
-                    </span>
-                  </div>
-                  <div className="wrap-input100 validate-input">
                     <Input className="input100-julio" type="text" placeholder="Código" value={this.state.nombre}
                       onChange={this.ChangeNombreHandler} validations={[required, nombre]} />
                     <span className="symbol-input100">
@@ -230,7 +224,7 @@ class EditarConsultorioComponent extends React.Component {
                       onChange={this.ChangeDireccionHandler} validations={[required, direccion]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-A" aria-hidden="true"></i>
+                      <i className="fa fa-home" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>
@@ -240,7 +234,7 @@ class EditarConsultorioComponent extends React.Component {
                       onChange={this.ChangeAforoHandler} validations={[aforo]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-envelope" aria-hidden="true"></i>
+                      <i className="fas fa-user-check" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>

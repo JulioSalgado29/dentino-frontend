@@ -35,10 +35,12 @@ class AsistenciaComponent extends React.Component {
       showViewFinder: true,
       consultorios: [],
       codigoConsultorio: '',
-      datos: []
+      datos: [],
+      activateCamera: false
     }
 
     this.handleScan = this.handleScan.bind(this)
+    this.activateCamera = this.activateCamera.bind(this)
     this.ChangeConsultorioHandler = this.ChangeConsultorioHandler.bind(this)
   }
 
@@ -83,7 +85,7 @@ class AsistenciaComponent extends React.Component {
         result: data,
         detected: true
       });
-      if (this.state.codigoConsultorio == "" || this.state.codigoConsultorio == null) {
+      if (this.state.codigoConsultorio === "" || this.state.codigoConsultorio == null) {
         Swal.fire
           ({
             title: '¡Debe seleccionar un consultorio!',
@@ -128,8 +130,21 @@ class AsistenciaComponent extends React.Component {
   handleError(err) {
     console.error(err)
   }
+  activateCamera(){
+    if(!this.state.activateCamera){
+      this.setState({activateCamera: true})
+    }
+    else{
+      setTimeout(() => {
+        this.setState({activateCamera: false})
+      }, 250);
+    }
+  }
+  
   render() {
-
+    localStorage.removeItem("trabajador")
+    localStorage.removeItem("paciente")
+    localStorage.removeItem("consultorio")
     // Get current posts
     const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;
     const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;
@@ -142,7 +157,7 @@ class AsistenciaComponent extends React.Component {
         <Sidebar />
         <div className="content-wrapper" style={{ background: "white" }}>
           <div className="container-modulos">
-            <div style={{ marginBottom: "1%" }} className="title100">ASISTENCIA</div>
+            <div style={{ marginBottom: "2%" }} className="title100">ASISTENCIA</div>
             <div className="wrap-input100 validate-input">
               <Form className="wrap-input100 validate-input" style={{ display: "contents" }} onSubmit={this.marcarAsistencia} ref={c => { this.form = c; }}>
                 <Select value={this.state.codigoConsultorio} onChange={this.ChangeConsultorioHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
@@ -160,11 +175,13 @@ class AsistenciaComponent extends React.Component {
             </div>
             <div className="container container-register">
               <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button"
-                aria-expanded="false" style={{ marginTop: "3%", background: "none", color: "black", borderColor: "white", fontSize: "24px" }}>Mostrar Escáner</a>
+                aria-expanded="false" style={{ marginTop: "2%", background: "none", color: "black", borderColor: "white", fontSize: "24px" }} onClick={this.activateCamera}>Mostrar Escáner</a>
             </div>
             <div className="collapse" id="collapseInputs" style={{ width: "-webkit-fill-available", marginTop: "1%" }}>
               <div className="scanner-padding" style={{ textAlign: "-webkit-center", background: "black", borderRadius: "20px" }}>
-                <QrReader delay={this.state.delay} className="scanner" onScan={this.handleScan} showViewFinder={true} facingMode={'environment'} />
+                { this.state.activateCamera &&
+                  <QrReader delay={this.state.delay} className="scanner" onScan={this.handleScan} showViewFinder={true} facingMode={'environment'}/>
+                }
               </div>
             </div>
 

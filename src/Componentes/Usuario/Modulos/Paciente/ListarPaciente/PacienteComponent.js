@@ -91,6 +91,7 @@ class PacienteComponent extends React.Component {
         const paginate = pageNumber => this.setState({ currentPage: pageNumber });;
 
         localStorage.removeItem("trabajador")
+        localStorage.removeItem("consultorio")
         localStorage.setItem("init", true)
         return (
             <div className="wrapper" style={{ background: "white", color: "black" }}>

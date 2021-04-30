@@ -95,9 +95,13 @@ class AgregarConsultorioComponent extends React.Component {
               if (result.value) {
                 this.props.history.push('/consultorios')
               }
+              else{
+                this.props.history.push('/consultorios')
+              }
             })
         },
           error => {
+            console.log(error);
             if (error.response.status === 401) {
               this.setState({
                 loading: false
@@ -201,7 +205,7 @@ class AgregarConsultorioComponent extends React.Component {
                       onChange={this.ChangeAforoHandler} validations={[aforo, required]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fas fa-id-card" aria-hidden="true"></i>
+                      <i className="fas fa-user-check" aria-hidden="true"></i>
                     </span>
                   </div>
 
@@ -213,7 +217,7 @@ class AgregarConsultorioComponent extends React.Component {
                       onChange={this.ChangeDireccionHandler} validations={[required, direccion]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-A" aria-hidden="true"></i>
+                      <i className="fa fa-home" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>

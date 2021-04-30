@@ -44,7 +44,7 @@ const Lista = ({ datos }) => {
         <ul className='list-group mb-4'>
             <Table>
                 <thead>
-                    <tr style={{}}>
+                    <tr>
                         <th className="row5" style={{ textAlign: "center", verticalAlign: "middle", display: "none" }}>Id</th>
                         <th className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>Dni</th>
                         <th style={{ textAlign: "center", verticalAlign: "middle" }}>Nombre</th>
