@@ -24,7 +24,6 @@ const required = value => {
 class AsistenciaComponent extends React.Component {
   constructor(props) {
     super(props)
-    this.logOut = this.logOut.bind(this);
     this.state = {
       currentUser: UsuarioService.getCurrentUser(),
       detected: false,
@@ -57,8 +56,7 @@ class AsistenciaComponent extends React.Component {
       this.setState({
         consultorios: response
       })
-    })
-      .catch((e) => {
+    }).catch((e) => {
         //console.log(e);
       });
     this.setState({ loading: true })
@@ -68,14 +66,9 @@ class AsistenciaComponent extends React.Component {
           datos: response,
           loading: false,
         });
-      })
-      .catch((e) => {
+      }).catch((e) => {
         //console.log(e);
       });
-  }
-  logOut() {
-    UsuarioService.logout();
-    window.location.reload(false);
   }
   handleScan(data) {
     if (data && !this.state.detected) {
@@ -157,10 +150,10 @@ class AsistenciaComponent extends React.Component {
             <div style={{ marginBottom: "2%" }} className="title100">ASISTENCIA</div>
             <div className="wrap-input100 validate-input">
               <Form className="wrap-input100 validate-input" style={{ display: "contents" }} onSubmit={this.marcarAsistencia} ref={c => { this.form = c; }}>
-                <Select value={this.state.codigoConsultorio} onChange={this.ChangeConsultorioHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                  <option selected hidden style={{ color: "red" }} value="null">Elija el consultorio</option>
+                <Select onChange={this.ChangeConsultorioHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
+                  <option key="null" hidden style={{ color: "red" }} value="null">Elija el consultorio</option>
                   {this.state.consultorios.map((consultorio) => (
-                    <option value={consultorio.codigo}>{consultorio.nombre}</option>
+                    <option key={consultorio.id} value={consultorio.codigo}>{consultorio.nombre}</option>
                   ))
                   }
                 </Select>
@@ -171,7 +164,7 @@ class AsistenciaComponent extends React.Component {
               </span>
             </div>
             <div className="container container-register">
-              <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button"
+              <a type="button" className="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button"
                 aria-expanded="false" style={{ marginTop: "2%", background: "none", color: "black", borderColor: "white", fontSize: "24px" }} onClick={this.activateCamera}>Mostrar Escáner</a>
             </div>
             <div className="collapse" id="collapseInputs" style={{ width: "-webkit-fill-available", marginTop: "1%" }}>

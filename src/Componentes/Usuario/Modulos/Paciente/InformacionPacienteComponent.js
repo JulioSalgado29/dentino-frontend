@@ -27,11 +27,11 @@ class InformacionPacienteComponent extends React.Component{
             nombre: JSON.parse(localStorage.getItem("dato")).persona.nombre,
             apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
             fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac),"yyyy-MM-dd"),
-            email: JSON.parse(localStorage.getItem("dato")).persona.email,
-            direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
+            email: String(JSON.parse(localStorage.getItem("dato")).persona.email),
+            direccion: String(JSON.parse(localStorage.getItem("dato")).persona.direccion),
             telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
             genero: JSON.parse(localStorage.getItem("dato")).persona.genero,
-            dni: JSON.parse(localStorage.getItem("dato")).persona.dni,
+            dni: String(JSON.parse(localStorage.getItem("dato")).persona.dni),
 
             antecedenteId: JSON.parse(localStorage.getItem("dato")).antecedente.id,
             tratamientoMedico: JSON.parse(JSON.parse(localStorage.getItem("dato")).antecedente.tratamientoMedico).tratamientoMedico,
@@ -66,6 +66,21 @@ class InformacionPacienteComponent extends React.Component{
           telefono: "",
         });
       }
+      if(this.state.direccion==="null"){
+        this.setState({
+          direccion: "",
+        });
+      }
+      if(this.state.dni==="null"){
+        this.setState({
+          dni: "",
+        });
+      }
+      if(this.state.email==="null"){
+        this.setState({
+          email: "",
+        });
+      }
     }
     cancel(){
         this.props.history.push('/pacientes')
@@ -83,7 +98,6 @@ class InformacionPacienteComponent extends React.Component{
                               <span className="login100-form-title">Informacion de Paciente</span>
                                 <form className="register100-form validate-form" style={{display:"contents"}}>
                                   <div className="container container-register">
-
                                       <div className="wrap-input100 validate-input">
                                           <input className="input100-julio" type="text" placeholder="Nombres" value={this.state.nombre} disabled/>
                                           <span className="symbol-input100">
@@ -117,9 +131,9 @@ class InformacionPacienteComponent extends React.Component{
                                   </div>
                                   <div className="container container-register">
                                   <div className="wrap-input100 validate-input">
-                                          <select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" disabled>
-                                            <option selected hidden value="M">Masculino</option>
-                                            <option selected hidden value="F">Femenino</option>
+                                          <select value={this.state.genero} className="input100-julio" disabled>
+                                            <option hidden value="M">Masculino</option>
+                                            <option hidden value="F">Femenino</option>
                                           </select>
                                           <span className="focus-input100"></span>
                                           <span className="symbol-input100">
@@ -151,7 +165,7 @@ class InformacionPacienteComponent extends React.Component{
                                     </div>
                                   </div>
                                   <div className="container container-register">
-                                    <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseinputs" role="button" 
+                                    <a type="button" className="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseinputs" role="button" 
                                     aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px",cursor:"context-menu"}}>Antecedentes Médicos</a>
                                   </div>
                                   
@@ -161,13 +175,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Se encuentra en tratamiento medico?</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio" id="opt1" checked={this.state.tratamientoMedicoB==="si"} disabled/>
-                                      <label for="opt1" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio" id="opt1" defaultChecked={this.state.tratamientoMedicoB==="si"} disabled/>
+                                      <label htmlFor="opt1" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio" id="opt2" checked={this.state.tratamientoMedicoB==="no"} disabled/>
-                                      <label for="opt2" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio" id="opt2" defaultChecked={this.state.tratamientoMedicoB==="no"} disabled/>
+                                      <label htmlFor="opt2" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -186,13 +200,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Alergias?</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio2" id="opt3" checked={this.state.alergiasB==="si"}/>
-                                      <label for="opt3" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio2" id="opt3" defaultChecked={this.state.alergiasB==="si"} disabled/>
+                                      <label htmlFor="opt3" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio2" id="opt4" checked={this.state.alergiasB==="no"}/>
-                                      <label for="opt4" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio2" id="opt4" defaultChecked={this.state.alergiasB==="no"} disabled/>
+                                      <label htmlFor="opt4" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -211,18 +225,18 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>Presión Arterial</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio3" id="opt5" checked={this.state.presionB==="baja"} disabled/>
-                                      <label for="opt5" className="label-1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio3" id="opt5" defaultChecked={this.state.presionB==="baja"} disabled/>
+                                      <label htmlFor="opt5" className="label-1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">BAJA</span>
                                       </label>
 
-                                      <input type="radio" name="radio3" id="opt6" checked={this.state.presionB==="normal"} disabled/>
-                                      <label for="opt6" className="label-2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio3" id="opt6" defaultChecked={this.state.presionB==="normal"} disabled/>
+                                      <label htmlFor="opt6" className="label-2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NORMAL</span>
                                       </label>
 
-                                      <input type="radio" name="radio3" id="opt7" checked={this.state.presionB==="alta"} disabled/>
-                                      <label for="opt7" className="label-3" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio3" id="opt7" defaultChecked={this.state.presionB==="alta"} disabled/>
+                                      <label htmlFor="opt7" className="label-3" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">ALTA</span>
                                       </label>
                                     </div>
@@ -232,13 +246,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Problemas Cardíacos?</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio4" id="opt8" checked={this.state.problemasB==="si"} disabled/>
-                                      <label for="opt8" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio4" id="opt8" defaultChecked={this.state.problemasB==="si"} disabled/>
+                                      <label htmlFor="opt8" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio4" id="opt9" checked={this.state.problemasB==="no"} disabled/>
-                                      <label for="opt9" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio4" id="opt9" defaultChecked={this.state.problemasB==="no"} disabled/>
+                                      <label htmlFor="opt9" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -257,13 +271,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Tiene Diabetes?</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio5" id="opt10" checked={this.state.diabetesB==="si"} disabled/>
-                                      <label for="opt10" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio5" id="opt10" defaultChecked={this.state.diabetesB==="si"} disabled/>
+                                      <label htmlFor="opt10" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio5" id="opt11" checked={this.state.diabetesB==="no"} disabled/>
-                                      <label for="opt11" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio5" id="opt11" defaultChecked={this.state.diabetesB==="no"} disabled/>
+                                      <label htmlFor="opt11" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -282,13 +296,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>Sangrado Excesivo por Heridas o Exodoncias</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio6" id="opt12" checked={this.state.sangradoB===true} disabled/>
-                                      <label for="opt12" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio6" id="opt12" defaultChecked={this.state.sangradoB===true} disabled/>
+                                      <label htmlFor="opt12" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio6" id="opt13" checked={this.state.sangradoB===false} disabled/>
-                                      <label for="opt13" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio6" id="opt13" defaultChecked={this.state.sangradoB===false} disabled/>
+                                      <label htmlFor="opt13" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -297,13 +311,13 @@ class InformacionPacienteComponent extends React.Component{
                                       <label style={{marginTop:"1%", textAlign:"center", fontSize:"20px",color:"lightseagreen"}}>¿Fuma?</label>
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
-                                      <input type="radio" name="radio7" id="opt14" checked={this.state.fumaB==="si"} disabled/>
-                                      <label for="opt14" className="label1" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio7" id="opt14" defaultChecked={this.state.fumaB==="si"} disabled/>
+                                      <label htmlFor="opt14" className="label1" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
-                                      <input type="radio" name="radio7" id="opt15" checked={this.state.fumaB==="no"} disabled/>
-                                      <label for="opt15" className="label2" style={{textAlign:"-webkit-center"}}>
+                                      <input type="radio" name="radio7" id="opt15" defaultChecked={this.state.fumaB==="no"} disabled/>
+                                      <label htmlFor="opt15" className="label2" style={{textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>

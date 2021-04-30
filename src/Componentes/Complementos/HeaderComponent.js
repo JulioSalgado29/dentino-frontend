@@ -73,12 +73,12 @@ class HeaderComponent extends React.Component {
                     {/* Notifications Dropdown Menu */}
                     <OutsideClickHandler onOutsideClick={() => {this.setHiddenNotify();}}>
                         <li className="nav-item dropdown">
-                            <a className="button-prueba"  onClick={this.dropdownNotify}>
+                            <div className="button-prueba"  onClick={this.dropdownNotify}>
                                 <a className="nav-link">
                                     <i className="far fa-bell" />
                                     <span className="badge badge-warning navbar-badge">15</span>
                                 </a>
-                            </a>
+                            </div>
                             <div className={classdropdown_notify} style={{background:"#fff",cursor:"context-menu"}}>
                                 <span className="dropdown-item dropdown-header" style={{color:"black"}}>15 Notifications</span>
                                 <div className="dropdown-divider" />
@@ -103,14 +103,14 @@ class HeaderComponent extends React.Component {
                     </OutsideClickHandler>
                     <OutsideClickHandler onOutsideClick={() => {this.setHiddenConfig();}}>
                         <li className="nav-item dropdown">
-                            <a className="button-prueba" onClick={this.dropdownConfig}>
+                            <div className="button-prueba" onClick={this.dropdownConfig}>
                                 <a className="nav-link">
                                     <i className="fas fa-cog"/>
                                 </a>
-                            </a>
+                            </div>
                             <ul className={classdropdown_config}>
                                 <li className="nav-item" style={{whiteSpace:"pre"}}>
-                                    <Link exact to="/" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
+                                    <Link exact={"true"} to="/" className="nav-link" onClick={this.logOut} style={{cursor:"pointer", color:"black"}}>
                                         <i className="nav-icon fas fa-power-off" style={{marginRight:"4%",color:"black"}}/> Cerrar Sesión
                                     </Link>
                                 </li>

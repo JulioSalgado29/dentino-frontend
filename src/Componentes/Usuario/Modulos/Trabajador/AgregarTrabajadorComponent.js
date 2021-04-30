@@ -155,6 +155,9 @@ class AgregarTrabajadorComponent extends React.Component {
               if (result.value) {
                 this.props.history.push('/trabajadores')
               }
+              else{
+                this.props.history.push('/trabajadores')
+              }
             })
         },
           error => {
@@ -298,7 +301,7 @@ class AgregarTrabajadorComponent extends React.Component {
                   </div>
 
                   <div className="wrap-input100 validate-input">
-                    <Input className="input100-julio" type="password" placeholder="Contraseña" value={this.state.password}
+                    <Input className="input100-julio" type="password" placeholder="Contraseña" autoComplete="off" value={this.state.password}
                       onChange={this.ChangePasswordHandler} validations={[required, password]} />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
@@ -329,7 +332,7 @@ class AgregarTrabajadorComponent extends React.Component {
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
                     <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                      <option selected hidden style={{ color: "red" }} value="null">Elija el Género</option>
+                      <option hidden style={{ color: "red" }} value="null">Elija el Género</option>
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                     </Select>

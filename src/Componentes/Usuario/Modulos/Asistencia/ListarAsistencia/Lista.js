@@ -1,8 +1,5 @@
 import React from 'react'
-import { Button, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import ConsultorioService from '../../../../../Servicios/ConsultorioService';
-import Swal from 'sweetalert2';
+import { Table } from 'reactstrap';
 import './lista.css';
 
 const Lista = ({ datos }) => {

@@ -30,7 +30,7 @@ class InformacionTrabajadorComponent extends React.Component {
       apellido: JSON.parse(localStorage.getItem("dato")).persona.apellido,
       fechaNac: format(new Date(JSON.parse(localStorage.getItem("dato")).persona.fechaNac), "yyyy-MM-dd"),
       email: JSON.parse(localStorage.getItem("dato")).persona.email,
-      direccion: JSON.parse(localStorage.getItem("dato")).persona.direccion,
+      direccion: String(JSON.parse(localStorage.getItem("dato")).persona.direccion),
       telefono: String(JSON.parse(localStorage.getItem("dato")).persona.telefono),
       genero: JSON.parse(localStorage.getItem("dato")).persona.genero,
       dni: JSON.parse(localStorage.getItem("dato")).persona.dni,
@@ -51,6 +51,11 @@ class InformacionTrabajadorComponent extends React.Component {
     if (this.state.telefono === "null") {
       this.setState({
         telefono: "",
+      });
+    }
+    if (this.state.direccion === "null") {
+      this.setState({
+        direccion: "",
       });
     }
   }
@@ -122,8 +127,8 @@ class InformacionTrabajadorComponent extends React.Component {
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
                     <select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" disabled>
-                      <option selected hidden value="M">Masculino</option>
-                      <option selected hidden value="F">Femenino</option>
+                      <option hidden value="M">Masculino</option>
+                      <option hidden value="F">Femenino</option>
                     </select>
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">

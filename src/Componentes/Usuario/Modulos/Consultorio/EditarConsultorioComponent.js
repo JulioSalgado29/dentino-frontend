@@ -2,7 +2,6 @@ import React from 'react';
 import ConsultorioService from '../../../../Servicios/ConsultorioService';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
-import Select from "react-validation/build/select"
 import CheckButton from "react-validation/build/button";
 import { isNumeric } from 'validator';
 import HeaderComponent from '../../../Complementos/HeaderComponent';
