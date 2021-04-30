@@ -72,7 +72,6 @@ function ConvertirPaciente(usuarioId, nombre, apellido) {
         })
 }
 const Lista = ({ datos }) => {
-    console.log(datos)
     return (
         <ul className='list-group mb-4'>
             <Table>

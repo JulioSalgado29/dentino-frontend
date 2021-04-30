@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 import './lista.css';
 
 const Lista = ({ datos }) => {
-    console.log(datos.estadoAsistencia)
     return (
         <ul className='list-group mb-4'>
             <Table>

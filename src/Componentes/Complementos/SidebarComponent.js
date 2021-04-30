@@ -100,29 +100,6 @@ class SidebarComponent extends React.Component {
                             <li className="nav-item">
                                 {
                                     (
-                                        localStorage.getItem("consultorio") === null && <NavLink to="/consultorios" className="nav-link" onClick={this.isLandingPage}
-                                            activeClassName="active">
-                                            <i className="nav-icon fas fa-hospital" />
-                                            <p>
-                                                Consultorios
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    ) || (
-                                        localStorage.getItem("consultorio") === "true" && <NavLink to="/consultorios" className="nav-link"
-                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("consultorio") === "true"}>
-                                            <i className="nav-icon fas fa-hospital" />
-                                            <p>
-                                                Consultorios
-                                    <span className="right badge badge-danger">New</span>
-                                            </p>
-                                        </NavLink>
-                                    )
-                                }
-                            </li>
-                            <li className="nav-item">
-                                {
-                                    (
                                         localStorage.getItem("trabajador") === null && <NavLink to="/trabajadores" className="nav-link" onClick={this.isLandingPage}
                                             activeClassName="active">
                                             <i className="nav-icon fas fa-user-md" />
@@ -143,6 +120,31 @@ class SidebarComponent extends React.Component {
                                     )
                                 }
                             </li>
+                            {UsuarioService.getCurrentUser().rol.tipo === "admin" &&
+                            <li className="nav-item">
+                                {
+                                    (
+                                        localStorage.getItem("consultorio") === null && <NavLink to="/consultorios" className="nav-link" onClick={this.isLandingPage}
+                                            activeClassName="active">
+                                            <i className="nav-icon fas fa-hospital" />
+                                            <p>
+                                                Consultorios
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    ) || (
+                                        localStorage.getItem("consultorio") === "true" && <NavLink to="/consultorios" className="nav-link"
+                                            onClick={this.isLandingPage} activeClassName="active" isActive={() => localStorage.getItem("consultorio") === "true"}>
+                                            <i className="nav-icon fas fa-hospital" />
+                                            <p>
+                                                Consultorios
+                                    <span className="right badge badge-danger">New</span>
+                                            </p>
+                                        </NavLink>
+                                    )
+                                }
+                            </li>
+                            }
                             {UsuarioService.getCurrentUser().rol.tipo === "admin" &&
                                 <li className="nav-item">
                                     <NavLink to="/asistencia" className="nav-link" onClick={this.isLandingPage} activeClassName="active">

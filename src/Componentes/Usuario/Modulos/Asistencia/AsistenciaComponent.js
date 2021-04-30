@@ -46,7 +46,6 @@ class AsistenciaComponent extends React.Component {
 
   ChangeConsultorioHandler = (event) => {
     this.setState({ codigoConsultorio: event.target.value })
-    console.log(this.state.codigoConsultorio)
   }
 
   componentDidMount() {
@@ -69,7 +68,6 @@ class AsistenciaComponent extends React.Component {
           datos: response,
           loading: false,
         });
-        console.log(response);
       })
       .catch((e) => {
         //console.log(e);
@@ -115,7 +113,6 @@ class AsistenciaComponent extends React.Component {
                   data: null,
                   detected: false
                 });
-                this.props.history.push('/asistencia');
               }
             })
         })

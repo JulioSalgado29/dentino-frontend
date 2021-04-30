@@ -60,7 +60,7 @@ class InformacionConsultorioComponent extends React.Component {
                     <input className="input100-julio" type="text" placeholder="Nombre" value={this.state.nombre} disabled />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-A" aria-hidden="true"></i>
+                      <i className="fa fa-N" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>
@@ -68,7 +68,7 @@ class InformacionConsultorioComponent extends React.Component {
                   <div className="wrap-input100 validate-input">
                     <input className="input100-julio" type="text" placeholder="Direccion" value={this.state.direccion} disabled />
                     <span className="symbol-input100">
-                      <i className="fa fa-user" aria-hidden="true"></i>
+                      <i className="fa fa-home" aria-hidden="true"></i>
                     </span>
                   </div>
 
@@ -76,7 +76,7 @@ class InformacionConsultorioComponent extends React.Component {
                     <input className="input100-julio" type="text" placeholder="Aforo" value={this.state.aforo} disabled />
                     <span className="focus-input100"></span>
                     <span className="symbol-input100">
-                      <i className="fa fa-key" aria-hidden="true"></i>
+                      <i className="fa fa-user-check" aria-hidden="true"></i>
                     </span>
                   </div>
                 </div>
