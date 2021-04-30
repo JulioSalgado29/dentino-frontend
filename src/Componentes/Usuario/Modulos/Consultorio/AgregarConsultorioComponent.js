@@ -101,7 +101,6 @@ class AgregarConsultorioComponent extends React.Component {
             })
         },
           error => {
-            console.log(error);
             if (error.response.status === 401) {
               this.setState({
                 loading: false

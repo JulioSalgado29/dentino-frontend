@@ -425,7 +425,7 @@ class EditarPacienteComponent extends React.Component{
                                   <div className="container container-register">
                                   <div className="wrap-input100 validate-input">
                                           <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{border:"none"}} validations={[required]}>
-                                            <option selected hidden style={{color:"red"}} value="null">Elija el Género</option>
+                                            <option hidden style={{color:"red"}} value="null">Elija el Género</option>
                                             <option value="M">Masculino</option>
                                             <option value="F">Femenino</option>
                                           </Select>
@@ -462,7 +462,7 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                   </div>
                                   <div className="container container-register">
-                                    <a type="button" class="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button" 
+                                    <a type="button" className="collapseBtn btn btn-secondary login100-form-title border-color-an" data-toggle="collapse" href="#collapseInputs" role="button" 
                                     aria-expanded="false" style={{marginTop:"3%", background:"none", color:"black",borderColor:"white",fontSize:"24px"}}>Antecedentes Médicos</a>
                                   </div>
                                   
@@ -473,12 +473,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio" id="opt1" onChange={this.ChangeOnTHandler} checked={this.state.tratamientoMedicoB==="si"}/>
-                                      <label for="opt1" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt1" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio" id="opt2" onChange={this.ChangeOffTHandler} checked={this.state.tratamientoMedicoB==="no"}/>
-                                      <label for="opt2" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt2" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -498,12 +498,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio2" id="opt3" onChange={this.ChangeOnAHandler} checked={this.state.alergiasB==="si"}/>
-                                      <label for="opt3" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt3" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio2" id="opt4" onChange={this.ChangeOffAHandler} checked={this.state.alergiasB==="no"}/>
-                                      <label for="opt4" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt4" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -523,17 +523,17 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio3" id="opt5" onChange={this.ChangeBajaPHandler} checked={this.state.presionB==="baja"}/>
-                                      <label for="opt5" className="label-1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt5" className="label-1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">BAJA</span>
                                       </label>
 
                                       <input type="radio" name="radio3" id="opt6" onChange={this.ChangeNormalPHandler} checked={this.state.presionB==="normal"}/>
-                                      <label for="opt6" className="label-2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt6" className="label-2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NORMAL</span>
                                       </label>
 
                                       <input type="radio" name="radio3" id="opt7" onChange={this.ChangeAltaPHandler} checked={this.state.presionB==="alta"}/>
-                                      <label for="opt7" className="label-3" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt7" className="label-3" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">ALTA</span>
                                       </label>
                                     </div>
@@ -544,12 +544,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio4" id="opt8" onChange={this.ChangeOnPHandler} checked={this.state.problemasB==="si"}/>
-                                      <label for="opt8" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt8" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio4" id="opt9" onChange={this.ChangeOffPHandler} checked={this.state.problemasB==="no"}/>
-                                      <label for="opt9" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt9" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -569,12 +569,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio5" id="opt10" onChange={this.ChangeOnDHandler} checked={this.state.diabetesB==="si"}/>
-                                      <label for="opt10" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt10" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio5" id="opt11" onChange={this.ChangeOffDHandler} checked={this.state.diabetesB==="no"}/>
-                                      <label for="opt11" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt11" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -594,12 +594,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio6" id="opt12" onChange={this.ChangeOnSHandler} checked={this.state.sangradoB===true}/>
-                                      <label for="opt12" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt12" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio6" id="opt13" onChange={this.ChangeOffSHandler} checked={this.state.sangradoB===false}/>
-                                      <label for="opt13" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt13" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
@@ -609,12 +609,12 @@ class EditarPacienteComponent extends React.Component{
                                     </div>
                                     <div className="container container-yesorno wrap-input100 validate-input" style={{paddingRight:"0",paddingLeft:"0"}}>
                                       <input type="radio" name="radio7" id="opt14" onChange={this.ChangeOnFHandler} checked={this.state.fumaB==="si"}/>
-                                      <label for="opt14" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt14" className="label1" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">SI</span>
                                       </label>
 
                                       <input type="radio" name="radio7" id="opt15" onChange={this.ChangeOffFHandler} checked={this.state.fumaB==="no"}/>
-                                      <label for="opt15" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
+                                      <label htmlFor="opt15" className="label2" style={{cursor:"pointer",textAlign:"-webkit-center"}}>
                                           <span className="span-class">NO</span>
                                       </label>
                                     </div>
