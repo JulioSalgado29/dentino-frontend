@@ -2,9 +2,9 @@ import axios from 'axios'
 //const admin = "https://dentino-303017.rj.r.appspot.com/admin";
 //const paciente = "http://localhost:8080/paciente";
 
-const login = "http://localhost:8000/login";
-const user = "http://localhost:8000/usuario";
-const paciente = "http://localhost:8000/paciente";
+const login = "https://juliosalgado29.ddns.net/login";
+const user = "https://juliosalgado29.ddns.net/usuario";
+const paciente = "https://juliosalgado29.ddns.net/paciente";
 //const login = "https://dentino-303017.rj.r.appspot.com/login";
 //const user = "https://dentino-303017.rj.r.appspot.com/usuario";
 //const paciente = "https://dentino-303017.rj.r.appspot.com/paciente";
