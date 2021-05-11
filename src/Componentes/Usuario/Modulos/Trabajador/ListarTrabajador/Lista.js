@@ -101,7 +101,7 @@ const Lista = ({ datos }) => {
                             <td className="row1" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.telefono}</td>
                             <td style={{ display: "grid", border: "none" }}>
                                 { dato.pacienteEstado===0 &&
-                                <Button className="btn btn-secondary" onClick={ConvertirPaciente.bind(this, dato.id, dato.persona.nombre, dato.persona.apellido)}>Paciente</Button>
+                                <Button className="btn btn-secondary" onClick={ConvertirPaciente.bind(this, dato.persona.id, dato.persona.nombre, dato.persona.apellido)}>Paciente</Button>
                                 }
                                 <Link to="/trabajadores-edit" className="btn btn-primary" style={{ padding: "6px 20px 6px 20px" }} onClick={EnviarTrabajador.bind(this, dato)}>Editar</Link>
                                 <Link to="/trabajadores-info" className="btn btn-warning" style={{ padding: "6px 20px 6px 20px", color: "white" }} onClick={EnviarTrabajador.bind(this, dato)}>Info</Link>

@@ -332,7 +332,7 @@ class AgregarTrabajadorComponent extends React.Component {
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
                     <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                      <option hidden style={{ color: "red" }} value="null">Elija el Género</option>
+                      <option hidden style={{ color: "red" }} value="">Elija el Género</option>
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                     </Select>

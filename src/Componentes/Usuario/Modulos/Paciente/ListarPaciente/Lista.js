@@ -58,7 +58,7 @@ const Lista = ({ datos }) => {
                 </thead>
                 <tbody>
                     {datos.map((dato) => (
-                        <tr key={dato.id} style={{ borderTop: "1px solid #e9ecef", borderBottomWidth: "1px" }} className={dato.usuarioEstado === 1 ? 'pintarRow' : ''}>
+                        <tr key={dato.id} style={{ borderTop: "1px solid #e9ecef", borderBottomWidth: "1px" }} className={dato.usuarioEstado !== 0 ? 'pintarRow' : ''}>
                             <td className="row5" style={{ textAlign: "center", verticalAlign: "middle", display: "none" }}>{dato.persona.id}</td>
                             <td className="row5" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.dni}</td>
                             <td style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.nombre}</td>
@@ -68,7 +68,7 @@ const Lista = ({ datos }) => {
                             <td className="row2" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.fechaNac}</td>
                             <td className="row1" style={{ textAlign: "center", verticalAlign: "middle" }}>{dato.persona.telefono}</td>
                             <td style={{ display: "grid", border: "none" }}>
-                                {dato.usuarioEstado !== 1 &&
+                                {dato.usuarioEstado === 0 &&
                                     <Link to="/pacientes-edit" className="btn btn-primary" style={{ padding: "6px 20px 6px 20px" }} onClick={EnviarPaciente.bind(this, dato)}>Editar</Link>
                                 }
                                 <Link to="/pacientes-info" className="btn btn-warning" style={{ padding: "6px 20px 6px 20px", color: "white" }} onClick={EnviarPaciente.bind(this, dato)}>Info</Link>

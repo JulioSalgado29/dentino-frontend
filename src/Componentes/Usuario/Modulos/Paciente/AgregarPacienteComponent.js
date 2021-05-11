@@ -245,6 +245,7 @@ class AgregarPacienteComponent extends React.Component {
   }
   ChangeGeneroHandler = (event) => {
     this.setState({ genero: event.target.value })
+    console.log("pruebaHandler",this.state.genero)
   }
   ChangeDniHandler = (event) => {
     this.setState({ dni: event.target.value })
@@ -342,6 +343,7 @@ class AgregarPacienteComponent extends React.Component {
   render() {
     localStorage.removeItem("trabajador");
     localStorage.setItem("paciente", true);
+    console.log("pruebaRender",this.state.genero)
     return (
       <div className="wrapper">
         <HeaderComponent />
@@ -391,7 +393,7 @@ class AgregarPacienteComponent extends React.Component {
                 <div className="container container-register">
                   <div className="wrap-input100 validate-input">
                     <Select value={this.state.genero} onChange={this.ChangeGeneroHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                      <option hidden style={{ color: "red" }} value="null">Elija el Género</option>
+                      <option disable hidden style={{ color: "red" }} value="">Elija el Género</option>
                       <option value="M">Masculino</option>
                       <option value="F">Femenino</option>
                     </Select>

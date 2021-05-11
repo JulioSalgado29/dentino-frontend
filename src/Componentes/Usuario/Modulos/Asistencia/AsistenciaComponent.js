@@ -151,7 +151,7 @@ class AsistenciaComponent extends React.Component {
             <div className="wrap-input100 validate-input">
               <Form className="wrap-input100 validate-input" style={{ display: "contents" }} onSubmit={this.marcarAsistencia} ref={c => { this.form = c; }}>
                 <Select onChange={this.ChangeConsultorioHandler} className="input100-julio" style={{ border: "none" }} validations={[required]}>
-                  <option key="null" hidden style={{ color: "red" }} value="null">Elija el consultorio</option>
+                  <option key="null" hidden style={{ color: "red" }} value="">Elija el consultorio</option>
                   {this.state.consultorios.map((consultorio) => (
                     <option key={consultorio.id} value={consultorio.codigo}>{consultorio.nombre}</option>
                   ))
